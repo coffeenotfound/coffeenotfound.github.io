@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ page.title }}</title>
+	
+	<link href="/css/normalize.css" rel="stylesheet">
+	<link href="/css/home.css" rel="stylesheet">
+</head>
+
+<body>
+	<!-- navbar -->
+	<nav class="nav">
+		<div class="wrap">
+		</div>
+	</nav>
+	
+	<!-- header -->
+	<header class="header">
+		<div class="wrap">
+			<h1>coffeenotfound</h1>
+			<span>Jan Katzer</span>
+			<p>A short description about me and what I do</p>
+		</div>
+	</header>
+	
+	<!-- post list -->
+	{% for post in site.posts %}
+	<article class="postlist-post">
+		<div class="wrap">
+			<div class="postlist-post__title">
+				<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+				<span>{{ post.date | date: "%a, %b %d, %y"}}</span>
+			</div>
+			<p>
+				{{ post.excerpt }}
+			</p>
+			<a class="postlist-post__more" href="{{ post.url }}">more...</a>
+		</div>
+	</article>
+	{% if forloop.last != true %}
+		<!--<hr>-->
+	{% endif %}
+	{% endfor %}
+	
+	<!-- footer -->
+	<footer class="footer">
+		<div class="wrap">
+			<a href="/">Home</a>
+		</div>
+	</footer>
+	
+	<!--
+	<nav class="nav">
+		<div class="page-wrap">
+			<a class="nav__link  nav_link--homeicon" href="/"></a>
+			<a class="nav__link" href="/">Home</a>
+			<a class="nav__link" href="/posts">Posts</a>
+			<a class="nav__link" href="/about">About</a>
+		</div>
+		<hr class="separator">
+	</nav>
+	
+	<main class="content-main">
+		<div class="page-wrap">
+			{{ content }}
+			
+			<p>
+				<h3>Posts</h3>
+				{% for post in site.posts %}
+					<li>
+						<a href="{{ post.url }}">{{ post.title }}</a>
+					</li>
+				{% endfor %}
+			</p>
+		</div>
+	</main>
+	
+	<footer class="footer">
+		<div class="page-wrap">
+			<a href="/about">About</a>
+		</div>
+	</footer>
+	-->
+</body>
+</html>

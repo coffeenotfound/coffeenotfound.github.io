@@ -1,2 +1,20 @@
 name: coffeenotfound.github.io
-theme: jekyll-theme-cayman
+permalink: /blog/:slug/
+
+defaults:
+  -
+    scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Jan Katzer"
+      excerpt_separator: "<!--more-->"
+      og-title: "{{ page.title }}"
+      og-image: "favicon.ico"
+      og-description: "{{ page.excerpt }}"
+
+sass:
+  style: compressed
+
+exclude: [THIRDPARTYNOTICES.txt, Gemfile, Gemfile.lock]

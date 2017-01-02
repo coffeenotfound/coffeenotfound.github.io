@@ -1,0 +1,234 @@
+---
+---
+@import 'base';
+
+@import url('https://fonts.googleapis.com/css?family=Merriweather|Montserrat|Roboto|Libre+Baskerville');
+//$font-text: 'Merriweather' !global;
+//$font-title: 'Montserrat' !global;
+$font-text: 'Roboto' !global;
+$font-title: 'Libre Baskerville' !global;
+
+/** GLOBAL::Default Colors **/
+$global_color-background--bright: #FCFCFC !global;
+$global_color-background--bright-minus: #F6F6F6 !global;
+
+$global_color-text--dark0: #080808 !global;
+
+html {
+	line-height: 1.5;
+	font-family: $font-text, sans-serif;
+	
+	/* font quality stuff */
+	/*
+	font-kerning: normal;
+	font-variant-ligatures: common-ligatures contextual;
+	-moz-font-feature-settings: "kern", "liga", "clig", "calt";
+	-ms-font-feature-settings: "kern", "liga", "clig", "alt";
+	-webkit-font-feature-settings: "kern", "liga", "clig", "calt";
+	font-feature-settings: "kern", "liga", "clig", "calt";
+	*/
+}
+
+/** ### navbar ### **/
+.nav {
+	position: absolute;
+	display: block;
+	margin: 0;
+	padding: 8px 0;
+	
+	min-width: 100%;
+	width: 100%;
+	
+	background: #FAFAFA;
+	
+	font-family: 'Montserrat', sans-serif;
+	
+	overflow: hidden; /* prevent margin collapsing */
+}
+.nav__link, .nav__link:visited {
+	margin-right: 16px;
+	vertical-align: middle;
+	
+	color: #080808;
+	text-decoration: none;
+	
+	transition: color 0.1s;
+}
+.nav__link:hover {
+	color: orange;
+}
+.nav__link:active {
+	color: green;
+}
+.nav_link--homeicon {
+	display: inline-block;
+	background: url(icon.svg) no-repeat center bottom;
+	background-size: contain;
+	
+	width: 32px;
+	height: 32px;
+	
+	color: red;
+}
+
+
+/** ### header ### **/
+.header {
+	position: relative;
+	overflow: hidden; /* prevent margin collapsing */
+	
+	//height: 720px;
+	height: 35vw;
+	min-height: 500px;
+	
+	vertical-align: middle;
+	
+	//background: url('../assets/images/wintertrees.jpg') no-repeat center center;
+	//background-size: cover;
+	
+	//background: url('../assets/images/imagefilter2.png') repeat center center, url('../assets/images/wintertrees.jpg') no-repeat center center;
+	//background-size: auto, cover;
+	
+	background: url('../assets/images/led-closeup-green.jpg') no-repeat center center;
+	background-size: cover;
+}
+.header .wrap {
+	display: relative;
+	
+	text-align: center;
+	
+	font-family: 'Monsterrat'
+}
+.header h1 {
+	font-family: 'Consolas';
+	font-size: 5rem;
+	
+	//color: #F72671;
+	color: #FFFFFF;
+}
+.header span {
+	margin: 0;
+}
+.header p {
+	margin: 0 auto;
+	width: 50%;
+}
+
+/** ### postlist ### **/
+.postlist-post {
+	//background: $global_color-background--bright;
+	//background: #252423;
+	background: #FCFCFC;
+	
+	overflow: hidden; /* prevent margin collapsing */
+	padding-top: 1.25rem;
+	padding-bottom: 2rem;
+	
+	&:nth-child(even) {
+		background: darken(#252423, 1.5);
+		//background: $global_color-background--bright-minus;
+		
+		//background: #FAFAFA;
+		//color: #080808;
+	}
+	
+	/* post title */
+	&__title a {
+		text-decoration: none;
+		color: inherit;
+	}
+	&__title h3 {
+		margin: 0;
+		margin-bottom: 0.25rem;
+		
+		//color: #FFFFFF;
+		color: #080808;
+		//color: #66D9EF;
+		font-size: 1.5rem;
+		font-family: $font-title, sans-serif;
+		//font-family: 'Consolas', sans-serif;
+		
+		/*
+		&:after, &:before {
+			content: '"';
+		}
+		*/
+	}
+	
+	/* post date */
+	&__title span {
+		color: #808080;
+	}
+	
+	/* post excerpt */
+	p {
+		color: #080808;
+		//color: #FFFFFF;
+		font-family: $font-text, serif;
+		//font-family: 'Consolas', sans-serif;
+		
+		margin: 0;
+		margin-left: 1rem;
+		//margin-bottom: 1.5rem;
+		
+		/*
+		&:before {
+			counter-increment: line;
+			content: counter(line);
+			display: inline-block;
+			border-right: 1px solid #ddd;
+			padding: 0 .5rem;
+			margin-right: .5rem;
+			color: #888
+		}
+		*/
+	}
+	
+	/* more link */
+	&__more {
+		float: right;
+		margin-right: 4rem;
+		
+		color: #080808;
+		font-size: 1.25em;
+		font-family: $font-text;
+		text-decoration: none;
+	}
+}
+
+/** ### footer ### **/
+.footer {
+	display: block;
+	position: relative;
+	
+	padding: 8px 0;
+	
+	bottom: 0;
+	
+	min-width: 100%;
+	height: 32px;
+	
+	background: #FAFAFA;
+	color: #080808;
+	
+	overflow: hidden; /* prevent margin collapsing */
+}
+
+.separator {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	left: 50%;
+}
+.seperator:before {
+	content: "";
+	display: inline-block;
+	position: absolute;
+	
+	width: 32px;
+	height: 4px;
+	
+	background-color: red;
+}
+
+//@import 'home--xmas16'
