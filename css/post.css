@@ -1,0 +1,575 @@
+@charset "UTF-8";
+@import url("https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Serif");
+html {
+  position: relative;
+  overflow: auto;
+  height: 100%;
+  min-width: 864px;
+  width: 100%;
+  font-size: 1.2rem;
+  line-height: 1.45;
+  font-family: "Open Sans", serif;
+  color: #404040;
+  text-rendering: optimizeLegibility;
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures contextual;
+  font-feature-settings: "kern", "liga", "clig", "calt"; }
+  @media screen and (min-width: 864px) {
+    html {
+      width: 100vw;
+      overflow-x: hidden; } }
+
+body {
+  position: relative;
+  overflow: hidden;
+  min-height: 100%;
+  width: 100%;
+  background: #FCFCFC; }
+
+::selection {
+  background: #404040;
+  color: #FCFCFC;
+  opacity: 1.0; }
+
+::-webkit-scrollbar {
+  width: 22px;
+  height: 22px; }
+
+::-webkit-scrollbar-track {
+  border: 8px solid transparent;
+  background-clip: padding-box;
+  -webkit-border-radius: 32px;
+  background-color: rgba(0, 0, 0, 0.2); }
+
+::-webkit-scrollbar-thumb {
+  min-height: 16px;
+  min-width: 16px;
+  border: 8px solid transparent;
+  background-clip: padding-box;
+  -webkit-border-radius: 32px;
+  background-color: rgba(0, 0, 0, 0.2); }
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none; }
+
+::-webkit-scrollbar-corner {
+  background-color: transparent; }
+
+.wrap {
+  position: relative;
+  width: 800px;
+  min-width: 800px;
+  margin: 0 auto; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Open Sans", sans-serif; }
+
+img.emoji {
+  vertical-align: baseline; }
+
+.nav {
+  display: block;
+  position: relative;
+  height: 4rem; }
+  .nav .wrap {
+    display: flex;
+    position: relative;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 100%;
+    padding: 0 1.25rem;
+    box-sizing: border-box; }
+  .nav__link {
+    position: relative;
+    margin: 0 0.75em;
+    color: inherit;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 0.8rem;
+    transform-origin: 50% 50%;
+    transform: none;
+    transition: color 0.1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); }
+    .nav__link:active {
+      transform: scale(0.95); }
+    .nav__link:after, .nav__link:hover:after {
+      display: inline-block;
+      position: absolute;
+      content: ' ';
+      left: 50%;
+      width: 0;
+      bottom: 0.1rem;
+      transition: left 0.1s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.1s cubic-bezier(0.215, 0.61, 0.355, 1), height 0.1s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.1s ease-out;
+      height: 2px;
+      border-radius: 1px;
+      opacity: 0;
+      background: #e74c3c; }
+    .nav__link:hover:after {
+      left: 0%;
+      width: 100%;
+      opacity: 1; }
+    .nav__link:active:after {
+      opacity: 0; }
+    .nav__link--home {
+      display: inline-block;
+      margin-right: auto;
+      width: 2rem;
+      height: 2rem;
+      background: #e74c3c;
+      border-radius: 50%; }
+      .nav__link--home img {
+        display: none; }
+      .nav__link--home:before, .nav__link--home:after, .nav__link--home:hover:before, .nav__link--home:hover:after {
+        content: none; }
+
+body {
+  padding-bottom: 3rem;
+  box-sizing: border-box; }
+
+.footer {
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 3rem;
+  bottom: 0;
+  font-size: 0.75rem; }
+  .footer .wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100%; }
+  .footer__link {
+    display: inline;
+    position: relative;
+    color: #cacaca;
+    text-decoration: none;
+    font-weight: 600;
+    transform-origin: 50% 50%;
+    transform: none;
+    transition: color 0.1s ease-out, transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); }
+    .footer__link:hover {
+      color: #404040; }
+    .footer__link:active {
+      transform: scale(0.98); }
+    .footer__link--ornament {
+      display: inline-block;
+      margin: 0 1.2rem;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #e74c3c; }
+
+.post {
+  display: block;
+  position: relative;
+  padding-bottom: 4.35rem;
+  overflow-x: hidden;
+  overflow-y: visible;
+  color: #404040; }
+  .post header {
+    padding: 7.25rem 0;
+    overflow: hidden;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.025); }
+    .post header h1 {
+      margin: 0;
+      font-family: "Open Sans", sans-serif;
+      font-size: 3.25rem;
+      font-weight: 700; }
+    .post header h2 {
+      margin: 0;
+      color: #cacaca;
+      font-family: "Open Sans", serif;
+      font-size: 1rem;
+      font-weight: 400; }
+      .post header h2 .post-author {
+        text-decoration: none;
+        color: inherit;
+        transition: color 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); }
+        .post header h2 .post-author:hover {
+          color: #404040; }
+        .post header h2 .post-author:active {
+          transform: scale(0.95); }
+      .post header h2 .post-date:before {
+        display: inline;
+        content: '·';
+        margin: 0 0.5rem; }
+  .post main p {
+    margin: 1.45rem 1.45rem;
+    /** drop caps */ }
+    .post main p:first-child:first-letter {
+      font-size: 310%;
+      float: left;
+      line-height: 0.9;
+      margin: 0 0.2rem 0 0.1rem;
+      /*
+      font-size: 400%;
+      margin-left: -0.5rem;
+      margin-top: -1rem;
+      */ }
+  .post main b, .post main strong {
+    color: #e74c3c;
+    font-style: normal;
+    font-weight: 600; }
+  .post main i, .post main em {
+    font-style: italic; }
+  .post main a {
+    position: relative;
+    color: inherit;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none; }
+    .post main a:after {
+      display: inline-block;
+      position: absolute;
+      content: '';
+      bottom: 0.1rem;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: #e74c3c; }
+  .post main h2, .post main h3, .post main h4, .post main h5, .post main h6 {
+    position: relative;
+    margin: 2.9rem 0 1.45rem 0;
+    color: #303030;
+    font-size: 2.2rem;
+    font-weight: 700;
+    /** permalink anchor */
+    /*
+    &:before {
+    	position: absolute;
+    	content: '';
+    	
+    	top: 0;
+    	left: -100vw;
+    	width: 300vw;
+    	height: 100%;
+    	z-index: -1;
+    	
+    	background: #F8F8F8;
+    	box-shadow: inset 0 2px 6px 0 rgba(0,0,0,0.25);
+    }
+    */
+    /*
+    &:before, &:after {
+    	display: inline-block;
+    	content: '';
+    	
+    	height: 8px;
+    	width: 8px;
+    	vertical-align: middle;
+    	line-height: 0.5em;
+    	
+    	border-radius: 50%;
+    	background: currentColor;
+    }
+    &:before {
+    	margin-right: 2rem;
+    }
+    &:after {
+    	margin-left: 2rem;
+    }
+    */ }
+    .post main h2:before, .post main h3:before, .post main h4:before, .post main h5:before, .post main h6:before {
+      position: absolute;
+      content: '';
+      width: 1rem;
+      height: 1rem;
+      left: -1.5rem;
+      top: 50%;
+      transform: translate(0, -50%);
+      border-radius: 50%;
+      background: #E3E4E5;
+      transition: background-color 0.1s; }
+      .post main h2:before:hover, .post main h3:before:hover, .post main h4:before:hover, .post main h5:before:hover, .post main h6:before:hover {
+        background: #A8A8A8; }
+  .post main .highlight {
+    position: relative;
+    margin: 0;
+    overflow: visible;
+    z-index: 0;
+    /*
+    .p { color: #FFFFFF; }
+    .k, .kt, .o, .nb { color: #F92772; }
+    .mi { color: #AE81FF; }
+    .s, .se { color: #E6DA74; }
+    .nf { color: #A7E22E; }
+    .n { color: #66D9EE; }
+    .c1 { color: #8F8B74; }
+    */ }
+    .post main .highlight pre {
+      display: block;
+      padding: 1.0875rem 1.45rem;
+      margin: 1.45rem 0;
+      overflow: hidden;
+      /*
+      &:before {
+      	counter-increment: line;
+      	content: counter(line);
+      	display: inline-block;
+      	border-right: 1px solid #ddd;
+      	padding: 0 .5rem;
+      	margin-right: .5rem;
+      	color: #888;
+      }
+      */ }
+
+pre {
+  font-family: 'Consolas', monospace; }
+
+.highlight pre {
+  background-color: #272822; }
+
+.highlight .hll {
+  background-color: #272822; }
+
+.highlight .c {
+  color: #75715e; }
+
+/* Comment */
+.highlight .err {
+  color: #960050;
+  background-color: #1e0010; }
+
+/* Error */
+.highlight .k {
+  color: #66d9ef; }
+
+/* Keyword */
+.highlight .l {
+  color: #ae81ff; }
+
+/* Literal */
+.highlight .n {
+  color: #f8f8f2; }
+
+/* Name */
+.highlight .o {
+  color: #f92672; }
+
+/* Operator */
+.highlight .p {
+  color: #f8f8f2; }
+
+/* Punctuation */
+.highlight .cm {
+  color: #75715e; }
+
+/* Comment.Multiline */
+.highlight .cp {
+  color: #75715e; }
+
+/* Comment.Preproc */
+.highlight .c1 {
+  color: #75715e; }
+
+/* Comment.Single */
+.highlight .cs {
+  color: #75715e; }
+
+/* Comment.Special */
+.highlight .ge {
+  font-style: italic; }
+
+/* Generic.Emph */
+.highlight .gs {
+  font-weight: bold; }
+
+/* Generic.Strong */
+.highlight .kc {
+  color: #66d9ef; }
+
+/* Keyword.Constant */
+.highlight .kd {
+  color: #66d9ef; }
+
+/* Keyword.Declaration */
+.highlight .kn {
+  color: #f92672; }
+
+/* Keyword.Namespace */
+.highlight .kp {
+  color: #66d9ef; }
+
+/* Keyword.Pseudo */
+.highlight .kr {
+  color: #66d9ef; }
+
+/* Keyword.Reserved */
+.highlight .kt {
+  color: #66d9ef; }
+
+/* Keyword.Type */
+.highlight .ld {
+  color: #e6db74; }
+
+/* Literal.Date */
+.highlight .m {
+  color: #ae81ff; }
+
+/* Literal.Number */
+.highlight .s {
+  color: #e6db74; }
+
+/* Literal.String */
+.highlight .na {
+  color: #a6e22e; }
+
+/* Name.Attribute */
+.highlight .nb {
+  color: #f8f8f2; }
+
+/* Name.Builtin */
+.highlight .nc {
+  color: #a6e22e; }
+
+/* Name.Class */
+.highlight .no {
+  color: #66d9ef; }
+
+/* Name.Constant */
+.highlight .nd {
+  color: #a6e22e; }
+
+/* Name.Decorator */
+.highlight .ni {
+  color: #f8f8f2; }
+
+/* Name.Entity */
+.highlight .ne {
+  color: #a6e22e; }
+
+/* Name.Exception */
+.highlight .nf {
+  color: #a6e22e; }
+
+/* Name.Function */
+.highlight .nl {
+  color: #f8f8f2; }
+
+/* Name.Label */
+.highlight .nn {
+  color: #f8f8f2; }
+
+/* Name.Namespace */
+.highlight .nx {
+  color: #a6e22e; }
+
+/* Name.Other */
+.highlight .py {
+  color: #f8f8f2; }
+
+/* Name.Property */
+.highlight .nt {
+  color: #f92672; }
+
+/* Name.Tag */
+.highlight .nv {
+  color: #f8f8f2; }
+
+/* Name.Variable */
+.highlight .ow {
+  color: #f92672; }
+
+/* Operator.Word */
+.highlight .w {
+  color: #f8f8f2; }
+
+/* Text.Whitespace */
+.highlight .mf {
+  color: #ae81ff; }
+
+/* Literal.Number.Float */
+.highlight .mh {
+  color: #ae81ff; }
+
+/* Literal.Number.Hex */
+.highlight .mi {
+  color: #ae81ff; }
+
+/* Literal.Number.Integer */
+.highlight .mo {
+  color: #ae81ff; }
+
+/* Literal.Number.Oct */
+.highlight .sb {
+  color: #e6db74; }
+
+/* Literal.String.Backtick */
+.highlight .sc {
+  color: #e6db74; }
+
+/* Literal.String.Char */
+.highlight .sd {
+  color: #e6db74; }
+
+/* Literal.String.Doc */
+.highlight .s2 {
+  color: #e6db74; }
+
+/* Literal.String.Double */
+.highlight .se {
+  color: #ae81ff; }
+
+/* Literal.String.Escape */
+.highlight .sh {
+  color: #e6db74; }
+
+/* Literal.String.Heredoc */
+.highlight .si {
+  color: #e6db74; }
+
+/* Literal.String.Interpol */
+.highlight .sx {
+  color: #e6db74; }
+
+/* Literal.String.Other */
+.highlight .sr {
+  color: #e6db74; }
+
+/* Literal.String.Regex */
+.highlight .s1 {
+  color: #e6db74; }
+
+/* Literal.String.Single */
+.highlight .ss {
+  color: #e6db74; }
+
+/* Literal.String.Symbol */
+.highlight .bp {
+  color: #f8f8f2; }
+
+/* Name.Builtin.Pseudo */
+.highlight .vc {
+  color: #f8f8f2; }
+
+/* Name.Variable.Class */
+.highlight .vg {
+  color: #f8f8f2; }
+
+/* Name.Variable.Global */
+.highlight .vi {
+  color: #f8f8f2; }
+
+/* Name.Variable.Instance */
+.highlight .il {
+  color: #ae81ff; }
+
+/* Literal.Number.Integer.Long */
+/* Generic Heading & Diff Header */
+.highlight .gu {
+  color: #75715e; }
+
+/* Generic.Subheading & Diff Unified/Comment? */
+.highlight .gd {
+  color: #f92672; }
+
+/* Generic.Deleted & Diff Deleted */
+.highlight .gi {
+  color: #a6e22e; }
+
+/* Generic.Inserted & Diff Inserted */
