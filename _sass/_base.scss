@@ -1,0 +1,132 @@
+
+//$font-serif: 'Merriweather';
+$font-serif: 'Open Sans';
+//$font-serif: 'Source Sans Pro';
+//$font-serif: 'PT Sans';
+//$font-sans-serif: 'Roboto';
+$font-sans-serif: 'Open Sans';
+//$font-sans-serif: 'Source Sans Pro';
+
+$color-accent: #e74c3c;
+$color-dark: #404040;
+//$color-lighter: #bbbec0;
+//$color-lighter: #ababab;
+$color-lighter: #cacaca;
+$color-section-lowlight: rgba(0,0,0,0.025);
+
+$curve-cubic-out: cubic-bezier(0.215, 0.610, 0.355, 1.000);
+
+$base-wrap-sidemargin: 32px;
+$base-wrap-width: 800px;
+
+$base-line-height: 1.45;
+$base-font-size: 1.2rem;
+@function vertical-rhythm($_units) {
+	@return ($base-line-height * $_units) + rem
+}
+@function vertical-rhythm-rel($_units) {
+	@return ($base-line-height * $_units) + em
+}
+
+
+// IMPORT ONCE
+$IMPORTED_BASE: 0 !default;
+@if $IMPORTED_BASE == 0 {
+$IMPORTED_BASE: 1;
+
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Serif');
+
+html {
+	position: relative;
+	
+	overflow: auto;
+	
+	height: 100%;
+	min-width: $base-wrap-width + (2 * $base-wrap-sidemargin);
+	width: 100%;
+	
+	font-size: $base-font-size;
+	line-height: $base-line-height;
+	font-family: $font-serif, serif;
+	color: $color-dark;
+	
+	text-rendering: optimizeLegibility;
+	font-kerning: normal;
+	font-variant-ligatures: common-ligatures contextual;
+	font-feature-settings: "kern", "liga", "clig", "calt";
+	
+	// anti scrollbar layout nudge trick (https://aykevl.nl/2014/09/fix-jumping-scrollbar)
+	@media screen and (min-width: $base-wrap-width + (2 * $base-wrap-sidemargin)) {
+		width: 100vw;
+		overflow-x: hidden;
+	}
+}
+body {
+	position: relative;
+	
+	overflow: hidden;
+	
+	min-height: 100%;
+	width: 100%;
+	
+	background: #FCFCFC;
+}
+
+// text selection
+::selection {
+	background: $color-dark;
+	color: #FCFCFC;
+	opacity: 1.0;
+}
+
+// scrollbars
+$scrollbar-width: 6px;
+$scrollbar-padding: 8px;
+
+::-webkit-scrollbar {
+	width: $scrollbar-width + ($scrollbar-padding * 2);
+	height: $scrollbar-width + ($scrollbar-padding * 2);
+}
+::-webkit-scrollbar-track {
+	border: $scrollbar-padding solid transparent; // padding
+	background-clip: padding-box;
+	-webkit-border-radius: 32px;
+	
+	background-color: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb {
+	min-height: 16px;
+	min-width: 16px;
+	
+	border: $scrollbar-padding solid transparent; // padding
+	background-clip: padding-box;
+	-webkit-border-radius: 32px;
+	
+	background-color: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	display: none;
+}
+::-webkit-scrollbar-corner {
+	background-color: transparent;
+}
+
+.wrap {
+	position: relative;
+	width: $base-wrap-width;
+	min-width: $base-wrap-width;
+	margin: 0 auto;
+}
+
+h1,h2,h3,h4,h5,h6 {
+	font-family: $font-sans-serif, sans-serif;
+}
+
+img.emoji {
+	vertical-align: baseline;
+}
+
+}

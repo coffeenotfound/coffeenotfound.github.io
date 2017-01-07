@@ -1,5 +1,25 @@
-name: coffeenotfound.github.io
-permalink: /blog/:slug/
+name: "coffeenotfound.github.io"
+permalink: "/:slug/"
+baseurl: "/"
+url: "http://coffeenotfound.github.io"
+encoding: "utf-8"
+
+author: "Jan Katzer"
+sitedescription: "[ no description here... ]"
+sitetags: ["Jekyll", "HTML", "CSS", "Java", "JavaScript", "JS", "coding", "programming", "coffeenotfound"]
+
+#twitter:
+#  username: twitterhandle
+
+#facebook:
+#  app_id: 1234
+#  publisher: 1234
+#  admins: 1234
+
+#gems: ["jekyll-paginate", "jemoji", "jekyll-compass", "jekyll-lunr-js-search"]
+
+paginate: 5
+paginate_path: "blog/:num"
 
 defaults:
   -
@@ -7,14 +27,15 @@ defaults:
       path: ""
       type: "posts"
     values:
+      permalink: "/blog/:slug/"
       layout: "post"
       author: "Jan Katzer"
       excerpt_separator: "<!--more-->"
-      og-title: "{{ page.title }}"
-      og-image: "favicon.ico"
-      og-description: "{{ page.excerpt }}"
+      #og-title: "{{ page.title }}"
+      #og-image: "favicon.ico"
+      #og-description: "{{ page.excerpt }}"
 
-sass:
-  style: compressed
+#sass:
+#  style: compressed
 
-exclude: [THIRDPARTYNOTICES.txt, Gemfile, Gemfile.lock]
+exclude: [.gitignore, Gemfile, Gemfile.lock, README.md, ISSUES.txt, "$build-site.sh", "$publish-site.sh"]

@@ -1,0 +1,321 @@
+---
+---
+@import '_base';
+@import '_shared-nav';
+@import '_shared-footer';
+
+// https://flatuicolors.com/
+
+// postlist header
+.postlistheader {
+	height: vertical-rhythm(5);
+	
+	background: $color-section-lowlight;
+	
+	.wrap {
+		display: flex;
+		
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		
+		height: 100%;
+	}
+	
+	h2 {
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		
+		margin: 0;
+		padding: 0;
+	}
+	&__latest {
+		color: $color-lighter;
+		font-size: 1.25rem;
+		text-decoration: none;
+		
+		margin-left: 1.5rem;
+		
+		/*
+		&:before {
+			content: ' > ';
+		}
+		*/
+	}
+	&__results {
+		color: $color-dark;
+		text-decoration: none;
+		font-size: 2rem;
+	}
+	
+	.searchform {
+		display: inline-flex;
+		flex-direction: row;
+		flex-wrap: nowrap;
+		justify-content: center;
+		align-items: center;
+		
+		margin-left: auto;
+		
+		&__searchbox {
+			position: relative;
+			-webkit-appearance: none;
+			appearence: none;
+			
+			max-width: 10rem;
+			width: 10rem;
+			height: 1.1em;
+			
+			color: $color-lighter;
+			font-size: 1rem;
+			font-weight: 500;
+			text-align: center;
+			background: transparent;
+			
+			border-color: $color-lighter;
+			border-width: 0 0 2px 0;
+			
+			transition: color 0.1s $curve-cubic-out, border-color 0.1s $curve-cubic-out;
+			
+			&::-webkit-input-placeholder {
+				color: $color-lighter;
+				
+				transition: color 0.1s $curve-cubic-out;
+			}
+			
+			&:focus {
+				color: $color-dark;
+				border-color: $color-dark;
+				
+				outline: 0;
+				
+				&::-webkit-input-placeholder {
+					color: transparent;
+				}
+			}
+		}
+		
+		&__submit {
+			display: inline-block;
+			-webkit-appearance: none;
+			appearance: none;
+			
+			font-size: 0;
+			
+			border: 0;
+			outline: 0;
+			margin: 0;
+			padding: 0;
+			
+			width: 1rem;
+			height: 1rem;
+			
+			opacity: 0.4;
+			//background: url('/assets/images/searchicon.svg') no-repeat center center;
+			background: url('data:image/svg+xml;utf8;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pgo8IS0tIEdlbmVyYXRvcjogQWRvYmUgSWxsdXN0cmF0b3IgMTguMS4xLCBTVkcgRXhwb3J0IFBsdWctSW4gLiBTVkcgVmVyc2lvbjogNi4wMCBCdWlsZCAwKSAgLS0+CjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgdmVyc2lvbj0iMS4xIiBpZD0iQ2FwYV8xIiB4PSIwcHgiIHk9IjBweCIgdmlld0JveD0iMCAwIDU2My42NSA1NjMuNjUiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDU2My42NSA1NjMuNjU7IiB4bWw6c3BhY2U9InByZXNlcnZlIiB3aWR0aD0iNjRweCIgaGVpZ2h0PSI2NHB4Ij4KPGc+Cgk8Zz4KCQk8cGF0aCBkPSJNNDE1LjI0MSwzMjQuOTcxYzEyLjY0Ni0xMi42NDgsMjIuMTM0LTI2LjkzMSwyOC40NTgtNDIuODQzICAgIGM2LjMyMS0xNS45MTIsOS40ODMtMzIuMTMsOS40ODMtNDguNjU0cy0zLjE2MS0zMi44NDQtOS40ODMtNDguOTZjLTYuMzI0LTE2LjExNi0xNS44MTMtMzAuNDk4LTI4LjQ1OC00My4xNDYgICAgYy0xMi42NDgtMTIuNjQ4LTI2LjkzMS0yMi4wMzItNDIuODQtMjguMTUyYy0xNS45MTItNi4xMi0zMi4yMzItOS4xOC00OC45Ni05LjE4Yy0xNi43MjksMC0zMy4wNTEsMy4wNi00OC45Niw5LjE4ICAgIGMtMTUuOTEyLDYuMTItMzAuMTkyLDE1LjUwNC00Mi44NCwyOC4xNTJzLTIyLjEzNCwyNy4wMy0yOC40NTgsNDMuMTQ2cy05LjQ4NiwzMi40MzYtOS40ODYsNDguOTZzMy4xNjIsMzIuNzQyLDkuNDg2LDQ4LjY1NCAgICBjNi4zMjQsMTUuOTEyLDE1LjgxLDMwLjE5MiwyOC40NTgsNDIuODQzYzEyLjY0OCwxMi42NDYsMjYuOTI4LDIyLjEzNCw0Mi44NCwyOC40NThjMTUuOTEyLDYuMzIxLDMyLjIzMiw5LjQ4Myw0OC45Niw5LjQ4MyAgICBzMzMuMDQ4LTMuMTYyLDQ4Ljk2LTkuNDgzQzM4OC4zMTMsMzQ3LjEwNCw0MDIuNTkzLDMzNy42MTgsNDE1LjI0MSwzMjQuOTcxeiBNNDg4LjY4MSw2Ny45MyAgICBjMjIuODUxLDIyLjg0OCwzOS45ODQsNDguNjU0LDUxLjQwOCw3Ny40MThzMTcuMTM2LDU4LjAzOCwxNy4xMzYsODcuODIyYzAsMjkuNzg0LTUuNzEyLDU5LjA1OC0xNy4xMzYsODcuODIyICAgIHMtMjguNTYsNTQuNTctNTEuNDA4LDc3LjQxOGMtMTguMzU3LDE4LjM2LTM4Ljc2LDMzLjA0OC02MS4yLDQ0LjA2NGMtMjIuNDM4LDExLjAxNi00NS42OTMsMTguMzU3LTY5Ljc2OCwyMi4wMjkgICAgYy0yNC4wNzIsMy42NzUtNDguMjQ2LDMuNDcxLTcyLjUyMS0wLjYwOWMtMjQuMjc2LTQuMDgtNDcuNDMzLTExLjgzMi02OS40NjItMjMuMjU2TDExMC40NjUsNTQ1LjkwMiAgICBjLTYuMTIsNi4xMi0xMi44NTIsMTAuNjA1LTIwLjE5NiwxMy40NjRjLTcuMzQ0LDIuODU2LTE0Ljk5NCw0LjI4NC0yMi45NSw0LjI4NHMtMTUuNjA2LTEuNDI4LTIyLjk1LTQuMjg0ICAgIGMtNy4zNDQtMi44NTYtMTQuMDc2LTcuMzQ0LTIwLjE5Ni0xMy40NjRzLTEwLjYwOC0xMi44NTItMTMuNDY0LTIwLjE5NnMtNC4yODQtMTQuOTk0LTQuMjg0LTIyLjk1czEuNDI4LTE1LjYwNCw0LjI4NC0yMi45NDcgICAgYzIuODU2LTcuMzQ3LDcuMzQ0LTE0LjA3NiwxMy40NjQtMjAuMTk2bDEwMS41OTItMTAxLjU5MmMtMTQuMjgtMjIuNDQtMjQuMjc2LTQ2LjUxNS0yOS45ODgtNzIuMjE4ICAgIGMtNS43MTItMjUuNzA1LTcuMjQyLTUxLjQwOS00LjU5LTc3LjExYzIuNjUyLTI1LjcwNCw5LjU4OC01MC42OTQsMjAuODA4LTc0Ljk3czI2LjYyMi00Ni4yMDYsNDYuMjA2LTY1Ljc5ICAgIGMyMi44NDgtMjIuNDQsNDguNjU0LTM5LjM3Miw3Ny40MTgtNTAuNzk2QzI2NC4zODMsNS43MTIsMjkzLjY1NywwLDMyMy40NDIsMGMyOS43ODEsMCw1OS4wNTgsNS43MTIsODcuODE5LDE3LjEzNiAgICBDNDQwLjAyOCwyOC41NTgsNDY1LjgzMyw0NS40OSw0ODguNjgxLDY3LjkzeiIgZmlsbD0iIzAwMDAwMCIvPgoJPC9nPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+CjxnPgo8L2c+Cjwvc3ZnPgo=') no-repeat center center;
+			background-size: contain;
+			
+			transform: none;
+			//transition: background 0.1s cubic-bezier(0.215, 0.610, 0.355, 1.000), transform 0.1s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+			transition: opacity 0.1s $curve-cubic-out, transform 0.1s $curve-cubic-out;
+			
+			&:hover {
+				opacity: 0.8;
+				//background: $color-dark;
+			}
+			&:active {
+				transform: scale(0.95);
+			}
+		}
+	}
+}
+
+// postlist
+.postlist-post {
+	overflow: hidden; /* prevent margin collapsing */
+	padding: vertical-rhythm(1) 0;
+	
+	margin: 0 0 vertical-rhythm(2) 0;
+	
+	/*
+	&:nth-child(even) {
+		background: darken(#252423, 1.5);
+		//background: $global_color-background--bright-minus;
+		
+		//background: #FAFAFA;
+		//color: #080808;
+	}
+	*/
+	
+	/* post title */
+	header {
+		position: relative;
+		margin: 0 0 vertical-rhythm(1) 0;
+		
+		// title
+		h3 {
+			margin: 0 0 vertical-rhythm(0) 0;
+			
+			font-size: 2rem;
+			font-family: $font-sans-serif, sans-serif;
+			font-weight: 700;
+			
+			a, a:link {
+				position: relative;
+				text-decoration: none;
+				color: inherit;
+			}
+			/*
+			a:after {
+				position: absolute;
+				content: '';
+				
+				bottom: 0.1rem;
+				left: 0;
+				width: 100%;
+				height: 0.2rem;
+				border-radius: 0.05rem;
+				
+				background: currentColor;
+				opacity: 0.2;
+			}
+			*/
+		}
+		
+		// publish date
+		time {
+			color: #808080;
+		}
+	}
+	
+	/* more link */
+	&__more {
+		position: absolute;
+		float: right;
+		
+		right: 0;
+		margin-right: 4rem;
+		
+		top: 30%;
+		line-height: 0.5;
+		padding: 0 0.3rem 0.75rem 0.3rem;
+		
+		color: $color-lighter;
+		font-size: 2rem;
+		font-family: $font-serif, serif;
+		text-decoration: none;
+		
+		transition: color 0.1s ease-out, transform 0.1s $curve-cubic-out;
+		
+		&:hover {
+			color: $color-dark;
+		}
+		&:active {
+			transform: scale(0.95);
+		}
+	}
+	
+	/* post excerpt content */
+	&__content {
+		margin: 0 1rem vertical-rhythm(1) 1rem;
+		
+		font-family: $font-serif, serif;
+		
+		p {
+			margin: 0;
+		}
+	}
+}
+
+// paginationtable
+.paginationtable {
+	display: block;
+	
+	height: vertical-rhythm(5);
+	margin-bottom: vertical-rhythm(1);
+	
+	.wrap {
+		display: flex;
+		
+		height: 100%;
+		
+		flex-flow: row nowrap;
+		justify-content: center;
+		align-items: center;
+	}
+	
+	&__nextprev {
+		display: inline-block;
+		
+		margin-bottom: 0.1rem;
+		
+		transform: none;
+		transition: transform 0.1s ease-out, color 0.1s ease-out;
+		
+		color: $color-lighter;
+		text-decoration: none;
+		font-size: 0.9rem;
+		
+		&:not(&--disabled):hover {
+			color: $color-dark;
+		}
+		
+		&--prev {
+			&:hover {
+				transform: translate(-0.1rem, 0);
+			}
+			&:active {
+				transform: translate(-0.3rem, 0);
+			}
+		}
+		&--next {
+			&:hover {
+				transform: translate(0.1rem, 0);
+			}
+			&:active {
+				transform: translate(0.3rem, 0);
+			}
+		}
+		&--disabled {
+			color: transparent;
+			user-select: none;
+			cursor: default;
+		}
+	}
+	
+	ol {
+		display: inline;
+		padding: 0;
+		margin: 0 1rem;
+	}
+	&__bullet {
+		display: inline;
+		
+		margin: 0 0.25rem;
+		font-size: 0;
+		
+		background: $color-lighter;
+		&--current {
+			background: $color-accent;
+		}
+		
+		a {
+			background: inherit;
+			
+			&:before {
+				display: inline-block;
+				content: '';
+				
+				width: 0.8rem;
+				height: 0.8rem;
+				
+				background: inherit;
+				border-radius: 50%;
+			}
+		}
+	}
+}

@@ -1,0 +1,6 @@
+{% case include.day %}
+{% when '1' or '21' or '31' %}{{ include.day }}st
+{% when '2' or '22' %}{{ include.day }}nd
+{% when '3' or '23' %}{{ include.day }}rd
+{% else %}{{ include.day }}th
+{% endcase %}

@@ -3,12 +3,14 @@ title: This isn't stolen...
 tags: [C++, Character, String, Boost]
 ---
 After I decided that it would be useful for me to have an OBJ parser in my pile of code. There is a lot of OBJ content kicking around, for example Morgan McGuire’s excellent data repository.
-<!--more-->
+
 OBJ is a text-based format, which means I’d need to write a parser, and 3D models are big, which means my parser shouldn’t be too slow. This got me thinking about the various options for tokenizing a string in C++, which led me to this StackOverflow thread.
 
-This is __bold__. That is not the only thing that exists, though - _italic_ also looks cool. Links look like [this](https://www.google.com).
+This is __bold__. That is not the only thing that exists, though; _italic_ also looks cool. Links look like [this](https://www.google.com).
+Sometimes it is a good idea to use Oxford dashes -- or properly known as en-dashes -- to give extra information that isn't essential to the sentence.
 
 There are a variety of options mentioned. The objective of this post is to benchmark them. Let’s meet the contenders…
+<!--more-->
 
 ### Option 1: Boost ###
 

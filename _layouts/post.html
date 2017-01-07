@@ -7,12 +7,12 @@
 	<link href="/css/normalize.css" rel="stylesheet">
 	<link href="/css/post.css" rel="stylesheet">
 	
-	<meta name="author" content="{{ page.author }}">
-	<meta name="description" content="{{ page.excerpt | strip_html | strip}}">
-	<meta name="keywords" content="{{ page.tags | join: ', '}}">
+	<meta name="author" content="{{ page.author | smartify }}">
+	<meta name="description" content="{{ page.excerpt | strip_html | strip | smartify }}">
+	<meta name="keywords" content="{{ page.tags | join: ', ' }}">
 	<meta name="date" content="{{ page.date | date_to_xmlschema }}">
 	
-	<!--
+	<!-- OpenGraphs (Twitter Cards) SEO
 	<meta property="og:title" content="{{ page.og-title }}">
 	<meta property="og:image" content="{{ page.og-image }}">
 	<meta property="og:description" content="{{ page.og-description }}">
@@ -20,35 +20,32 @@
 </head>
 
 <body>
-	<nav class="nav">
-		<div class="wrap">
-			<a class="nav__link  nav__link--home" href="/" title="Index"><img src=https://placeholdit.imgix.net/~text?txtsize=8&txt=32%C3%9732&w=32&h=32&fm=png alt="Home"></a>
-			<a class="nav__link" href="/" title="Projects">Projects</a>
-			<a class="nav__link" href="/" title="About">About</a>
-		</div>
-	</nav>
+	<!-- nav -->
+	{% include shared-nav.html %}
 	
+	<!-- post -->
 	<article class="post">
+		<!-- post header -->
 		<header>
 			<div class="wrap">
-				<h1>{{ page.title }}</h1>
-				<h2><time class="post__date">{{ page.date | date: "%a, %b. %d, %y"}}</time> - <a href="/me" class="post__author">{{ page.author }}</a></h2>
+				<h1>{{ page.title | smartify }}</h1>
+				<h2>
+					<a href="/about" class="post-author">{{ page.author }}</a>
+					<!--<time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{% capture ordinalday %}{{ page.date | date: "%-d" }}{% endcapture %}{% include ordinalday.html day = ordinalday %}{{ page.date | date: " %b '%y, %a" }}</time>-->
+					<time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d" | ordinal: "super"}}{{ page.date | date: " %b &lsquo;%y, %a" }}</time>
+				</h2>
 			</div>
 		</header>
 		
+		<!-- post content -->
 		<main>
 			<div class="wrap">
-				{{ content }}
+				{{ content | smartify }}
 			</div>
 		</main>
 	</article>
 	
-	<!-- <aside class="sidenav"></aside> -->
-	
-	<footer class="footer">
-		<div class="wrap">
-			<a class="footer__link" href="About">About</a>
-		</div>
-	</footer>
+	<!-- footer -->
+	{% include shared-footer.html %}
 </body>
 </html>

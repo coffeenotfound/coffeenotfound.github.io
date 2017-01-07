@@ -1,0 +1,4 @@
+# robots.txt for coffeenotfound.github.io
+
+User-agent: *
+Disallow: /.git/
