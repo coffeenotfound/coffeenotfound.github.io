@@ -38,4 +38,5 @@ defaults:
 #sass:
 #  style: compressed
 
+keep_files: [README.md]
 exclude: [.gitignore, Gemfile, Gemfile.lock, README.md, ISSUES.txt, "$build-site.sh", "$publish-site.sh"]
