@@ -25,6 +25,13 @@ body {
   width: 100%;
   background: #FCFCFC; }
 
+.wrap {
+  position: relative;
+  width: 800px;
+  min-width: 800px;
+  margin: 0 auto;
+  overflow: hidden; }
+
 ::selection {
   background: #404040;
   color: #FCFCFC;
@@ -55,12 +62,6 @@ body {
 
 ::-webkit-scrollbar-corner {
   background-color: transparent; }
-
-.wrap {
-  position: relative;
-  width: 800px;
-  min-width: 800px;
-  margin: 0 auto; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: "Open Sans", sans-serif; }

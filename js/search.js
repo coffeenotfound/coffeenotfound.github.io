@@ -10,8 +10,8 @@ var searchIndex = lunr(function () {
 });
 
 $(function() {
-	var $searchbox = $("#search-query");
-	var $searchresults = $("#search-results");
+	var $searchbox = $("#searchbox");
+	var $searchresults = $("#searchresults");
 	
 	// update searchbox to initial query param
 	$searchbox.val(QURL.query('search'));
@@ -52,6 +52,12 @@ $(function() {
 		
 		// do the search
 		doSearch(query);
+		
+		// scroll results into view
+		try {
+			$searchresults[0].scrollIntoView();
+		}
+		catch(e) {}
 	});
 	
 	// realtime search results
