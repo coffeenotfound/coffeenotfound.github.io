@@ -51,22 +51,22 @@
 	
 	<!-- post list -->
 	<section class="postlist">
-		
-		
-		{% for post in paginator.posts %}
-		<article class="postlist-post">
-			<div class="wrap">
-				<header class="postlist-post__title">
-					<h3><a href="{{ post.url }}">{{ post.title | smartify }}</a></h3>
-					<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%a, %b %d, %y"}}</time>
-					<a class="postlist-post__more" title="More" href="{{ post.url }}">{{ "..." | smartify }}</a>
-				</header>
-				<main class="postlist-post__content">
-					{{ post.excerpt | smartify }}
-				</main>
-			</div>
-		</article>
-		{% endfor %}
+		<div class="wrap">
+			<ol id="searchresults">
+				{% for post in paginator.posts %}
+				<article class="postlist-post">
+						<header class="postlist-post__title">
+							<h3><a href="{{ post.url }}">{{ post.title | smartify }}</a></h3>
+							<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%a, %b %d, %y"}}</time>
+							<a class="postlist-post__more" title="More" href="{{ post.url }}">{{ "..." | smartify }}</a>
+						</header>
+						<main class="postlist-post__content">
+							{{ post.excerpt | smartify }}
+						</main>
+				</article>
+				{% endfor %}
+			</ol>
+		</div>
 	</section>
 	
 	<section class="paginationtable">
@@ -83,7 +83,10 @@
 			<ol>
 				{% for bulletpage in (1..paginator.total_pages) %}
 					<li class="paginationtable__bullet  {% if bulletpage == paginator.page %}paginationtable__bullet--current{% endif %}">
-						<a href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', bulletpage | replace: '/1', '/' }}">{{ bulletpage }}</a>
+						<a {% unless bulletpage == paginator.page %}
+								href="{{ site.paginate_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', bulletpage | replace: '/1', '/' }}"
+							{% endunless %}
+							title="Page {{ bulletpage }}">{{ bulletpage }}</a>
 					</li>
 				{% endfor %}
 			</ol>

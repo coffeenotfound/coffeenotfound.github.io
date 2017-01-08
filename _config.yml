@@ -1,7 +1,7 @@
 name: "coffeenotfound.github.io"
 permalink: "/:slug/"
 baseurl: "/"
-url: "http://coffeenotfound.github.io"
+url: "coffeenotfound.github.io"
 encoding: "utf-8"
 
 author: "Jan Katzer"
