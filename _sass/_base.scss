@@ -1,10 +1,18 @@
 
+// default: Lato
+$font-serif: 'Lato';
+$font-serif-italic: 'Merriweather';
 //$font-serif: 'Merriweather';
-$font-serif: 'Open Sans';
+//$font-serif: 'Open Sans';
 //$font-serif: 'Source Sans Pro';
+//$font-serif: 'Source Serif Pro';
 //$font-serif: 'PT Sans';
-//$font-sans-serif: 'Roboto';
-$font-sans-serif: 'Open Sans';
+//$font-serif: 'PT Serif';
+//$font-serif: 'Lora';
+
+// default: Open Sans (now Roboto)
+//$font-sans-serif: 'Open Sans';
+$font-sans-serif: 'Roboto';
 //$font-sans-serif: 'Source Sans Pro';
 
 $color-accent: #e74c3c;
@@ -35,7 +43,8 @@ $IMPORTED_BASE: 0 !default;
 $IMPORTED_BASE: 1;
 
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Serif');
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Serif|Lora:400,400i,700|Merriweather:400,600|Source+Serif+Pro:400|Lato:400');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700|Lato:400,400i,700,900');
 
 // base layout
 html {
