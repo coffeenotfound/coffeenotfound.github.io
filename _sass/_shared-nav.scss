@@ -28,7 +28,9 @@
 		color: inherit;
 		font-weight: 600;
 		text-decoration: none;
-		font-size: 0.8rem;
+		font-size: 0.9rem;
+		
+		z-index: 0;
 		
 		transform-origin: 50% 50%;
 		transform: none;
@@ -52,6 +54,8 @@
 			width: 0;
 			bottom: 0.1rem;
 			transition: left 0.1s $curve-cubic-out, width 0.1s $curve-cubic-out, height 0.1s $curve-cubic-out, opacity 0.1s ease-out;
+			
+			z-index: -1;
 			
 			height: 2px;
 			border-radius: 1px;

@@ -4,6 +4,7 @@ group :jekyll_plugins do
 	# gem 'github-pages'
 	gem 'jekyll-paginate'
 	gem 'octopress-paginate'
+	gem 'jekyll-contentblocks'
 	
 	gem 'jemoji'
 	gem 'jekyll-giphy'

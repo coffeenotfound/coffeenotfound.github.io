@@ -1,9 +1,9 @@
 ---
 ---
 [{% for post in site.posts %}{
-	"title": "{{ post.title | strip_html | strip_newlines | escape }}",
-	"url": "{{ post.url | escape }}",
-	"tags": "{{ post.tags | join: ', ' | strip_newlines | escape }}",
-	"author": "{{ post.author | strip_newlines | escape }}",
-	"content": "{{ post.content | strip_html | strip_newlines | escape }}"
+	"title": "{{ post.title | strip_html | normalize_whitespace | escape }}",
+	"url": "{{ post.url | normalize_whitespace | escape }}",
+	"tags": "{{ post.tags | join: ', ' | normalize_whitespace | escape }}",
+	"author": "{{ post.author | normalize_whitespace | escape }}",
+	"content": "{{ post.content | strip_html | normalize_whitespace | remove: "." | remove: "," | remove: "!" | remove: "?" | remove: "-" | downcase | split: " " | stopwordfilter | uniq | join: " " | escape }}"
 }{% unless forloop.last %},{% endunless %}{% endfor %}]

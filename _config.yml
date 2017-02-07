@@ -39,4 +39,4 @@ defaults:
 #  style: compressed
 
 keep_files: [.git, README.md]
-exclude: [.gitignore, Gemfile, Gemfile.lock, README.md, ISSUES.txt, "$build-site.sh", "$publish-site.sh"]
+exclude: [.git, .gitignore, Gemfile, Gemfile.lock, README.md, ISSUES.txt, "$build-site.sh", "$publish-site.sh"]

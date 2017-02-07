@@ -34,19 +34,14 @@ h1,h2,h3,h4,h5,h6 {
 	overflow: hidden; /* prevent margin collapsing */
 	
 	//height: 720px;
-	height: 35vw;
-	min-height: 500px;
+	//height: 35vw;
+	//min-height: 500px;
 	
 	vertical-align: middle;
 	
-	//background: url('../assets/images/wintertrees.jpg') no-repeat center center;
+	//background: url('../assets/images/led-closeup-green.jpg') no-repeat center center;
 	//background-size: cover;
 	
-	//background: url('../assets/images/imagefilter2.png') repeat center center, url('../assets/images/wintertrees.jpg') no-repeat center center;
-	//background-size: auto, cover;
-	
-	background: url('../assets/images/led-closeup-green.jpg') no-repeat center center;
-	background-size: cover;
 	
 	.wrap {
 		display: relative;
@@ -54,12 +49,23 @@ h1,h2,h3,h4,h5,h6 {
 		text-align: center;
 	}
 	
+	&__image {
+		background: url('../assets/images/imagefilter2.png') repeat center center, url('../assets/images/led-closeup-green.jpg') no-repeat center center;
+		background-size:
+		auto, cover;
+		
+		height: 480px;
+	}
+	
 	h1 {
+		padding: 0 vertical-rhythm(1);
+		font-size: 4rem;
+		
+		/*
 		font-family: 'Consolas';
 		font-size: 5rem;
-		
-		//color: #F72671;
-		color: #FFFFFF;
+		color: #cacaca;
+		*/
 	}
 	span {
 		margin: 0;

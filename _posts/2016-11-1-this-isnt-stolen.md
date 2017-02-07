@@ -4,6 +4,8 @@ tags: [C++, Character, String, Boost]
 ---
 After I decided that it would be useful for me to have an OBJ parser in my pile of code. There is a lot of OBJ content kicking around, for example Morgan McGuire’s excellent data repository.
 
+This post is copied from somewhere, it's not my work and only used for testing. Will be deleted soon.
+
 OBJ is a text-based format, which means I’d need to write a parser, and 3D models are big, which means my parser shouldn’t be too slow. This got me thinking about the various options for tokenizing a string in C++, which led me to this StackOverflow thread.
 
 This is __bold__. That is not the only thing that exists, though; _italic_ also looks cool. Links look like [this](https://www.google.com).
