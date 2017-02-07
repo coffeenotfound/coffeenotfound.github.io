@@ -127,7 +127,7 @@ $scrollbar-padding: 8px;
 	background-clip: padding-box;
 	-webkit-border-radius: 32px;
 	
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.175);
 }
 ::-webkit-scrollbar-thumb {
 	min-height: 16px;
@@ -137,7 +137,7 @@ $scrollbar-padding: 8px;
 	background-clip: padding-box;
 	-webkit-border-radius: 32px;
 	
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.175);
 }
 ::-webkit-scrollbar-button {
 	width: 0;
