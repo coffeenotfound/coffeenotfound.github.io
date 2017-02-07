@@ -88,7 +88,8 @@ img.emoji {
     color: inherit;
     font-weight: 600;
     text-decoration: none;
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    z-index: 0;
     transform-origin: 50% 50%;
     transform: none;
     transition: color 0.1s cubic-bezier(0.215, 0.61, 0.355, 1), transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); }
@@ -102,6 +103,7 @@ img.emoji {
       width: 0;
       bottom: 0.1rem;
       transition: left 0.1s cubic-bezier(0.215, 0.61, 0.355, 1), width 0.1s cubic-bezier(0.215, 0.61, 0.355, 1), height 0.1s cubic-bezier(0.215, 0.61, 0.355, 1), opacity 0.1s ease-out;
+      z-index: -1;
       height: 2px;
       border-radius: 1px;
       opacity: 0;
@@ -184,18 +186,22 @@ h1, h2, h3, h4, h5, h6 {
   position: relative;
   overflow: hidden;
   /* prevent margin collapsing */
-  height: 35vw;
-  min-height: 500px;
-  vertical-align: middle;
-  background: url("../assets/images/led-closeup-green.jpg") no-repeat center center;
-  background-size: cover; }
+  vertical-align: middle; }
   .header .wrap {
     display: relative;
     text-align: center; }
+  .header__image {
+    background: url("../assets/images/imagefilter2.png") repeat center center, url("../assets/images/led-closeup-green.jpg") no-repeat center center;
+    background-size: auto, cover;
+    height: 480px; }
   .header h1 {
+    padding: 0 1.45rem;
+    font-size: 4rem;
+    /*
     font-family: 'Consolas';
     font-size: 5rem;
-    color: #FFFFFF; }
+    color: #cacaca;
+    */ }
   .header span {
     margin: 0; }
   .header p {
