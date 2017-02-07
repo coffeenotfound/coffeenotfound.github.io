@@ -1,31 +1,53 @@
 
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+	@return $number;
+}
+
+// default: Lato
+$font-serif: 'Lato';
+$font-serif-italic: 'Merriweather';
 //$font-serif: 'Merriweather';
-$font-serif: 'Open Sans';
+//$font-serif: 'Open Sans';
 //$font-serif: 'Source Sans Pro';
+//$font-serif: 'Source Serif Pro';
 //$font-serif: 'PT Sans';
-//$font-sans-serif: 'Roboto';
-$font-sans-serif: 'Open Sans';
+//$font-serif: 'PT Serif';
+//$font-serif: 'Lora';
+
+// default: Open Sans (now Roboto)
+//$font-sans-serif: 'Open Sans';
+$font-sans-serif: 'Roboto';
 //$font-sans-serif: 'Source Sans Pro';
 
 $color-accent: #e74c3c;
-$color-dark: #404040;
-//$color-lighter: #bbbec0;
-//$color-lighter: #ababab;
-$color-lighter: #cacaca;
+//$color-dark: #404040;
+$color-dark: #484848;
+//$color-darker: #303030;
+$color-darker: #383838;
+$color-lighter: #c8c8c8;
+//$color-lighter: #cacaca;
 $color-section-lowlight: rgba(0,0,0,0.025);
 
 $curve-cubic-out: cubic-bezier(0.215, 0.610, 0.355, 1.000);
 
 $base-wrap-sidemargin: 32px;
-$base-wrap-width: 800px;
+$base-wrap-width: 760px;
 
 $base-line-height: 1.45;
-$base-font-size: 1.2rem;
+//$base-layout-size: 1.2rem;
+//$base-font-size: 1.2rem;
+$base-layout-size: 1.1875rem; // layout size = 19px
+//$base-font-size: 1.05263rem; // font size = 19.99997px
+$base-font-size: 1.15789rem;
+
 @function vertical-rhythm($_units) {
-	@return ($base-line-height * $_units) + rem
+	@return strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + rem
 }
 @function vertical-rhythm-rel($_units) {
-	@return ($base-line-height * $_units) + em
+	@return strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + em
 }
 
 
@@ -35,7 +57,8 @@ $IMPORTED_BASE: 0 !default;
 $IMPORTED_BASE: 1;
 
 
-@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Serif');
+//@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700|PT+Serif|Lora:400,400i,700|Merriweather:400,600|Source+Serif+Pro:400|Lato:400');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:700|Lato:400,400i,700,900');
 
 // base layout
 html {
@@ -47,7 +70,8 @@ html {
 	min-width: $base-wrap-width + (2 * $base-wrap-sidemargin);
 	width: 100%;
 	
-	font-size: $base-font-size;
+	//font-size: $base-font-size;
+	font-size: $base-layout-size;
 	line-height: $base-line-height;
 	font-family: $font-serif, serif;
 	color: $color-dark;
@@ -71,7 +95,10 @@ body {
 	min-height: 100%;
 	width: 100%;
 	
-	background: #FCFCFC;
+	font-size: $base-font-size;
+	
+	//background: #FCFCFC;
+	background: #FFFFFF;
 }
 .wrap {
 	position: relative;
@@ -84,9 +111,8 @@ body {
 
 // text selection
 ::selection {
-	background: $color-dark;
+	background: $color-darker;
 	color: #FCFCFC;
-	opacity: 1.0;
 }
 
 // scrollbars
@@ -101,7 +127,7 @@ $scrollbar-padding: 8px;
 	background-clip: padding-box;
 	-webkit-border-radius: 32px;
 	
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.175);
 }
 ::-webkit-scrollbar-thumb {
 	min-height: 16px;
@@ -111,7 +137,7 @@ $scrollbar-padding: 8px;
 	background-clip: padding-box;
 	-webkit-border-radius: 32px;
 	
-	background-color: rgba(0, 0, 0, 0.2);
+	background-color: rgba(0, 0, 0, 0.175);
 }
 ::-webkit-scrollbar-button {
 	width: 0;

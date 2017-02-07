@@ -16,19 +16,20 @@
 		align-items: center;
 		
 		height: 100%;
-		padding: 0 1.25rem;
+		padding: 0 1.75rem;
 		
 		box-sizing: border-box;
 	}
 	
 	&__link {
 		position: relative;
-		margin: 0 0.75em;
+		margin-left: 2rem;
 		
 		color: inherit;
 		font-weight: 600;
 		text-decoration: none;
 		font-size: 0.9rem;
+		font-family: $font-sans-serif;
 		
 		z-index: 0;
 		
@@ -79,6 +80,8 @@
 			
 			width: 2rem;
 			height: 2rem;
+			
+			margin: 0 auto 0 0;
 			
 			background: $color-accent;
 			border-radius: 50%;
