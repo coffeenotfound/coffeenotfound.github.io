@@ -8,26 +8,6 @@
 @import '_shared-nav';
 @import '_shared-footer';
 
-html {
-	font-size: $base-font-size;
-	line-height: $base-line-height;
-	
-	font-family: $font-serif, serif;
-	color: #404040;
-	
-	background: #FCFCFC;
-	
-	font-kerning: normal;
-	font-variant-ligatures: common-ligatures contextual;
-	-moz-font-feature-settings: "kern", "liga", "clig", "calt";
-	-ms-font-feature-settings: "kern", "liga", "clig", "alt";
-	-webkit-font-feature-settings: "kern", "liga", "clig", "calt";
-	font-feature-settings: "kern", "liga", "clig", "calt";
-}
-h1,h2,h3,h4,h5,h6 {
-	font-family: $font-sans-serif, sans-serif;
-}
-
 /** ### header ### **/
 .header {
 	position: relative;
@@ -41,7 +21,6 @@ h1,h2,h3,h4,h5,h6 {
 	
 	//background: url('../assets/images/led-closeup-green.jpg') no-repeat center center;
 	//background-size: cover;
-	
 	
 	.wrap {
 		display: relative;
