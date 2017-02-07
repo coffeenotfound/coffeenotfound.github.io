@@ -1,4 +1,11 @@
 
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+	@return $number;
+}
+
 // default: Lato
 $font-serif: 'Lato';
 $font-serif-italic: 'Merriweather';
@@ -28,12 +35,17 @@ $base-wrap-sidemargin: 32px;
 $base-wrap-width: 800px;
 
 $base-line-height: 1.45;
-$base-font-size: 1.2rem;
+//$base-layout-size: 1.2rem;
+//$base-font-size: 1.2rem;
+$base-layout-size: 1.1875rem; // layout size = 19px
+//$base-font-size: 1.05263rem; // font size = 19.99997px
+$base-font-size: 1.15789rem;
+
 @function vertical-rhythm($_units) {
-	@return ($base-line-height * $_units) + rem
+	@return strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + rem
 }
 @function vertical-rhythm-rel($_units) {
-	@return ($base-line-height * $_units) + em
+	@return strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + em
 }
 
 
@@ -56,7 +68,8 @@ html {
 	min-width: $base-wrap-width + (2 * $base-wrap-sidemargin);
 	width: 100%;
 	
-	font-size: $base-font-size;
+	//font-size: $base-font-size;
+	font-size: $base-layout-size;
 	line-height: $base-line-height;
 	font-family: $font-serif, serif;
 	color: $color-dark;
@@ -80,6 +93,7 @@ body {
 	min-height: 100%;
 	width: 100%;
 	
+	font-size: $base-font-size;
 	background: #FCFCFC;
 }
 .wrap {
