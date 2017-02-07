@@ -20,21 +20,22 @@
 		
 		text-align: center;
 		
-		background: $color-section-lowlight;
+		//background: $color-section-lowlight;
 		
 		h1 {
 			margin: 0;
 			
-			//color: #303030;
+			//color: $color-darker;
 			font-family: $font-sans-serif, sans-serif;
 			font-size: 3.25rem;
 			font-weight: 700;
+			line-height: 1.25;
 		}
 		h2 {
 			margin: 0;
 			
 			color: $color-lighter;
-			font-family: $font-serif, serif;
+			//font-family: $font-serif, serif;
 			font-size: 1rem;
 			font-weight: 400;
 			
@@ -71,11 +72,13 @@
 	overflow-x: hidden;
 	overflow-y: visible;
 	
-	color: #404040;
+	//color: #404040;
 	
 	main {
 		p {
-			margin: vertical-rhythm(1.0) vertical-rhythm(1.0);
+			//margin: vertical-rhythm(1.0) vertical-rhythm(1.0);
+			margin: 0;
+			margin-bottom: vertical-rhythm(1.0);
 			
 			/** drop caps */
 			&:first-child:first-letter {
@@ -85,17 +88,23 @@
 				//margin: 0.2rem 0.2rem 0 0;
 				margin: 0 0.2rem 0 0.1rem;
 				
+				font-weight: bold;
+				//color: $color-darker;
 				//color: $color-accent;
+				//font-family: "Merriweather"
 			}
 		}
 		
 		b, strong {
-			color: $color-accent;
+			//color: $color-darker;
+			//color: $color-accent;
 			font-style: normal;
-			font-weight: 600;
+			font-weight: 700;
 		}
 		i, em {
 			font-style: italic;
+			//font-family: $font-serif-italic;
+			
 		}
 		a {
 			position: relative;
@@ -117,7 +126,8 @@
 				width: 100%;
 				height: 2px;
 				
-				background: $color-accent;
+				//background: $color-accent;
+				background: $color-dark;
 			}
 		}
 		
@@ -125,12 +135,14 @@
 			position: relative;
 			//margin: 4rem 0 1.75rem 0;
 			
-			margin: vertical-rhythm(2) 0 vertical-rhythm(1) 0;
+			margin: vertical-rhythm(2) 0 vertical-rhythm(0.5) 0;
 			//text-align: center;
 			
-			color: #303030;
-			font-size: 2.2rem;
+			color: $color-darker;
 			font-weight: 700;
+			
+			font-size: 2rem;
+			line-height: 1.25;
 			
 			/** permalink anchor */
 			&:before {
