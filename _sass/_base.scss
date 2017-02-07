@@ -111,9 +111,8 @@ body {
 
 // text selection
 ::selection {
-	background: $color-dark;
+	background: $color-darker;
 	color: #FCFCFC;
-	opacity: 1.0;
 }
 
 // scrollbars
