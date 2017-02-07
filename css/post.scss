@@ -16,7 +16,6 @@
 	
 	header {
 		padding: vertical-rhythm(5) 0;
-		//margin: 0 0 vertical-rhythm(2) 0;
 		overflow: hidden;
 		
 		text-align: center;
@@ -33,7 +32,6 @@
 		}
 		h2 {
 			margin: 0;
-			//margin: 0 0 0.25rem 0;
 			
 			color: $color-lighter;
 			font-family: $font-serif, serif;
@@ -88,11 +86,6 @@
 				margin: 0 0.2rem 0 0.1rem;
 				
 				//color: $color-accent;
-				/*
-				font-size: 400%;
-				margin-left: -0.5rem;
-				margin-top: -1rem;
-				*/
 			}
 		}
 		

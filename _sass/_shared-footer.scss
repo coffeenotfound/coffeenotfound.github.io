@@ -1,7 +1,6 @@
 @import '_base';
 
 $footer-height: 3rem;
-//$footer-height: vertical-rhythm(3);
 
 body {
 	padding-bottom: $footer-height;
@@ -33,7 +32,6 @@ body {
 		position: relative;
 		
 		color: $color-lighter;
-		//color: #e3e4e5;
 		text-decoration: none;
 		font-weight: 600;
 		
