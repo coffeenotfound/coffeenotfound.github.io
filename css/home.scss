@@ -55,6 +55,71 @@
 	}
 }
 
+.latest-posts {
+	
+	&__header {
+		
+	}
+	
+	&__more-posts {
+		text-align: right;
+		
+		overflow: visible;
+		
+		a {
+			display: inline-block;
+			
+			text-decoration: none;
+			color: $color-lighter;
+			
+			transform: translate(-0.3rem, 0);
+			transition: transform 0.1s ease-out, color 0.1s $curve-cubic-out;
+			
+			&:hover {
+				color: $color-lighter-hover;
+				transform: translate(-0.2rem, 0);
+			}
+			&:active {
+				color: $color-dark;
+				transform: translate(0.0rem, 0);
+			}
+		}
+	}
+	
+	// post entry
+	&__post {
+		margin: 0;
+		margin-bottom: vertical-rhythm(3);
+		
+		header {
+			margin: 0;
+			margin-bottom: vertical-rhythm(0.5);
+			
+			h3 {
+				margin: 0;
+				
+				line-height: 0.9;
+			}
+			a {
+				text-decoration: none;
+				color: inherit;
+				
+				font-size: font-rems(1.75);
+			}
+		}
+		main {
+			a {
+				text-decoration: none;
+				color: inherit;
+			}
+			
+			p {
+				margin: 0;
+			}
+		}
+	}
+}
+
 .separator {
 	position: absolute;
 	width: 1px;
