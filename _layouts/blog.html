@@ -55,14 +55,14 @@
 			<ol id="searchresults">
 				{% for post in paginator.posts %}
 				<article class="postlist-post">
-						<header class="postlist-post__title">
-							<h3><a href="{{ post.url }}">{{ post.title | smartify }}</a></h3>
-							<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%a, %b %d, %y"}}</time>
-							<a class="postlist-post__more" title="More" href="{{ post.url }}">{{ "..." | smartify }}</a>
-						</header>
-						<main class="postlist-post__content">
-							{{ post.excerpt | smartify }}
-						</main>
+					<header class="postlist-post__title">
+						<h3><a href="{{ post.url }}">{{ post.title | smartify }}</a></h3>
+						<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%a, %b %d, %y"}}</time>
+						<a class="postlist-post__more" title="More" href="{{ post.url }}">{{ "..." | smartify }}</a>
+					</header>
+					<main class="postlist-post__content">
+						{{ post.excerpt | smartify }}
+					</main>
 				</article>
 				{% endfor %}
 			</ol>
