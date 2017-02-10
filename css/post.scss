@@ -80,6 +80,8 @@
 			margin: 0;
 			margin-bottom: vertical-rhythm(1.0);
 			
+			@include hyphenation();
+			
 			/** drop caps */
 			&:first-child:first-letter {
 				font-size: 310%;

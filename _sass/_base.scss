@@ -56,6 +56,13 @@ $base-font-size: 1.15789rem;
 	@return ($base-font-size * strip-unit($_units))
 }
 
+// hypenation
+@mixin hyphenation() {
+	-webkit-hyphens: auto;
+	-moz-hyphens: auto;
+	-ms-hyphens: auto;
+	hyphens: auto;
+}
 
 // IMPORT ONCE
 $IMPORTED_BASE: 0 !default;
