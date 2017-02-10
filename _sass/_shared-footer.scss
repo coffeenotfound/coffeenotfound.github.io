@@ -41,10 +41,10 @@ body {
 		transition: color 0.1s ease-out, transform 0.1s $curve-cubic-out;
 		
 		&:hover {
-			color: $color-dark;
-			//color: $color-accent;
+			color: $color-lighter-hover;
 		}
 		&:active {
+			color: $color-dark;
 			transform: scale(0.98);
 		}
 		
