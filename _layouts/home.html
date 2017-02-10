@@ -29,11 +29,30 @@
 	</header>
 	
 	<!-- blog page link -->
-	<section>
+	<section id="latest-posts" class="latest-posts">
 		<div class="wrap">
-			<header>
-				<h2>Blog</h2>
+			<header class="latest-posts__header">
+				<h2><a href="/blog">Latest Posts</a></h2>
 			</header>
+			
+			<!-- post teasers -->
+			{% for post in site.posts limit:4 %}
+			<article class="latest-posts__post">
+				<header>
+					<h3><a href="{{ post.url }}">{{ post.title | smartify }}</a></h3>
+				</header>
+				<main>
+					<a href="{{ post.url }}">
+						<p>{{ post.excerpt | remove:'<p>' | remove:'</p>' | lstrip | rstrip | smartify }}</p>
+					</a>
+				</main>
+			</article>
+			{% endfor %}
+			
+			<!-- more posts -->
+			<div class="latest-posts__more-posts">
+				<a href="/blog">More Posts</a>
+			</div>
 		</div>
 	</section>
 	
