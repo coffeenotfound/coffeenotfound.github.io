@@ -29,7 +29,9 @@ $color-dark: #484848;
 $color-darker: #383838;
 $color-lighter: #c8c8c8;
 //$color-lighter: #cacaca;
-$color-section-lowlight: rgba(0,0,0,0.025);
+$color-lighter-hover: darken($color-lighter, 15%);
+//$color-section-lowlight: rgba(0,0,0,0.025);
+$color-section-lowlight: transparent;
 
 $curve-cubic-out: cubic-bezier(0.215, 0.610, 0.355, 1.000);
 
