@@ -46,10 +46,10 @@ $base-layout-size: 1.1875rem; // layout size = 19px
 $base-font-size: 1.15789rem;
 
 @function vertical-rhythm($_units) {
-	@return strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + rem
+	@return (strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + rem)
 }
 @function vertical-rhythm-rel($_units) {
-	@return strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + em
+	@return (strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + em)
 }
 
 
