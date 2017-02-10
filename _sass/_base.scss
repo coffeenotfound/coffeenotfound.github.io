@@ -52,6 +52,10 @@ $base-font-size: 1.15789rem;
 	@return (strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + em)
 }
 
+@function font-rems($_units) {
+	@return ($base-font-size * strip-unit($_units))
+}
+
 
 // IMPORT ONCE
 $IMPORTED_BASE: 0 !default;
