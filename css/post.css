@@ -157,8 +157,9 @@ body {
     transform: none;
     transition: color 0.1s ease-out, transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); }
     .footer__link:hover {
-      color: #484848; }
+      color: #a2a2a2; }
     .footer__link:active {
+      color: #484848;
       transform: scale(0.98); }
     .footer__link--ornament {
       display: inline-block;
@@ -204,6 +205,10 @@ body {
   .post main p {
     margin: 0;
     margin-bottom: 1.67894rem;
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    hyphens: auto;
     /** drop caps */ }
     .post main p:first-child:first-letter {
       font-size: 310%;

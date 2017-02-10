@@ -156,8 +156,9 @@ body {
     transform: none;
     transition: color 0.1s ease-out, transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); }
     .footer__link:hover {
-      color: #484848; }
+      color: #a2a2a2; }
     .footer__link:active {
+      color: #484848;
       transform: scale(0.98); }
     .footer__link--ornament {
       display: inline-block;
@@ -193,6 +194,40 @@ body {
   .header p {
     margin: 0 auto;
     width: 50%; }
+
+.latest-posts__more-posts {
+  text-align: right;
+  overflow: visible; }
+  .latest-posts__more-posts a {
+    display: inline-block;
+    text-decoration: none;
+    color: #c8c8c8;
+    transform: translate(-0.3rem, 0);
+    transition: transform 0.1s ease-out, color 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); }
+    .latest-posts__more-posts a:hover {
+      color: #a2a2a2;
+      transform: translate(-0.2rem, 0); }
+    .latest-posts__more-posts a:active {
+      color: #484848;
+      transform: translate(0rem, 0); }
+.latest-posts__post {
+  margin: 0;
+  margin-bottom: 5.03682rem; }
+  .latest-posts__post header {
+    margin: 0;
+    margin-bottom: 0.83947rem; }
+    .latest-posts__post header h3 {
+      margin: 0;
+      line-height: 0.9; }
+    .latest-posts__post header a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 2.02631rem; }
+  .latest-posts__post main a {
+    text-decoration: none;
+    color: inherit; }
+  .latest-posts__post main p {
+    margin: 0; }
 
 .separator {
   position: absolute;

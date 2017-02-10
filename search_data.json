@@ -1,15 +1,9 @@
 [{
-	"title": "Hey there!",
-	"url": "/blog/hey-there/",
+	"title": "This is a Placeholder",
+	"url": "/blog/placeholder/",
 	"tags": "",
 	"author": "Jan Katzer",
-	"content": "yeah hey welcome blog happy new year officially post i’ve written am kind stoked website made did webdesign past learn html css actually created full assuming read completed (ot atleast “workinprogress’ed” lol) published see bit unnerving completely honest interesting got grasp idea people interested say regard thing like shouting void bucket list that’s good obviously – getting used blogging writing proper posts hope you’ll find useful funny exactly publish set stone probably lately codingwise informational stuff likely won’t write neverending projects way long scope stopped madman queued imaginary content production pipeline squishy meatball head jekyll works git repository locally expect soonish anyways blog; don’t let waffling distract :fire:"
-},{
-	"title": "Merry Christmas!",
-	"url": "/blog/merry-christmas/",
-	"tags": "",
-	"author": "Jan Katzer",
-	"content": "systemoutprintln(&quot;merry christmas everbody&quot;);"
+	"content": "morning gregor samsa woke troubled dreams found transformed bed horrible vermin lay armourlike back lifted head little see brown belly slightly domed divided arches stiff sections bedding hardly able cover ready slide moment legs pitifully thin compared size rest waved helplessly looked “what’s happened me” thought wasn’t dream room proper human small peacefully four familiar walls collection textile samples spread table travelling salesman hung picture recently cut illustrated magazine housed nice gilded frame showed lady fitted fur hat boa sat upright raising heavy muff covered lower arm viewer turned look window dull weather"
 },{
 	"title": "Kafka",
 	"url": "/blog/kafka/",
@@ -22,10 +16,4 @@
 	"tags": "",
 	"author": "Jan Katzer",
 	"content": "lorem ipsum dolor sit amet consetetur sadipscing elitr sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat voluptua vero eos accusam justo duo dolores ea rebum stet clita kasd gubergren sea takimata sanctus est duis autem vel eum iriure hendrerit vulputate velit esse molestie consequat illum eu feugiat nulla facilisis eros accumsan iusto odio dignissim qui blandit praesent luptatum zzril delenit augue te feugait facilisi consectetuer adipiscing elit nonummy nibh euismod tincidunt laoreet aliquam volutpat wisi enim ad minim veniam quis nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip ex commodo nam liber cum soluta nobis eleifend option congue nihil imperdiet doming id quod mazim placerat facer possim assum"
-},{
-	"title": "This isn&#39;t stolen...",
-	"url": "/blog/this-isnt-stolen/",
-	"tags": "C++, Character, String, Boost",
-	"author": "Jan Katzer",
-	"content": "decided useful obj parser pile code lot content kicking example morgan mcguire’s excellent data repository post copied it’s work used testing deleted soon textbased format means i’d need write 3d models big shouldn’t slow got thinking various options tokenizing string c++ led stackoverflow thread bold thing exists though; italic looks cool links look like good idea use oxford dashes – properly known endashes give extra information isn’t essential sentence variety mentioned objective benchmark let’s meet contenders… option 1: boost lots people nice easy tokenizer (along gobs things) accepted answer article popular commenters went far declare unreasonable assume benchmark: void doboost( std::ofstream&amp;amp; cout std::string&amp;amp; text ) { boost::char_separator&amp;lt;char&amp;gt; sep(&quot; \n\t\r\f&quot;); boost::tokenizer&amp;lt;boost::char_separator&amp;lt;char&amp;gt;&amp;gt; tokens(text sep); (const auto&amp;amp; t : tokens) &amp;lt;&amp;lt; ; } 1590 built boost’s instructions 2: stream iterators somebody suggested using didn’t know lets build nonboost standard library here’s original post: doiterator(std::ofstream&amp;amp; str // construct std::stringstream strstr(str); copy vector whitespace separated strings std::istream_iterator&amp;lt;std::string&amp;gt; it(strstr); end; std::vector&amp;lt;std::string&amp;gt; results(it end); send stdout std::ostream_iterator&amp;lt;std::string&amp;gt; oit(cout); std::copy(resultsbegin() resultsend() oit); offense wrote we’ll see sucking entire token set std::vector std::strings wrong 🙂 fair comparison modified thusly: doiteratorcorrectly(std::ofstream&amp;amp; read individual std::for_each( end [&amp;amp;cout]( const str; ); 3: strtok grizzled veteran predictably chided suggesting nonthreadsafe clike solution pointed needs nonconst pointer nullterminated find lying i’m fan whirl order make nondestructive take hit create mutable input dostrtok(std::ofstream&amp;amp; str) char* pmutablestring = (char*) malloc( strsize()+1 strcpy( strc_str() char *p strtok(pmutablestring &quot; (p) p; p strtok(null free(pmutablestring); couldn’t just streaming tokens large ondisk file address little wrapping buffers 4: doing everybody says roll interesting library’s going faster safer ignore home brew disadvantages doesn’t handle utf8 locales niceties adequate targeting parsing pure ascii files containing that… really encoded place static bool isdelim( tst delims \n\t\r\f&quot;; do delimiter empty don&#39;t check real assert if( == *delims return true; ++delims; while( false; dojoshsway( pmutablestring; skip leading delimiters &amp;amp;&amp;amp; isdelim(*p) ++p; note start ptok do// nondelimiters clobber trailing null 0; ptok; subsequent parameters contest shall tokenize 20mb ‘crytek_sponza’ found loading memory ahead time writing resulting back disk run multiple test cases having worry caching skewing results i/o course process reads stuff interfere noise evenly distributed presented averages five consecutive runs measured timer cpu core i34010u compiled x86 msvc 2013 express edition command line used:"
 }]

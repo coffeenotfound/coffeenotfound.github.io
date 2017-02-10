@@ -156,8 +156,9 @@ body {
     transform: none;
     transition: color 0.1s ease-out, transform 0.1s cubic-bezier(0.215, 0.61, 0.355, 1); }
     .footer__link:hover {
-      color: #484848; }
+      color: #a2a2a2; }
     .footer__link:active {
+      color: #484848;
       transform: scale(0.98); }
     .footer__link--ornament {
       display: inline-block;
@@ -169,7 +170,7 @@ body {
 
 .postlistheader {
   height: 8.3947rem;
-  background: rgba(0, 0, 0, 0.025); }
+  background: transparent; }
   .postlistheader .wrap {
     display: flex;
     flex-direction: row;
