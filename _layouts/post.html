@@ -6,6 +6,7 @@
 	
 	<link href="/css/normalize.css" rel="stylesheet">
 	<link href="/css/post.css" rel="stylesheet">
+	{% include default-font-imports.html %}
 	
 	<meta name="author" content="{{ page.author | smartify }}">
 	<meta name="description" content="{{ page.excerpt | strip_html | strip | smartify }}">
