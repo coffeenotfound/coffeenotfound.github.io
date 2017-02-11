@@ -1,5 +1,4 @@
 @charset "UTF-8";
-@import url("https://fonts.googleapis.com/css?family=Open+Sans:700|Lato:400,400i,700,900");
 html {
   position: relative;
   overflow: auto;
@@ -183,7 +182,7 @@ body {
       margin: 0;
       font-family: "Roboto", sans-serif;
       font-size: 3.25rem;
-      font-weight: 700;
+      font-weight: 600;
       line-height: 1.25; }
     .post header h2 {
       margin: 0;
