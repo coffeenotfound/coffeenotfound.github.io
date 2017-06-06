@@ -1,0 +1,68 @@
+---
+---
+
+@import '_common';
+
+nav {
+	color: $color-font-darker;
+	
+	.nav__item {
+		color: inherit;
+		//color: rgba(255,255,255,0.9);
+		transition: color 0.1s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
+		
+		&:hover {
+			color: lighten($color-font-darker, 16.0);
+			//color: rgba(255,255,255,1.0);
+		}
+		&:active {
+			//color: rgba(255,255,255,0.85)
+		}
+	}
+}
+
+div.messagecontainer {
+	display: flex;
+	position: absolute;
+	
+	flex-flow: column nowrap;
+	align-items: center;
+	justify-content: center;
+	
+	left: 50%;
+	top: 45%;
+	transform: translate(-50%,-50%);
+	
+	.message {
+		display: inline-flex;
+		flex-flow: column nowrap;
+		
+		font-size: font-rems(1.5);
+		line-height: 1.0;
+		
+		.message__primaryrow {
+			align-self: stretch;
+			
+			margin: 0.5rem 0;
+			
+			font-size: font-rems(4);
+			font-family: 'Pacifico', fantasy;
+			letter-spacing: 0;
+		}
+		.message__secondaryrow {
+			align-self: flex-start;
+			
+			color: $color-font-lighter;
+			letter-spacing: -0.035em;
+		}
+		a.message__backlink {
+			align-self: flex-end;
+			
+			color: $color-font-lighter;
+			letter-spacing: -0.035em;
+			
+			text-decoration: underline;
+			text-decoration-color: lighten($color-font-lighter, 20);
+		}
+	}
+}

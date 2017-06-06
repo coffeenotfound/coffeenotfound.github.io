@@ -1,1 +1,0 @@
-add edit time plugin (so it says when the post was published and last edited)

@@ -1,42 +1,29 @@
-name: "coffeenotfound.github.io"
-permalink: "/:slug/"
-baseurl: "/"
-url: "coffeenotfound.github.io"
-encoding: "utf-8"
+title: "My Awesome Blog"
 
-author: "Jan Katzer"
-sitedescription: "[ no description here... ]"
-sitetags: ["Jekyll", "HTML", "CSS", "Java", "JavaScript", "JS", "coding", "programming", "coffeenotfound"]
+description: >
+  Write an awesome description for your new site here. You can edit this
+  line in _config.yml. It will appear in your document head meta (for
+  Google search results) and in your feed.xml site description.
+baseurl: ""
 
-#twitter:
-#  username: twitterhandle
-
-#facebook:
-#  app_id: 1234
-#  publisher: 1234
-#  admins: 1234
-
-#gems: ["jekyll-paginate", "jemoji", "jekyll-compass", "jekyll-lunr-js-search"]
-
-paginate: 5
-paginate_path: "blog/:num"
-
+permalink: '/:slug/'
 defaults:
   -
     scope:
       path: ""
       type: "posts"
     values:
-      permalink: "/blog/:slug/"
       layout: "post"
-      author: "Jan Katzer"
-      excerpt_separator: "<!--more-->"
-      #og-title: "{{ page.title }}"
-      #og-image: "favicon.ico"
-      #og-description: "{{ page.excerpt }}"
+      permalink: "/blog/:slug/"
 
-#sass:
-#  style: compressed
+markdown: kramdown
+highlighter: rouge
+
+excerpt_separator: "<!-- endexcerpt -->"
+
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - README.md
 
 keep_files: [.git, README.md]
-exclude: [.git, .gitignore, Gemfile, Gemfile.lock, README.md, ISSUES.txt, "$build-site.sh", "$publish-site.sh"]

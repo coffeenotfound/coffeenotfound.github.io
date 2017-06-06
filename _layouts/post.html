@@ -2,51 +2,51 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Blog » {{ page.title }} :: coffeenotfound.github.io</title>
 	
+	<title>{{ page.title | smartify }}</title>
+	
+	{% include _common-font-includes.html %}
 	<link href="/css/normalize.css" rel="stylesheet">
+	<!--<link href="/css/rouge-stylesheets/zenburn.css" rel="stylesheet">-->
+	<link href="/css/rouge-stylesheets/syntax.css" rel="stylesheet">
 	<link href="/css/post.css" rel="stylesheet">
-	{% include default-font-imports.html %}
+	<!--<link href="/css/post-mobile.css" media="all and (max-device-width: 480px)" rel="stylesheet">-->
 	
-	<meta name="author" content="{{ page.author | smartify }}">
-	<meta name="description" content="{{ page.excerpt | strip_html | strip | smartify }}">
-	<meta name="keywords" content="{{ page.tags | join: ', ' }}">
-	<meta name="date" content="{{ page.date | date_to_xmlschema }}">
-	
-	<!-- OpenGraphs (Twitter Cards) SEO
-	<meta property="og:title" content="{{ page.og-title }}">
-	<meta property="og:image" content="{{ page.og-image }}">
-	<meta property="og:description" content="{{ page.og-description }}">
-	-->
+	<!-- per post accent color -->
+	<style>
+		@viewport {
+			user-zoom: 0;
+		}
+		
+		.postheader {
+			background: {% if page.theme_postaccentcolor_primary %}{{ page.theme_postaccentcolor_primary }}{% else %}#5277b7{% endif %};
+		}
+		.nav {
+			background: {% if page.theme_postaccentcolor_secondary %}{{ page.theme_postaccentcolor_secondary }}{% else %}#4568a6{% endif %};
+		}
+	</style>
 </head>
 
 <body>
-	<!-- nav -->
-	{% include shared-nav.html %}
+	{% include _common-nav.html %}
 	
-	<!-- post -->
-	<article class="post">
-		<!-- post header -->
-		<header>
-			<div class="wrap">
-				<h1>{{ page.title | smartify }}</h1>
-				<h2>
-					<a href="/about" class="post-author">{{ page.author }}</a>
-					<!--<time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{% capture ordinalday %}{{ page.date | date: "%-d" }}{% endcapture %}{% include ordinalday.html day = ordinalday %}{{ page.date | date: " %b '%y, %a" }}</time>-->
-					<time class="post-date" datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d" | ordinal: "super"}}{{ page.date | date: " %b &lsquo;%y, %a" }}</time>
-				</h2>
-			</div>
-		</header>
+	<header class="postheader">
+		<div class="wrap">
+			<h1 class="postheader__title">{{ page.title | smartify }}</h1>
+			<span class="postheader__details">
+				<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%A, %e. %B %Y" }}</time><span>·</span><a href="/about/">Jan Katzer</a>
+			</span>
+		</div>
+	</header>
+	
+	<main class="postcontent"">
+		<div class="wrap">
+			{{ content | smartify }}
+		</div>
 		
-		<!-- post content -->
-		<main>
-			<div class="wrap">
-				{{ content | smartify }}
-			</div>
-		</main>
-	</article>
+		<div class="footer-pusher"></div>
+	</main>
 	
-	<!-- footer -->
-	{% include shared-footer.html %}
+	{% include _common-footer.html %}
 </body>
 </html>

@@ -1,0 +1,212 @@
+
+@function strip-unit($number) {
+	@if type-of($number) == 'number' and not unitless($number) {
+		@return $number / ($number * 0 + 1);
+	}
+	@return $number;
+}
+
+$base-line-height: 1.5;
+$base-layout-size: 1rem;
+$base-font-size: 1.05rem;
+
+@function vertical-rhythm($_units) {
+	@return (strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + rem)
+}
+@function font-rems($_units) {
+	@return ((strip-unit($base-font-size / $base-layout-size) * strip-unit($_units)) + rem)
+}
+
+$color-background-default: #fefefe;
+$color-font-default: #656d77;
+$color-font-darker: #515a61;
+$color-font-lighter: #adb2b8;
+
+html {
+	margin: 0;
+	width: 100%;
+	height: 100%;
+	min-height: 720px;
+	
+	line-height: $base-line-height;
+	font-size: $base-layout-size;
+}
+
+body {
+	position: relative; /* needed for height 100% to work properly */
+	margin: 0;
+	width: 100%;
+	min-height: 100%;
+	
+	font-size: font-rems(1rem);
+	font-family: 'Work Sans', sans-serif;
+	letter-spacing: -0.024em;
+	
+	color: $color-font-default;
+	background: $color-background-default;
+}
+
+main {
+	overflow: auto; /* collapsing margin fix */
+}
+
+$wrap-width: 720px;
+.wrap {
+	width: $wrap-width;
+	height: 100%;
+	margin: 0 auto;
+}
+
+/** --- default element styles --- */
+h1, h2, h3, h4, h5, h6 {
+	margin-top: 2.5rem;
+	margin-bottom: 1rem;
+	
+	font-family: 'Work Sans', sans-serif;
+	letter-spacing: -0.4px;
+	color: $color-font-darker;
+}
+
+p, figure {
+	margin: 1rem 0;
+}
+
+$color-font-link-default: #5499f1;
+$color-font-link-hover: #84baff;
+a {
+	text-decoration-skip: ink;
+	
+	&:link {
+		color: $color-font-link-default;
+		text-decoration: none;
+	}
+	&:visited {
+		color: $color-font-link-default;
+	}
+	&:hover {
+		color: $color-font-link-hover;
+		//text-decoration: underline;
+	}
+	&:active {
+		
+	}
+}
+
+li::marker { /* still unsupported everywhere :( */
+	color: $color-font-lighter;
+}
+
+/*
+table {
+	background: #f2f2f3;
+	border: 1px solid #d9e2e8;
+	border-radius: 2px;
+}
+*/
+
+::selection {
+	background: #f2f2f3;
+}
+
+/** --- end default element styles --- */
+
+/** common navbar */
+.nav {
+	height: 3.5rem;
+	
+	font-family: 'Roboto', sans-serif;
+	letter-spacing: 0;
+	
+	.wrap {
+		display: flex;
+		
+		flex-flow: row nowrap;
+		align-items: center;
+		
+		padding: 0 1rem;
+		box-sizing: border-box;
+	}
+	
+	.nav__item {
+		margin: 0 0.1rem;
+		padding: 0.3rem 0.5rem;
+		
+		font-size: font-rems(1.0);
+		font-weight: 500;
+		text-decoration: none;
+	}
+	.nav__item--home {
+		margin: 0 0.6rem;
+		padding: 0;
+		
+		display: inline-block;
+		position: relative;
+		content: "";
+		
+		margin-right: auto;
+		width: 2rem;
+		height: 2rem;
+		
+		font-size: 0;
+		
+		background: currentColor;
+		border-radius: 50%;
+	}
+}
+
+/** common footer */
+.footer, .footer-pusher {
+	height: 4rem;
+}
+.footer {
+	position: absolute;
+	
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	
+	.wrap {
+		display: flex;
+		
+		flex-flow: row nowrap;
+		align-items: center;
+		justify-items: center;
+	}
+	
+	.footer__item {
+		margin: auto;
+	}
+}
+
+/** Inline code highlighter */
+code.highlighter-rouge {
+	padding: 0 0.3em;
+	
+	font-family: 'Inconsolata', monospace;
+	font-size: font-rems(0.95);
+	
+	background: #f4f4f5;
+	border: 1px solid #d9e2e8;
+	border-radius: 2px;
+}
+
+/** Block code highlighter */
+figure.highlight, div.highlighter-rouge {
+	position: relative;
+	margin: 1rem 0;
+	
+	font-size: font-rems(0.95);
+	line-height: 1.15rem;
+	
+	background: #f4f4f5;
+	border: 1px solid #d9e2e8;
+	border-radius: 2px;
+	
+	pre {
+		margin: 0;
+		padding: 1rem;
+		
+		font-family: 'Inconsolata', monospace;
+	}
+}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>{{ page.title | smartify }}</title>
+	
+	{% include _common-font-includes.html %}
+	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
+	
+	<link href="/css/normalize.css" rel="stylesheet">
+	<link href="/css/underconstruction.css" rel="stylesheet">
+</head>
+
+<body>
+	{% include _common-nav.html %}
+	
+	<main>
+		<div class="messagecontainer">
+			<div class="message">
+				<span class="message__secondaryrow">Sorry, this page is</span>
+				<span class="message__primaryrow">Under Construction</span>
+				<a class="message__backlink" href="javascript:history.back();">Take me Back, please!</a>
+			</div>
+		</div>
+		
+		<div class="footer-pusher"></div>
+	</main>
+	
+	{% include _common-footer.html %}
+</body>
+</html>
