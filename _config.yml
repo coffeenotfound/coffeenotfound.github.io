@@ -26,4 +26,4 @@ exclude:
   - Gemfile.lock
   - README.md
 
-keep_files: [.git, README.md]
+keep_files: [.git, README.md, CNAME]
