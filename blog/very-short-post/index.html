@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Very Short Post</title>
+	
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600|Roboto:400,500|Source+Code+Pro" rel="stylesheet">
+<!--<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700|Work+Sans:400,500,600,700|Roboto:500,700|Rubik:400,700|Open+Sans" rel="stylesheet">-->
+	<link href="/css/normalize.css" rel="stylesheet">
+	<!--<link href="/css/rouge-stylesheets/zenburn.css" rel="stylesheet">-->
+	<link href="/css/rouge-stylesheets/syntax.css" rel="stylesheet">
+	<link href="/css/post.css" rel="stylesheet">
+	<!--<link href="/css/post-mobile.css" media="all and (max-device-width: 480px)" rel="stylesheet">-->
+	
+	<!-- per post accent color -->
+	<style>
+		@viewport {
+			user-zoom: 0;
+		}
+		
+		.postheader {
+			background: #5277b7;
+		}
+		.nav {
+			background: #4568a6;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="nav">
+	<div class="wrap">
+		<a class="nav__item  nav__item--home" href="/blog/">Home</a>
+		<a class="nav__item" href="/blog/">Blog</a>
+		<a class="nav__item" href="/projects/">Projects</a>
+		<a class="nav__item" href="/about/">About</a>
+	</div>
+</nav>
+
+	
+	<header class="postheader">
+		<div class="wrap">
+			<h1 class="postheader__title">Very Short Post</h1>
+			<span class="postheader__details">
+				<time datetime="2017-05-26T00:00:00+02:00">Friday, 26. May 2017</time><span>·</span><a href="/about/">Jan Katzer</a>
+			</span>
+		</div>
+	</header>
+	
+	<main class="postcontent"">
+		<div class="wrap">
+			<p>This is a very short post to test the sticky footer.
+(Dear God, please just make it work)</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="cm">/**
+ * Does a thing
+ */</span>
+<span class="kd">function</span> <span class="nx">helloWorld</span><span class="p">(</span><span class="nx">param1</span><span class="p">,</span> <span class="nx">param2</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">var</span> <span class="nx">something</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
+
+  <span class="c1">// Do something</span>
+  <span class="k">if</span> <span class="p">(</span><span class="mf">2.0</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="nx">something</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">'Hello, world!'</span><span class="p">);</span>
+  <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">null</span><span class="p">;</span>
+  <span class="p">}</span>
+
+  <span class="c1">// @TODO comment</span>
+<span class="p">}</span></code></pre></figure>
+
+		</div>
+		
+		<div class="footer-pusher"></div>
+	</main>
+	
+	<footer class="footer">
+	<div class="wrap">
+		<a class="footer__item" href="https://github.com/coffeenotfound">GitHub</a>
+	</div>
+</footer>
+</body>
+</html>

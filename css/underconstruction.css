@@ -134,53 +134,42 @@ figure.highlight, div.highlighter-rouge {
     padding: 1rem;
     font-family: 'Inconsolata', monospace; }
 
-.nav {
+nav {
   color: #515a61; }
-  .nav .nav__item {
+  nav .nav__item {
     color: inherit;
     transition: color 0.1s cubic-bezier(0.19, 1, 0.22, 1);
     /* easeOutExpo */ }
-    .nav .nav__item:hover {
+    nav .nav__item:hover {
       color: #77838d; }
 
-.welcometext {
-  margin: 0;
-  margin-top: 4rem;
-  overflow: auto; }
-  .welcometext h2 {
-    margin-top: 0; }
-
-hr {
-  margin: 2rem;
-  margin-top: 2rem;
-  margin-bottom: 2.5rem;
-  border: 0;
-  border-top: 1px solid #adb2b8; }
-
-.postlist {
-  margin-top: 4rem;
-  margin-bottom: 3rem; }
-
-article.postlistentry {
-  margin-bottom: 2rem; }
-  article.postlistentry header {
-    position: relative;
-    margin-bottom: 0.75rem; }
-    article.postlistentry header a.postlistentry__title h2 {
-      margin: 0;
-      line-height: 1.2; }
-    article.postlistentry header time {
-      color: #adb2b8; }
-    article.postlistentry header div.postlistentry__colorswatch {
-      position: absolute;
-      width: 0.625rem;
-      height: 0.625rem;
-      top: 0.9em;
-      left: -0.8rem;
-      transform: translate(-50%, -50%);
-      background: #5277b7;
-      border-radius: 50%; }
-  article.postlistentry main :first-child {
-    margin-top: 0; }
-  article.postlistentry main h1, article.postlistentry main h2, article.postlistentry main h3, article.postlistentry main h4, article.postlistentry main h5, article.postlistentry main h6 {
-    font-size: 1.26rem; }
+div.messagecontainer {
+  display: flex;
+  position: absolute;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%); }
+  div.messagecontainer .message {
+    display: inline-flex;
+    flex-flow: column nowrap;
+    font-size: 1.575rem;
+    line-height: 1.0; }
+    div.messagecontainer .message .message__primaryrow {
+      align-self: stretch;
+      margin: 0.5rem 0;
+      font-size: 4.2rem;
+      font-family: 'Pacifico', fantasy;
+      letter-spacing: 0; }
+    div.messagecontainer .message .message__secondaryrow {
+      align-self: flex-start;
+      color: #adb2b8;
+      letter-spacing: -0.035em; }
+    div.messagecontainer .message a.message__backlink {
+      align-self: flex-end;
+      color: #adb2b8;
+      letter-spacing: -0.035em;
+      text-decoration: underline;
+      text-decoration-color: #e4e5e7; }

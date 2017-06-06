@@ -3,14 +3,29 @@
 <head>
 	<meta charset="UTF-8">
 	
-	<title>Projects</title>
+	<title>Empty Post</title>
 	
 	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600|Roboto:400,500|Source+Code+Pro" rel="stylesheet">
 <!--<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700|Work+Sans:400,500,600,700|Roboto:500,700|Rubik:400,700|Open+Sans" rel="stylesheet">-->
-	<link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
-	
 	<link href="/css/normalize.css" rel="stylesheet">
-	<link href="/css/underconstruction.css" rel="stylesheet">
+	<!--<link href="/css/rouge-stylesheets/zenburn.css" rel="stylesheet">-->
+	<link href="/css/rouge-stylesheets/syntax.css" rel="stylesheet">
+	<link href="/css/post.css" rel="stylesheet">
+	<!--<link href="/css/post-mobile.css" media="all and (max-device-width: 480px)" rel="stylesheet">-->
+	
+	<!-- per post accent color -->
+	<style>
+		@viewport {
+			user-zoom: 0;
+		}
+		
+		.postheader {
+			background: #5277b7;
+		}
+		.nav {
+			background: #4568a6;
+		}
+	</style>
 </head>
 
 <body>
@@ -24,13 +39,18 @@
 </nav>
 
 	
-	<main>
-		<div class="messagecontainer">
-			<div class="message">
-				<span class="message__secondaryrow">Sorry, this page is</span>
-				<span class="message__primaryrow">Under Construction</span>
-				<a class="message__backlink" href="javascript:history.back();">Take me Back, please!</a>
-			</div>
+	<header class="postheader">
+		<div class="wrap">
+			<h1 class="postheader__title">Empty Post</h1>
+			<span class="postheader__details">
+				<time datetime="2017-05-26T00:00:00+02:00">Friday, 26. May 2017</time><span>·</span><a href="/about/">Jan Katzer</a>
+			</span>
+		</div>
+	</header>
+	
+	<main class="postcontent"">
+		<div class="wrap">
+			
 		</div>
 		
 		<div class="footer-pusher"></div>

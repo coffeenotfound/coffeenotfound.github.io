@@ -1,136 +1,149 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>Blog - Page 1 :: coffeenotfound.github.io</title>
 	
+	<title>Welcome!</title>
+	
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600|Roboto:400,500|Source+Code+Pro" rel="stylesheet">
+<!--<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700|Work+Sans:400,500,600,700|Roboto:500,700|Rubik:400,700|Open+Sans" rel="stylesheet">-->
 	<link href="/css/normalize.css" rel="stylesheet">
-	<link href="/css/blog.css" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Lato:400,400i|Roboto:600" rel="stylesheet">
-	
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script src="/js/qurl.js"></script>
-	<script src="/js/lunr.min.js"></script>
-	<script src="/js/search.js"></script>
-	
-	<meta name="author" content="">
-	<meta name="description" content="">
-	<meta name="keywords" content="">
-	<meta name="date" content="2017-02-11T20:13:29+01:00">
+	<link href="/css/home.css" rel="stylesheet">
 </head>
 
 <body>
 	<nav class="nav">
 	<div class="wrap">
-		<a class="nav__link  nav__link--home" href="/" title="Index"><img src="/favicon.ico" alt="Home"></a>
-		<a class="nav__link" href="/blog" title="Blog">Blog</a>
-		<a class="nav__link" href="/projects" title="Projects">Projects</a>
-		<a class="nav__link" href="https://github.com/coffeenotfound" title="GitHub">GitHub</a>
-		<a class="nav__link" href="/about" title="About" rel="author">About</a>
+		<a class="nav__item  nav__item--home" href="/blog/">Home</a>
+		<a class="nav__item" href="/blog/">Blog</a>
+		<a class="nav__item" href="/projects/">Projects</a>
+		<a class="nav__item" href="/about/">About</a>
 	</div>
 </nav>
-	
-	<header>
-		<div class="wrap">
-			<h2>Here be header!</h2>
-			
-			<h3>(Random cat gif)</h3>
-			<img src="http://media0.giphy.com/media/hxwcaEH6NoFoY/giphy.gif" height="194" width="230" alt="cat ">
-			
-			
-			
-			
-			<h2>Page 1 of 1 (Posts 1 thru 3)</h2>
-		</div>
-	</header>
-	
-	<!-- postlist header tabs and search bar -->
-	<section class="postlistheader">
-		<div class="wrap">
-			<h2>
-				<a class="postlistheader__results" href="javascript:alert('lol')">Search Results</a>
-				<a class="postlistheader__latest" href="javascript:alert('lol')">Latest Posts</a>
-			</h2>
-			<form class="searchform" action="/blog/" method="get">
-				<input class="searchform__searchbox" id="searchbox" type="search" name="search" autocomplete="off" placeholder="Search">
-				<input class="searchform__submit" type="submit" value="Search">
-			</form>
-		</div>
-	</section>
-	
-	<!-- post list -->
-	<section class="postlist">
-		<div class="wrap">
-			<ol id="searchresults">
-				
-				<article class="postlist-post">
-					<header class="postlist-post__title">
-						<h3><a href="/blog/placeholder/">This is a Placeholder</a></h3>
-						<time datetime="2017-02-10T00:00:00+01:00">Fri, Feb 10, 17</time>
-						<a class="postlist-post__more" title="More" href="/blog/placeholder/">…</a>
-					</header>
-					<main class="postlist-post__content">
-						<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. “What’s happened to me?” he thought. It wasn’t a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather.</p>
-					</main>
-				</article>
-				
-				<article class="postlist-post">
-					<header class="postlist-post__title">
-						<h3><a href="/blog/kafka/">Kafka</a></h3>
-						<time datetime="2016-11-14T00:00:00+01:00">Mon, Nov 14, 16</time>
-						<a class="postlist-post__more" title="More" href="/blog/kafka/">…</a>
-					</header>
-					<main class="postlist-post__content">
-						<p>One morning, when Gregor Samsa woke from troubled dreams, he found himself transformed in his bed into a horrible vermin. He lay on his armour-like back, and if he lifted his head a little he could see his brown belly, slightly domed and divided by arches into stiff sections. The bedding was hardly able to cover it and seemed ready to slide off any moment. His many legs, pitifully thin compared with the size of the rest of him, waved about helplessly as he looked. “What’s happened to me?” he thought. It wasn’t a dream. His room, a proper human room although a little too small, lay peacefully between its four familiar walls. A collection of textile samples lay spread out on the table - Samsa was a travelling salesman - and above it there hung a picture that he had recently cut out of an illustrated magazine and housed in a nice, gilded frame. It showed a lady fitted out with a fur hat and fur boa who sat upright, raising a heavy fur muff that covered the whole of her lower arm towards the viewer. Gregor then turned to look out the window at the dull weather.</p>
-					</main>
-				</article>
-				
-				<article class="postlist-post">
-					<header class="postlist-post__title">
-						<h3><a href="/blog/lorem-ipsum/">Lorem Ipsum</a></h3>
-						<time datetime="2016-11-13T00:00:00+01:00">Sun, Nov 13, 16</time>
-						<a class="postlist-post__more" title="More" href="/blog/lorem-ipsum/">…</a>
-					</header>
-					<main class="postlist-post__content">
-						<p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
 
+	
+	<main>
+		<div class="wrap">
+			<!--
+			<section class="welcometext">
+				<h2 id="hello-there">Hello, there!</h2>
+
+<p>This is my site. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
+tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
+justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
+sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
+invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>
+			</section>
+			
+			<hr>
+			-->
+			<section class="postlist">
+				
+				<article class="postlistentry">
+					<header>
+						<a class="postlistentry__title" href="/blog/setting-up-jekyll/"><h2>Setting-up Jekyll</h2></a>
+						<time datetime="2017-05-27T00:00:00+02:00">Saturday, 27. May 2017</time>
+						<!--<div class="postlistentry__colorswatch"></div>-->
+					</header>
+					
+					<main>
+						
+							<p>Jekyll, the amazing <a href="https://jekyllrb.com/">static website generator</a>, can be a bit confusing to set-up and get running.
+First impressions can deceive though, because it’s actually quite easy!</p>
+
+						
 					</main>
 				</article>
 				
-			</ol>
-		</div>
-	</section>
-	
-	<section class="paginationtable">
-		<div class="wrap">
-			<!-- prev link -->
-			<a 
-					class="paginationtable__nextprev  paginationtable__nextprev--prev  paginationtable__nextprev--disabled"
-				>« Newer Posts</a>
-			
-			<!-- bullet list -->
-			<ol>
+				<article class="postlistentry">
+					<header>
+						<a class="postlistentry__title" href="/blog/jekyll-tip-1-pretty-urls/"><h2>Jekyll Tip #1: Pretty URLs</h2></a>
+						<time datetime="2017-05-27T00:00:00+02:00">Saturday, 27. May 2017</time>
+						<!--<div class="postlistentry__colorswatch"></div>-->
+					</header>
+					
+					<main>
+						
+							
+							</p>
+						
+					</main>
+				</article>
 				
-					<li class="paginationtable__bullet  paginationtable__bullet--current">
-						<a 
-							title="Page 1">1</a>
-					</li>
+				<article class="postlistentry">
+					<header>
+						<a class="postlistentry__title" href="/blog/very-short-post/"><h2>Very Short Post</h2></a>
+						<time datetime="2017-05-26T00:00:00+02:00">Friday, 26. May 2017</time>
+						<!--<div class="postlistentry__colorswatch"></div>-->
+					</header>
+					
+					<main>
+						
+							
+							<p>This is a very short post to test the sticky footer.
+(Dear God, please just make it work)
+</p></p>
+						
+					</main>
+				</article>
 				
-			</ol>
+				<article class="postlistentry">
+					<header>
+						<a class="postlistentry__title" href="/blog/markdown-sample/"><h2>Markdown Sample</h2></a>
+						<time datetime="2017-05-26T00:00:00+02:00">Friday, 26. May 2017</time>
+						<!--<div class="postlistentry__colorswatch"></div>-->
+					</header>
+					
+					<main>
+						
+							
+							<h1 id="an-h1-header">An h1 header</h1>
+
+<p>Paragraphs are separated by a blank line.
+</p></p>
+						
+					</main>
+				</article>
+				
+				<article class="postlistentry">
+					<header>
+						<a class="postlistentry__title" href="/blog/empty-post/"><h2>Empty Post</h2></a>
+						<time datetime="2017-05-26T00:00:00+02:00">Friday, 26. May 2017</time>
+						<!--<div class="postlistentry__colorswatch"></div>-->
+					</header>
+					
+					<main>
+						
+							
+							</p>
+						
+					</main>
+				</article>
+				
+				<article class="postlistentry">
+					<header>
+						<a class="postlistentry__title" href="/blog/welcome-to-jekyll/"><h2>Welcome to Jekyll!</h2></a>
+						<time datetime="2017-05-25T20:30:14+02:00">Thursday, 25. May 2017</time>
+						<!--<div class="postlistentry__colorswatch"></div>-->
+					</header>
+					
+					<main>
+						
+							<p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
+
+						
+					</main>
+				</article>
+				
+			</section>
 			
-			<!-- next link -->
-			<a 
-					class="paginationtable__nextprev  paginationtable__nextprev--next  paginationtable__nextprev--disabled"
-				>Older Posts »</a>
+			<div class="footer-pusher"></div>
 		</div>
-	</section>
+	</main>
 	
-	<!-- footer -->
 	<footer class="footer">
 	<div class="wrap">
-		<a class="footer__link" href="https://github.com/">Powered by GitHub Pages</a>
-		<a class="footer__link  footer__link--ornament" href="/"><!-- This isn't semantic, but I cannot be bothered using selectors and pseudo elements - at this point just make it into a link--></a>
-		<a class="footer__link" href="/about" rel="author">Designed by Jan Katzer</a>
+		<a class="footer__item" href="https://github.com/coffeenotfound">GitHub</a>
 	</div>
 </footer>
 </body>
