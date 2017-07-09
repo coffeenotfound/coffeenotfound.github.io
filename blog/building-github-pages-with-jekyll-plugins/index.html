@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Building GitHub Pages with Jekyll Plugins</title>
+	
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600|Roboto:400,500|Source+Code+Pro|Bitter:400,400i" rel="stylesheet">
+<!--<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700|Work+Sans:400,500,600,700|Roboto:500,700|Rubik:400,700|Open+Sans" rel="stylesheet">-->
+	<link href="/css/normalize.css" rel="stylesheet">
+	<!--<link href="/css/rouge-stylesheets/zenburn.css" rel="stylesheet">-->
+	<link href="/css/rouge-stylesheets/syntax.css" rel="stylesheet">
+	<link href="/css/post.css" rel="stylesheet">
+	<!--<link href="/css/post-mobile.css" media="all and (max-device-width: 480px)" rel="stylesheet">-->
+	
+	<!-- per post accent color -->
+	<style>
+		@viewport {
+			user-zoom: 0;
+		}
+		
+		.postheader {
+			background: #5277b7;
+		}
+		.nav {
+			background: #4568a6;
+		}
+	</style>
+</head>
+
+<body>
+	<nav class="nav">
+	<div class="wrap">
+		<a class="nav__item  nav__item--home" href="/blog/">Home</a>
+		<a class="nav__item" href="/blog/">Blog</a>
+		<a class="nav__item" href="/projects/">Projects</a>
+		<a class="nav__item" href="/about/">About</a>
+	</div>
+</nav>
+
+	
+	<header class="postheader">
+		<div class="wrap">
+			<h1 class="postheader__title">Building GitHub Pages with Jekyll Plugins</h1>
+			<span class="postheader__details">
+				<time datetime="2017-07-09T00:00:00+02:00">Sunday,  9. July 2017</time><span>·</span><a href="/about/">Jan Katzer</a>
+			</span>
+		</div>
+	</header>
+	
+	<main class="postcontent">
+		<div class="wrap">
+			<p>As <a href="https://pages.github.com/">GitHub Pages</a> does not allow custom Jekyll
+plugins for extending your website, how can you bypass this restriction?
+The answer is rather simple: Building it yourself!</p>
+
+<h2 id="repository-structure">Repository Structure</h2>
+<p>Normally GitHub Pages does the website building for us, allowing us to
+upload the site source straight into the repository. What we are
+going to do is building the website ourself locally via the command line and
+pushing the built website onto the <code class="highlighter-rouge">master</code> branch manually.</p>
+
+<figure id="figure-repo-structure">
+	<img src="/assets/github-pages-repo-structure.png" alt="Repository Structure" />
+	<figcaption>Figure 1: The basic repository folder layout.</figcaption>
+</figure>
+
+<p>In the above <a href="#figure-repo-structure">figure</a> you can see the basic layout.
+The idea is that we have two branches: A <code class="highlighter-rouge">source</code> branch, containing all of the
+source code, and a <code class="highlighter-rouge">master</code> branch, containing the final files of the built website.
+<em>It is important that you create an empty <code class="highlighter-rouge">.nojekyll</code> file</em> in the master branch (make sure to
+add it to the <code class="highlighter-rouge">keep_files</code> list in the <code class="highlighter-rouge">_config.yml</code> or else it will disappear on the next site
+build) to tell GitHub it shouldn’t automatically build your site.</p>
+
+<h2 id="creating-the-branches">Creating the Branches</h2>
+<p>I am going to assume you already have a <code class="highlighter-rouge">master</code> branch in your site’s repo. Instead
+of housing the source (as it probably does currently) it will become the build branch.</p>
+
+<p>First create a new branch called <code class="highlighter-rouge">source</code> (or something similar) and copy the old source
+over from the <code class="highlighter-rouge">master</code> branch (or create a new blog with <code class="highlighter-rouge">bundle exec jekyll new .</code>). Make sure the
+<code class="highlighter-rouge">.gitignore</code> includes the <code class="highlighter-rouge">_site</code> folder.</p>
+
+<p>Now go into the <code class="highlighter-rouge">_post folder</code> (create it or call <code class="highlighter-rouge">jekyll build</code> if you don’t have one)
+and clone the <code class="highlighter-rouge">master</code> branch into this folder (<code class="highlighter-rouge">git clone -b master https://github.com/&lt;username&gt;/&lt;pages_repo&gt;.git .</code>).
+<em>It is important</em> that you include <code class="highlighter-rouge">.git</code> in the <code class="highlighter-rouge">_config.yml</code>’s <code class="highlighter-rouge">keep_files</code> list!</p>
+
+<h2 id="building-the-site">Building the Site</h2>
+<p>Now that everything is set up we can build the site.
+This is easily done by calling <code class="highlighter-rouge">bundle exec jekyll build</code> (or <code class="highlighter-rouge">bundle exec jekyll serve</code> for
+interactive building). Your site’s source can now be uploaded by pushing the source branch to
+upstream and the built site by <code class="highlighter-rouge">cd</code>-ing into the <code class="highlighter-rouge">_site</code> folder and doing a <code class="highlighter-rouge">git add .</code> before
+pushing.</p>
+
+<h2 id="advantages">Advantages</h2>
+<p>Using the method described above allows you to use <em>any</em> Jekyll plugin and basically do
+pretty much <em>anything</em> you like when building the site. In my opinion it is probably even
+necessary for any site more complex than the most basic blog. Not everything is cakes
+and rainbows, though.</p>
+
+<h2 id="disadvantages">Disadvantages</h2>
+<p>It won’t be possible anymore to just upload a blog post and have GitHub do everything
+for you. Not only each architectural or design update of your blog or website but also every
+new blog post will require you to rebuild the site locally and push all newly generated files upstream to GitHub.
+While this is not a major hassle it is no doubt less elegant than the virgin GitHub Pages experience.</p>
+		</div>
+		
+		<div class="footer-pusher"></div>
+	</main>
+	
+	<footer class="footer">
+	<div class="wrap">
+		<span class="footer__item">Built by <a href="/about/">Jan Katzer</a></span>
+		<span class="footer__item  footer__item--divider"></span>
+		<a class="footer__item" href="https://github.com/coffeenotfound">GitHub</a>
+	</div>
+</footer>
+</body>
+</html>
