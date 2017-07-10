@@ -3,23 +3,7 @@
 
 @import '_common';
 
-.nav {
-	color: $color-font-darker;
-	
-	.nav__item {
-		color: inherit;
-		//color: rgba(255,255,255,0.9);
-		transition: color 0.1s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
-		
-		&:hover {
-			color: lighten($color-font-darker, 16.0);
-			//color: rgba(255,255,255,1.0);
-		}
-		&:active {
-			//color: rgba(255,255,255,0.85)
-		}
-	}
-}
+@import '_common-nav-dark';
 
 .welcometext {
 	margin: 0;

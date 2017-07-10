@@ -1,0 +1,61 @@
+---
+---
+
+@import '_common';
+
+@import '_common-nav-dark';
+
+section.headersection {
+	//height: 30rem;
+	height: 2rem;
+}
+
+section.projectlistsection {
+	margin: 2rem 0;
+}
+
+article.projectlistentry {
+	margin: 0;
+	margin-bottom: 3rem;
+	
+	&:last-child {
+		margin-bottom: 0;
+	}
+	
+	> a {
+		display: table;
+		
+		color: inherit;
+	}
+	
+	img {
+		display: table-cell;
+		
+		height: 100%;
+		width: auto;
+		
+		vertical-align: top;
+		
+		border-radius: 1px;
+	}
+	div {
+		display: table-cell;
+		
+		height: 100%;
+		width: auto;
+		
+		padding-left: 1.1rem;
+		vertical-align: top;
+		
+		h1 {
+			margin: 0;
+			margin-bottom: 1rem;
+			
+			font-size: font-rems(1.5rem);
+			line-height: 1.0;
+		}
+		p {
+			margin: 0;
+		}
+	}
+}

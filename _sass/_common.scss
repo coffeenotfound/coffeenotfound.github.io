@@ -10,6 +10,9 @@ $base-line-height: 1.5;
 $base-layout-size: 1rem;
 $base-font-size: 1.05rem;
 
+$wrap-width-default: 720px;
+$wrap-sidemargin-default: 22px;
+
 @function vertical-rhythm($_units) {
 	@return (strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + rem)
 }
@@ -30,13 +33,22 @@ html {
 	
 	line-height: $base-line-height;
 	font-size: $base-layout-size;
+	
+	/*
+	// anti scrollbar layout nudge trick (https://aykevl.nl/2014/09/fix-jumping-scrollbar)
+	@media screen and (min-width: $wrap-width-default + (2 * $wrap-sidemargin-default)) {
+		min-width: 100vw;
+		//overflow-x: hidden;
+	}
+	*/
 }
 
 body {
 	position: relative; /* needed for height 100% to work properly */
-	margin: 0;
 	width: 100%;
 	min-height: 100%;
+	
+	margin: 0;
 	
 	font-size: font-rems(1rem);
 	font-family: 'Work Sans', sans-serif;
@@ -50,12 +62,49 @@ main {
 	overflow: auto; /* collapsing margin fix */
 }
 
-$wrap-width: 720px;
 .wrap {
-	width: $wrap-width;
+	//width: $wrap-width-default + (2 * $wrap-sidemargin-default);
+	width: $wrap-width-default;
 	height: 100%;
 	margin: 0 auto;
+	padding: 0;
+	//padding: 0 $wrap-sidemargin-default;
 }
+
+/** --- custom scrollbar --- */
+/*
+$scrollbar-width: 6px;
+$scrollbar-padding: 8px;
+::-webkit-scrollbar {
+	width: $scrollbar-width + ($scrollbar-padding * 2);
+	height: $scrollbar-width + ($scrollbar-padding * 2);
+}
+::-webkit-scrollbar-track {
+	border: $scrollbar-padding solid transparent; // padding
+	background-clip: padding-box;
+	-webkit-border-radius: 32px;
+	
+	background-color: rgba(0, 0, 0, 0.175);
+}
+::-webkit-scrollbar-thumb {
+	min-height: 16px;
+	min-width: 16px;
+	
+	border: $scrollbar-padding solid transparent; // padding
+	background-clip: padding-box;
+	-webkit-border-radius: 32px;
+	
+	background-color: rgba(0, 0, 0, 0.175);
+}
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	display: none;
+}
+::-webkit-scrollbar-corner {
+	background-color: transparent;
+}
+*/
 
 /** --- default element styles --- */
 h1, h2, h3, h4, h5, h6 {
@@ -112,7 +161,7 @@ table {
 
 /** common navbar */
 .nav {
-	height: 3.5rem;
+	height: 4rem;
 	
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: 0;
