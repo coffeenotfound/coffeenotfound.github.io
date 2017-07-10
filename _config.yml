@@ -1,12 +1,14 @@
 title: "My Awesome Blog"
 
 description: >
-  Write an awesome description for your new site here. You can edit this
-  line in _config.yml. It will appear in your document head meta (for
-  Google search results) and in your feed.xml site description.
+  My personal blog/random stuff website. Blog posts optional.
 baseurl: ""
-
 permalink: '/:slug/'
+
+collections:
+  projectpages:
+    output: true
+
 defaults:
   -
     scope:
@@ -15,15 +17,17 @@ defaults:
     values:
       layout: "post"
       permalink: "/blog/:slug/"
+  -
+    scope:
+      path: ""
+      type: "projectpages"
+    values:
+      permalink: "/projects/:slug/"
 
 markdown: kramdown
 highlighter: rouge
 
 excerpt_separator: "<!-- endexcerpt -->"
 
-exclude:
-  - Gemfile
-  - Gemfile.lock
-  - README.md
-
-keep_files: [.git, README.md, CNAME]
+exclude: [Gemfile, Gemfile.lock, README.md]
+keep_files: [.git, .nojekyll, README.md, CNAME]
