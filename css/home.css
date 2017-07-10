@@ -4,14 +4,21 @@ html {
   height: 100%;
   min-height: 720px;
   line-height: 1.5;
-  font-size: 1rem; }
+  font-size: 1rem;
+  /*
+  // anti scrollbar layout nudge trick (https://aykevl.nl/2014/09/fix-jumping-scrollbar)
+  @media screen and (min-width: $wrap-width-default + (2 * $wrap-sidemargin-default)) {
+  	min-width: 100vw;
+  	//overflow-x: hidden;
+  }
+  */ }
 
 body {
   position: relative;
   /* needed for height 100% to work properly */
-  margin: 0;
   width: 100%;
   min-height: 100%;
+  margin: 0;
   font-size: 1.05rem;
   font-family: 'Work Sans', sans-serif;
   letter-spacing: -0.024em;
@@ -25,8 +32,43 @@ main {
 .wrap {
   width: 720px;
   height: 100%;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 0; }
 
+/** --- custom scrollbar --- */
+/*
+$scrollbar-width: 6px;
+$scrollbar-padding: 8px;
+::-webkit-scrollbar {
+	width: $scrollbar-width + ($scrollbar-padding * 2);
+	height: $scrollbar-width + ($scrollbar-padding * 2);
+}
+::-webkit-scrollbar-track {
+	border: $scrollbar-padding solid transparent; // padding
+	background-clip: padding-box;
+	-webkit-border-radius: 32px;
+	
+	background-color: rgba(0, 0, 0, 0.175);
+}
+::-webkit-scrollbar-thumb {
+	min-height: 16px;
+	min-width: 16px;
+	
+	border: $scrollbar-padding solid transparent; // padding
+	background-clip: padding-box;
+	-webkit-border-radius: 32px;
+	
+	background-color: rgba(0, 0, 0, 0.175);
+}
+::-webkit-scrollbar-button {
+	width: 0;
+	height: 0;
+	display: none;
+}
+::-webkit-scrollbar-corner {
+	background-color: transparent;
+}
+*/
 /** --- default element styles --- */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
@@ -65,7 +107,7 @@ table {
 /** --- end default element styles --- */
 /** common navbar */
 .nav {
-  height: 3.5rem;
+  height: 4rem;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0; }
   .nav .wrap {

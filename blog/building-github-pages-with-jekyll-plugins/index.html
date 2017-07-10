@@ -88,8 +88,13 @@ and clone the <code class="highlighter-rouge">master</code> branch into this fol
 <p>Now that everything is set up we can build the site.
 This is easily done by calling <code class="highlighter-rouge">bundle exec jekyll build</code> (or <code class="highlighter-rouge">bundle exec jekyll serve</code> for
 interactive building). Your site’s source can now be uploaded by pushing the source branch to
-upstream and the built site by <code class="highlighter-rouge">cd</code>-ing into the <code class="highlighter-rouge">_site</code> folder and doing a <code class="highlighter-rouge">git add .</code> before
+upstream and the built site by <code class="highlighter-rouge">cd</code>‘ing into the <code class="highlighter-rouge">_site</code> folder and doing a <code class="highlighter-rouge">git add .</code> before
 pushing.</p>
+
+<p>Because the <code class="highlighter-rouge">_site</code> folder (where the <code class="highlighter-rouge">master</code> branch lives) is ignored by the <code class="highlighter-rouge">source</code> branch
+you can now traverse between them by simply <code class="highlighter-rouge">cd</code>‘ing in and out of the <code class="highlighter-rouge">_site</code> folder. Please
+keep in mind that you shouldn’t <code class="highlighter-rouge">git checkout</code> other branches, though, as that might screw
+something up.</p>
 
 <h2 id="advantages">Advantages</h2>
 <p>Using the method described above allows you to use <em>any</em> Jekyll plugin and basically do

@@ -176,42 +176,45 @@ figure.highlight, div.highlighter-rouge {
     padding: 1rem;
     font-family: 'Inconsolata', monospace; }
 
-nav {
+.nav {
   color: #515a61; }
-  nav .nav__item {
+  .nav .nav__item {
     color: inherit;
     transition: color 0.1s cubic-bezier(0.19, 1, 0.22, 1);
     /* easeOutExpo */ }
-    nav .nav__item:hover {
+    .nav .nav__item:hover {
       color: #77838d; }
 
-div.messagecontainer {
-  display: flex;
-  position: absolute;
-  flex-flow: column nowrap;
-  align-items: center;
-  justify-content: center;
-  left: 50%;
-  top: 45%;
-  transform: translate(-50%, -50%); }
-  div.messagecontainer .message {
-    display: inline-flex;
-    flex-flow: column nowrap;
-    font-size: 1.575rem;
-    line-height: 1.0; }
-    div.messagecontainer .message .message__primaryrow {
-      align-self: stretch;
-      margin: 0.5rem 0;
-      font-size: 4.2rem;
-      font-family: 'Pacifico', fantasy;
-      letter-spacing: 0; }
-    div.messagecontainer .message .message__secondaryrow {
-      align-self: flex-start;
-      color: #adb2b8;
-      letter-spacing: -0.035em; }
-    div.messagecontainer .message a.message__backlink {
-      align-self: flex-end;
-      color: #adb2b8;
-      letter-spacing: -0.035em;
-      text-decoration: underline;
-      text-decoration-color: #e4e5e7; }
+section.headersection {
+  height: 2rem; }
+
+section.projectlistsection {
+  margin: 2rem 0; }
+
+article.projectlistentry {
+  margin: 0;
+  margin-bottom: 3rem; }
+  article.projectlistentry:last-child {
+    margin-bottom: 0; }
+  article.projectlistentry > a {
+    display: table;
+    color: inherit; }
+  article.projectlistentry img {
+    display: table-cell;
+    height: 100%;
+    width: auto;
+    vertical-align: top;
+    border-radius: 1px; }
+  article.projectlistentry div {
+    display: table-cell;
+    height: 100%;
+    width: auto;
+    padding-left: 1.1rem;
+    vertical-align: top; }
+    article.projectlistentry div h1 {
+      margin: 0;
+      margin-bottom: 1rem;
+      font-size: 1.575rem;
+      line-height: 1.0; }
+    article.projectlistentry div p {
+      margin: 0; }
