@@ -12,10 +12,7 @@ upload the site source straight into the repository. What we are
 going to do is building the website ourself locally via the command line and
 pushing the built website onto the `master` branch manually.
 
-<figure id="figure-repo-structure">
-	<img src="/assets/github-pages-repo-structure.png" alt="Repository Structure">
-	<figcaption>Figure 1: The basic repository folder layout.</figcaption>
-</figure>
+{% include _post-block-image.html img-src="/assets/github-pages-repo-structure.png" img-alt="Repository Folder Structure" fig-id="figure-repo-structure" fig-name="Figure 1" fig-desc="The basic repository folder layout." %}
 
 In the above <a href="#figure-repo-structure">figure</a> you can see the basic layout.
 The idea is that we have two branches: A `source` branch, containing all of the
