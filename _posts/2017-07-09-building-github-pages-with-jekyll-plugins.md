@@ -42,8 +42,13 @@ _It is important_ that you include `.git` in the `_config.yml`'s `keep_files` li
 Now that everything is set up we can build the site.
 This is easily done by calling `bundle exec jekyll build` (or `bundle exec jekyll serve` for
 interactive building). Your site's source can now be uploaded by pushing the source branch to
-upstream and the built site by `cd`-ing into the `_site` folder and doing a `git add .` before
+upstream and the built site by `cd`'ing into the `_site` folder and doing a `git add .` before
 pushing.
+
+Because the `_site` folder (where the `master` branch lives) is ignored by the `source` branch
+you can now traverse between them by simply `cd`'ing in and out of the `_site` folder. Please
+keep in mind that you shouldn't `git checkout` other branches, though, as that might screw
+something up.
 
 
 ## Advantages ##
