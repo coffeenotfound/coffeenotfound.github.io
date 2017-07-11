@@ -17,7 +17,7 @@ pushing the built website onto the `master` branch manually.
 In the above <a href="#figure-repo-structure">figure</a> you can see the basic layout.
 The idea is that we have two branches: A `source` branch, containing all of the
 source code, and a `master` branch, containing the final files of the built website.
-_It is important that you create an empty `.nojekyll` file_ in the master branch (make sure to
+_It is important_ that you create an empty `.nojekyll` file in the master branch (make sure to
 add it to the `keep_files` list in the `_config.yml` or else it will disappear on the next site
 build) to tell GitHub it shouldn't automatically build your site.
 
@@ -30,7 +30,7 @@ First create a new branch called `source` (or something similar) and copy the ol
 over from the `master` branch (or create a new blog with `bundle exec jekyll new .`). Make sure the
 `.gitignore` includes the `_site` folder.
 
-Now go into the `_post folder` (create it or call `jekyll build` if you don't have one)
+Now go into the `_post` folder (create it or call `bundle exec jekyll build` if you don't have one)
 and clone the `master` branch into this folder (`git clone -b master https://github.com/<username>/<pages_repo>.git .`).
 _It is important_ that you include `.git` in the `_config.yml`'s `keep_files` list!
 
@@ -38,9 +38,7 @@ _It is important_ that you include `.git` in the `_config.yml`'s `keep_files` li
 ## Building the Site ##
 Now that everything is set up we can build the site.
 This is easily done by calling `bundle exec jekyll build` (or `bundle exec jekyll serve` for
-interactive building). Your site's source can now be uploaded by pushing the source branch to
-upstream and the built site by `cd`'ing into the `_site` folder and doing a `git add .` before
-pushing.
+interactive building). Your site's source (not _literally_, that is) can now be uploaded by pushing both branches upstream.
 
 Because the `_site` folder (where the `master` branch lives) is ignored by the `source` branch
 you can now traverse between them by simply `cd`'ing in and out of the `_site` folder. Please
@@ -59,4 +57,4 @@ and rainbows, though.
 It won't be possible anymore to just upload a blog post and have GitHub do everything
 for you. Not only each architectural or design update of your blog or website but also every
 new blog post will require you to rebuild the site locally and push all newly generated files upstream to GitHub.
-While this is not a major hassle it is no doubt less elegant than the virgin GitHub Pages experience.
+While this is not a major hassle it is no doubt less elegant than the out-of-the-box GitHub Pages experience.
