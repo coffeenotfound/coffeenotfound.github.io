@@ -5,8 +5,12 @@
 	
 	<title>Building GitHub Pages with Jekyll Plugins</title>
 	
-	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600|Roboto:400,500|Source+Code+Pro|Bitter:400,400i" rel="stylesheet">
+	<!-- Optimized version -->
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600|Roboto:500|Droid+Sans+Mono" rel="stylesheet">
+
+<!--<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600|Roboto:400,500|Source+Code+Pro|Bitter:400,400i" rel="stylesheet">-->
 <!--<link href="https://fonts.googleapis.com/css?family=Bitter:400,400i,700|Work+Sans:400,500,600,700|Roboto:500,700|Rubik:400,700|Open+Sans" rel="stylesheet">-->
+
 	<link href="/css/normalize.css" rel="stylesheet">
 	<!--<link href="/css/rouge-stylesheets/zenburn.css" rel="stylesheet">-->
 	<link href="/css/rouge-stylesheets/syntax.css" rel="stylesheet">
@@ -14,6 +18,7 @@
 	<!--<link href="/css/post-mobile.css" media="all and (max-device-width: 480px)" rel="stylesheet">-->
 	
 	<!-- per post accent color -->
+	<!--
 	<style>
 		@viewport {
 			user-zoom: 0;
@@ -26,6 +31,7 @@
 			background: #4568a6;
 		}
 	</style>
+	-->
 </head>
 
 <body>
@@ -70,7 +76,7 @@ pushing the built website onto the <code class="highlighter-rouge">master</code>
 <p>In the above <a href="#figure-repo-structure">figure</a> you can see the basic layout.
 The idea is that we have two branches: A <code class="highlighter-rouge">source</code> branch, containing all of the
 source code, and a <code class="highlighter-rouge">master</code> branch, containing the final files of the built website.
-<em>It is important that you create an empty <code class="highlighter-rouge">.nojekyll</code> file</em> in the master branch (make sure to
+<em>It is important</em> that you create an empty <code class="highlighter-rouge">.nojekyll</code> file in the master branch (make sure to
 add it to the <code class="highlighter-rouge">keep_files</code> list in the <code class="highlighter-rouge">_config.yml</code> or else it will disappear on the next site
 build) to tell GitHub it shouldn’t automatically build your site.</p>
 
@@ -82,16 +88,14 @@ of housing the source (as it probably does currently) it will become the build b
 over from the <code class="highlighter-rouge">master</code> branch (or create a new blog with <code class="highlighter-rouge">bundle exec jekyll new .</code>). Make sure the
 <code class="highlighter-rouge">.gitignore</code> includes the <code class="highlighter-rouge">_site</code> folder.</p>
 
-<p>Now go into the <code class="highlighter-rouge">_post folder</code> (create it or call <code class="highlighter-rouge">jekyll build</code> if you don’t have one)
+<p>Now go into the <code class="highlighter-rouge">_post</code> folder (create it or call <code class="highlighter-rouge">bundle exec jekyll build</code> if you don’t have one)
 and clone the <code class="highlighter-rouge">master</code> branch into this folder (<code class="highlighter-rouge">git clone -b master https://github.com/&lt;username&gt;/&lt;pages_repo&gt;.git .</code>).
 <em>It is important</em> that you include <code class="highlighter-rouge">.git</code> in the <code class="highlighter-rouge">_config.yml</code>’s <code class="highlighter-rouge">keep_files</code> list!</p>
 
 <h2 id="building-the-site">Building the Site</h2>
 <p>Now that everything is set up we can build the site.
 This is easily done by calling <code class="highlighter-rouge">bundle exec jekyll build</code> (or <code class="highlighter-rouge">bundle exec jekyll serve</code> for
-interactive building). Your site’s source can now be uploaded by pushing the source branch to
-upstream and the built site by <code class="highlighter-rouge">cd</code>‘ing into the <code class="highlighter-rouge">_site</code> folder and doing a <code class="highlighter-rouge">git add .</code> before
-pushing.</p>
+interactive building). Your site’s source (not <em>literally</em>, that is) can now be uploaded by pushing both branches upstream.</p>
 
 <p>Because the <code class="highlighter-rouge">_site</code> folder (where the <code class="highlighter-rouge">master</code> branch lives) is ignored by the <code class="highlighter-rouge">source</code> branch
 you can now traverse between them by simply <code class="highlighter-rouge">cd</code>‘ing in and out of the <code class="highlighter-rouge">_site</code> folder. Please
@@ -108,7 +112,7 @@ and rainbows, though.</p>
 <p>It won’t be possible anymore to just upload a blog post and have GitHub do everything
 for you. Not only each architectural or design update of your blog or website but also every
 new blog post will require you to rebuild the site locally and push all newly generated files upstream to GitHub.
-While this is not a major hassle it is no doubt less elegant than the virgin GitHub Pages experience.</p>
+While this is not a major hassle it is no doubt less elegant than the out-of-the-box GitHub Pages experience.</p>
 		</div>
 		
 		<div class="footer-pusher"></div>

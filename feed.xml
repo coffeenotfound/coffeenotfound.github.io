@@ -1,5 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-06-06T21:16:44+02:00</updated><id>/</id><title type="html">My Awesome Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.
-</subtitle><entry><title type="html">Setting-up Jekyll</title><link href="/blog/setting-up-jekyll/" rel="alternate" type="text/html" title="Setting-up Jekyll" /><published>2017-05-27T00:00:00+02:00</published><updated>2017-05-27T00:00:00+02:00</updated><id>/blog/setting-up-jekyll</id><content type="html" xml:base="/blog/setting-up-jekyll/">&lt;p&gt;Jekyll, the amazing &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;static website generator&lt;/a&gt;, can be a bit confusing to set-up and get running.
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-07-11T05:38:59+02:00</updated><id>/</id><title type="html">My Awesome Blog</title><subtitle>My personal blog/random stuff website. Blog posts optional.
+</subtitle><entry><title type="html">Building GitHub Pages with Jekyll Plugins</title><link href="/blog/building-github-pages-with-jekyll-plugins/" rel="alternate" type="text/html" title="Building GitHub Pages with Jekyll Plugins" /><published>2017-07-09T00:00:00+02:00</published><updated>2017-07-09T00:00:00+02:00</updated><id>/blog/building-github-pages-with-jekyll-plugins</id><content type="html" xml:base="/blog/building-github-pages-with-jekyll-plugins/">&lt;p&gt;As &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; does not allow custom Jekyll
+plugins for extending your website, how can you bypass this restriction?
+The answer is rather simple: Building it yourself!&lt;/p&gt;
+
+&lt;h2 id=&quot;repository-structure&quot;&gt;Repository Structure&lt;/h2&gt;
+&lt;p&gt;Normally GitHub Pages does the website building for us, allowing us to
+upload the site source straight into the repository. What we are
+going to do is building the website ourself locally via the command line and
+pushing the built website onto the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch manually.&lt;/p&gt;
+
+&lt;figure id=&quot;figure-repo-structure&quot;&gt;
+	&lt;a href=&quot;/assets/github-pages-repo-structure.png&quot; target=&quot;_blank&quot;&gt;
+		&lt;img src=&quot;/assets/github-pages-repo-structure.png&quot; alt=&quot;Repository Folder Structure&quot; /&gt;
+	&lt;/a&gt;
+	&lt;figcaption&gt;&lt;a href=&quot;#figure-repo-structure&quot;&gt;Figure 1&lt;/a&gt;: The basic repository folder layout.&lt;/figcaption&gt;
+&lt;/figure&gt;
+
+&lt;p&gt;In the above &lt;a href=&quot;#figure-repo-structure&quot;&gt;figure&lt;/a&gt; you can see the basic layout.
+The idea is that we have two branches: A &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; branch, containing all of the
+source code, and a &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch, containing the final files of the built website.
+&lt;em&gt;It is important&lt;/em&gt; that you create an empty &lt;code class=&quot;highlighter-rouge&quot;&gt;.nojekyll&lt;/code&gt; file in the master branch (make sure to
+add it to the &lt;code class=&quot;highlighter-rouge&quot;&gt;keep_files&lt;/code&gt; list in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt; or else it will disappear on the next site
+build) to tell GitHub it shouldn’t automatically build your site.&lt;/p&gt;
+
+&lt;h2 id=&quot;creating-the-branches&quot;&gt;Creating the Branches&lt;/h2&gt;
+&lt;p&gt;I am going to assume you already have a &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch in your site’s repo. Instead
+of housing the source (as it probably does currently) it will become the build branch.&lt;/p&gt;
+
+&lt;p&gt;First create a new branch called &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; (or something similar) and copy the old source
+over from the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch (or create a new blog with &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll new .&lt;/code&gt;). Make sure the
+&lt;code class=&quot;highlighter-rouge&quot;&gt;.gitignore&lt;/code&gt; includes the &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;Now go into the &lt;code class=&quot;highlighter-rouge&quot;&gt;_post&lt;/code&gt; folder (create it or call &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll build&lt;/code&gt; if you don’t have one)
+and clone the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch into this folder (&lt;code class=&quot;highlighter-rouge&quot;&gt;git clone -b master https://github.com/&amp;lt;username&amp;gt;/&amp;lt;pages_repo&amp;gt;.git .&lt;/code&gt;).
+&lt;em&gt;It is important&lt;/em&gt; that you include &lt;code class=&quot;highlighter-rouge&quot;&gt;.git&lt;/code&gt; in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_config.yml&lt;/code&gt;’s &lt;code class=&quot;highlighter-rouge&quot;&gt;keep_files&lt;/code&gt; list!&lt;/p&gt;
+
+&lt;h2 id=&quot;building-the-site&quot;&gt;Building the Site&lt;/h2&gt;
+&lt;p&gt;Now that everything is set up we can build the site.
+This is easily done by calling &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll build&lt;/code&gt; (or &lt;code class=&quot;highlighter-rouge&quot;&gt;bundle exec jekyll serve&lt;/code&gt; for
+interactive building). Your site’s source (not &lt;em&gt;literally&lt;/em&gt;, that is) can now be uploaded by pushing both branches upstream.&lt;/p&gt;
+
+&lt;p&gt;Because the &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt; folder (where the &lt;code class=&quot;highlighter-rouge&quot;&gt;master&lt;/code&gt; branch lives) is ignored by the &lt;code class=&quot;highlighter-rouge&quot;&gt;source&lt;/code&gt; branch
+you can now traverse between them by simply &lt;code class=&quot;highlighter-rouge&quot;&gt;cd&lt;/code&gt;‘ing in and out of the &lt;code class=&quot;highlighter-rouge&quot;&gt;_site&lt;/code&gt; folder. Please
+keep in mind that you shouldn’t &lt;code class=&quot;highlighter-rouge&quot;&gt;git checkout&lt;/code&gt; other branches, though, as that might screw
+something up.&lt;/p&gt;
+
+&lt;h2 id=&quot;advantages&quot;&gt;Advantages&lt;/h2&gt;
+&lt;p&gt;Using the method described above allows you to use &lt;em&gt;any&lt;/em&gt; Jekyll plugin and basically do
+pretty much &lt;em&gt;anything&lt;/em&gt; you like when building the site. In my opinion it is probably even
+necessary for any site more complex than the most basic blog. Not everything is cakes
+and rainbows, though.&lt;/p&gt;
+
+&lt;h2 id=&quot;disadvantages&quot;&gt;Disadvantages&lt;/h2&gt;
+&lt;p&gt;It won’t be possible anymore to just upload a blog post and have GitHub do everything
+for you. Not only each architectural or design update of your blog or website but also every
+new blog post will require you to rebuild the site locally and push all newly generated files upstream to GitHub.
+While this is not a major hassle it is no doubt less elegant than the out-of-the-box GitHub Pages experience.&lt;/p&gt;</content><author><name></name></author><summary type="html">As GitHub Pages does not allow custom Jekyll plugins for extending your website, how can you bypass this restriction? The answer is rather simple: Building it yourself! Repository Structure Normally GitHub Pages does the website building for us, allowing us to upload the site source straight into the repository. What we are going to do is building the website ourself locally via the command line and pushing the built website onto the master branch manually. Figure 1: The basic repository folder layout. In the above figure you can see the basic layout. The idea is that we have two branches: A source branch, containing all of the source code, and a master branch, containing the final files of the built website. It is important that you create an empty .nojekyll file in the master branch (make sure to add it to the keep_files list in the _config.yml or else it will disappear on the next site build) to tell GitHub it shouldn’t automatically build your site. Creating the Branches I am going to assume you already have a master branch in your site’s repo. Instead of housing the source (as it probably does currently) it will become the build branch. First create a new branch called source (or something similar) and copy the old source over from the master branch (or create a new blog with bundle exec jekyll new .). Make sure the .gitignore includes the _site folder. Now go into the _post folder (create it or call bundle exec jekyll build if you don’t have one) and clone the master branch into this folder (git clone -b master https://github.com/&amp;lt;username&amp;gt;/&amp;lt;pages_repo&amp;gt;.git .). It is important that you include .git in the _config.yml’s keep_files list! Building the Site Now that everything is set up we can build the site. This is easily done by calling bundle exec jekyll build (or bundle exec jekyll serve for interactive building). Your site’s source (not literally, that is) can now be uploaded by pushing both branches upstream. Because the _site folder (where the master branch lives) is ignored by the source branch you can now traverse between them by simply cd‘ing in and out of the _site folder. Please keep in mind that you shouldn’t git checkout other branches, though, as that might screw something up. Advantages Using the method described above allows you to use any Jekyll plugin and basically do pretty much anything you like when building the site. In my opinion it is probably even necessary for any site more complex than the most basic blog. Not everything is cakes and rainbows, though. Disadvantages It won’t be possible anymore to just upload a blog post and have GitHub do everything for you. Not only each architectural or design update of your blog or website but also every new blog post will require you to rebuild the site locally and push all newly generated files upstream to GitHub. While this is not a major hassle it is no doubt less elegant than the out-of-the-box GitHub Pages experience.</summary></entry><entry><title type="html">Setting-up Jekyll</title><link href="/blog/setting-up-jekyll/" rel="alternate" type="text/html" title="Setting-up Jekyll" /><published>2017-05-27T00:00:00+02:00</published><updated>2017-05-27T00:00:00+02:00</updated><id>/blog/setting-up-jekyll</id><content type="html" xml:base="/blog/setting-up-jekyll/">&lt;p&gt;Jekyll, the amazing &lt;a href=&quot;https://jekyllrb.com/&quot;&gt;static website generator&lt;/a&gt;, can be a bit confusing to set-up and get running.
 First impressions can deceive though, because it’s actually quite easy!&lt;/p&gt;
 
 &lt;!-- endexcerpt --&gt;

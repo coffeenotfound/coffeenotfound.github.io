@@ -5,6 +5,7 @@ html {
   min-height: 720px;
   line-height: 1.5;
   font-size: 1rem;
+  overflow: auto;
   /*
   // anti scrollbar layout nudge trick (https://aykevl.nl/2014/09/fix-jumping-scrollbar)
   @media screen and (min-width: $wrap-width-default + (2 * $wrap-sidemargin-default)) {
@@ -16,59 +17,58 @@ html {
 body {
   position: relative;
   /* needed for height 100% to work properly */
-  width: 100%;
+  min-width: 100%;
   min-height: 100%;
   margin: 0;
+  overflow: visible;
   font-size: 1.05rem;
   font-family: 'Work Sans', sans-serif;
   letter-spacing: -0.024em;
   color: #656d77;
   background: #fefefe; }
 
-main {
-  overflow: auto;
-  /* collapsing margin fix */ }
+.site-padding {
+  padding: 0 20px; }
 
-.wrap {
-  width: 720px;
-  height: 100%;
-  margin: 0 auto;
-  padding: 0; }
-
-/** --- custom scrollbar --- */
 /*
-$scrollbar-width: 6px;
-$scrollbar-padding: 8px;
-::-webkit-scrollbar {
-	width: $scrollbar-width + ($scrollbar-padding * 2);
-	height: $scrollbar-width + ($scrollbar-padding * 2);
-}
-::-webkit-scrollbar-track {
-	border: $scrollbar-padding solid transparent; // padding
-	background-clip: padding-box;
-	-webkit-border-radius: 32px;
-	
-	background-color: rgba(0, 0, 0, 0.175);
-}
-::-webkit-scrollbar-thumb {
-	min-height: 16px;
-	min-width: 16px;
-	
-	border: $scrollbar-padding solid transparent; // padding
-	background-clip: padding-box;
-	-webkit-border-radius: 32px;
-	
-	background-color: rgba(0, 0, 0, 0.175);
-}
-::-webkit-scrollbar-button {
-	width: 0;
-	height: 0;
-	display: none;
-}
-::-webkit-scrollbar-corner {
-	background-color: transparent;
+main > wrap {
+	overflow: auto; // collapsing margin fix
+	//overflow: visible;
+	padding: 0 $wrap-sidemargin-default;
 }
 */
+.wrap {
+  width: 760px;
+  height: 100%;
+  margin: 0 auto; }
+
+/** --- custom scrollbar --- */
+::-webkit-scrollbar {
+  width: 22px;
+  height: 22px; }
+
+::-webkit-scrollbar-track {
+  border: 8px solid transparent;
+  background-clip: padding-box;
+  -webkit-border-radius: 32px;
+  background-color: rgba(0, 0, 0, 0.1); }
+
+::-webkit-scrollbar-thumb {
+  min-height: 16px;
+  min-width: 16px;
+  border: 8px solid transparent;
+  background-clip: padding-box;
+  -webkit-border-radius: 32px;
+  background-color: rgba(0, 0, 0, 0.175); }
+
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+  display: none; }
+
+::-webkit-scrollbar-corner {
+  background-color: transparent; }
+
 /** --- default element styles --- */
 h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
@@ -108,13 +108,13 @@ table {
 /** common navbar */
 .nav {
   height: 4rem;
+  padding: 0 1rem;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0; }
   .nav .wrap {
     display: flex;
     flex-flow: row nowrap;
     align-items: center;
-    padding: 0 1rem;
     box-sizing: border-box; }
   .nav .nav__item {
     margin: 0 0.1rem;
@@ -158,6 +158,8 @@ code.highlighter-rouge {
   padding: 0 0.3em;
   font-family: 'Inconsolata', monospace;
   font-size: 0.9975rem;
+  font-weight: normal;
+  font-style: normal;
   background: #f4f4f5;
   border: 1px solid #d9e2e8;
   border-radius: 2px; }
@@ -168,6 +170,8 @@ figure.highlight, div.highlighter-rouge {
   margin: 1rem 0;
   font-size: 0.9975rem;
   line-height: 1.15rem;
+  font-weight: normal;
+  font-style: normal;
   background: #f4f4f5;
   border: 1px solid #d9e2e8;
   border-radius: 2px; }

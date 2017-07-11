@@ -1,3 +1,4 @@
+@charset "UTF-8";
 html {
   margin: 0;
   width: 100%;
@@ -179,3 +180,92 @@ figure.highlight, div.highlighter-rouge {
     margin: 0;
     padding: 1rem;
     font-family: 'Inconsolata', monospace; }
+
+.nav {
+  color: rgba(254, 254, 254, 0.9); }
+  .nav .nav__item {
+    color: inherit;
+    transition: color 0.1s cubic-bezier(0.19, 1, 0.22, 1);
+    /* easeOutExpo */ }
+    .nav .nav__item:hover {
+      color: #fefefe; }
+    .nav .nav__item:active {
+      color: rgba(254, 254, 254, 0.85); }
+
+.postheader {
+  height: 24rem;
+  color: #fefefe; }
+  .postheader .wrap {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+    overflow: auto; }
+  .postheader h1.postheader__title {
+    margin: 0.8rem 3rem;
+    line-height: 1.2;
+    font-size: 2.625rem;
+    text-align: center;
+    color: rgba(254, 254, 254, 0.9); }
+  .postheader span.postheader__details {
+    color: rgba(254, 254, 254, 0.75); }
+    .postheader span.postheader__details a {
+      text-decoration: none;
+      color: inherit;
+      transition: color 0.1s cubic-bezier(0.19, 1, 0.22, 1);
+      /* easeOutExpo */ }
+      .postheader span.postheader__details a:hover {
+        color: rgba(254, 254, 254, 0.9); }
+      .postheader span.postheader__details a:active {
+        color: rgba(254, 254, 254, 0.8); }
+    .postheader span.postheader__details span {
+      margin: 0 0.5rem; }
+
+.postcontent .wrap {
+  padding-bottom: 4rem;
+  overflow: auto; }
+  .postcontent .wrap > :first-child {
+    top: 0;
+    margin-top: 1.2rem; }
+.postcontent p {
+  /*
+  &:first-child:first-letter {
+  	//font-size: 3.4em;
+  	font-size: 2.6em;
+  	float: left;
+  	line-height: 1.0;
+  	margin: 0 0.3rem 0 0.1rem;
+  	
+  	//font-weight: 600;
+  	
+  	//font-family: 'as', sans-serif;
+  }
+  */ }
+.postcontent figure {
+  margin: 2rem 0;
+  /*
+  a > img {
+  	cursor: hand;
+  }
+  */ }
+  .postcontent figure img {
+    width: 100%;
+    height: auto;
+    margin: 0; }
+  .postcontent figure figcaption {
+    position: relative;
+    padding-left: 1em;
+    text-align: center;
+    color: #adb2b8;
+    /*
+    &:before {
+    	display: inline;
+    	position: absolute;
+    	content: "•";
+    	
+    	top: 0;
+    	left: 0;
+    	
+    	padding: 0 0.2em;
+    }
+    */ }
