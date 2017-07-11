@@ -88,7 +88,13 @@
 	}
 	
 	p {
+		// very first letter
+		&:first-child:first-letter {
+			font-weight: bold;
+		}
+		
 		/*
+		// drop-caps
 		&:first-child:first-letter {
 			//font-size: 3.4em;
 			font-size: 2.6em;

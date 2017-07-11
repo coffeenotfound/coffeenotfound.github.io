@@ -62,9 +62,11 @@ body {
 	background: $color-background-default;
 }
 
+/*
 .site-padding {
 	padding: 0 $wrap-sidemargin-default;
 }
+*/
 
 /*
 main > wrap {
@@ -75,12 +77,14 @@ main > wrap {
 */
 
 .wrap {
-	width: $wrap-width-default + (2 * $wrap-sidemargin-default);
-	//width: $wrap-width-default;
+	//width: $wrap-width-default + (2 * $wrap-sidemargin-default);
+	width: $wrap-width-default;
 	height: 100%;
 	
+	padding: 0 $wrap-sidemargin-default;
 	margin: 0 auto;
-	//padding: 0;
+	
+	box-sizing: content-box;
 }
 
 /** --- custom scrollbar --- */
@@ -181,6 +185,8 @@ table {
 	
 	.wrap {
 		display: flex;
+		
+		padding: 0;
 		
 		flex-flow: row nowrap;
 		align-items: center;
