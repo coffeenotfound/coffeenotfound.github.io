@@ -27,9 +27,11 @@ body {
   color: #656d77;
   background: #fefefe; }
 
+/*
 .site-padding {
-  padding: 0 20px; }
-
+	padding: 0 $wrap-sidemargin-default;
+}
+*/
 /*
 main > wrap {
 	overflow: auto; // collapsing margin fix
@@ -38,9 +40,11 @@ main > wrap {
 }
 */
 .wrap {
-  width: 760px;
+  width: 720px;
   height: 100%;
-  margin: 0 auto; }
+  padding: 0 20px;
+  margin: 0 auto;
+  box-sizing: content-box; }
 
 /** --- custom scrollbar --- */
 ::-webkit-scrollbar {
@@ -113,6 +117,7 @@ table {
   letter-spacing: 0; }
   .nav .wrap {
     display: flex;
+    padding: 0;
     flex-flow: row nowrap;
     align-items: center;
     box-sizing: border-box; }
