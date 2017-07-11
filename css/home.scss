@@ -2,16 +2,41 @@
 ---
 
 @import '_common';
-
 @import '_common-nav-dark';
 
 .welcometext {
 	margin: 0;
-	margin-top: 4rem;
+	margin-top: 8rem;
+	margin-bottom: 10rem;
 	overflow: auto;
 	
-	h2 {
-		margin-top: 0;
+	h1 {
+		margin: 0;
+		
+		font-size: font-rems(3.0);
+		color: $color-font-lighter;
+		
+		a {
+			color: inherit;
+		}
+		
+		span.welcometext-url__protocol {
+			color: #3fa961;
+			//color: #0B8043;
+		}
+		span.welcometext-url__domain {
+			color: $color-font-darker;
+		}
+		span.welcometext-url__delimiter {
+			color: inherit;
+		}
+	}
+	
+	p.welcometext__tagline {
+		margin: 0;
+		
+		color: $color-font-lighter;
+		font-size: font-rems(1.1);
 	}
 }
 
@@ -25,7 +50,7 @@ hr {
 }
 
 .postlist {
-	margin-top: 4rem;
+	//margin-top: 4rem;
 	margin-bottom: 3rem;
 }
 

@@ -11,7 +11,7 @@ $base-layout-size: 1rem;
 $base-font-size: 1.05rem;
 
 $wrap-width-default: 720px;
-$wrap-sidemargin-default: 22px;
+$wrap-sidemargin-default: 20px;
 
 @function vertical-rhythm($_units) {
 	@return (strip-unit($base-line-height * $base-font-size * strip-unit($_units)) + rem)
@@ -34,6 +34,8 @@ html {
 	line-height: $base-line-height;
 	font-size: $base-layout-size;
 	
+	overflow: auto;
+	
 	/*
 	// anti scrollbar layout nudge trick (https://aykevl.nl/2014/09/fix-jumping-scrollbar)
 	@media screen and (min-width: $wrap-width-default + (2 * $wrap-sidemargin-default)) {
@@ -45,10 +47,12 @@ html {
 
 body {
 	position: relative; /* needed for height 100% to work properly */
-	width: 100%;
+	min-width: 100%;
 	min-height: 100%;
 	
 	margin: 0;
+	
+	overflow: visible;
 	
 	font-size: font-rems(1rem);
 	font-family: 'Work Sans', sans-serif;
@@ -58,21 +62,28 @@ body {
 	background: $color-background-default;
 }
 
-main {
-	overflow: auto; /* collapsing margin fix */
+.site-padding {
+	padding: 0 $wrap-sidemargin-default;
 }
 
+/*
+main > wrap {
+	overflow: auto; // collapsing margin fix
+	//overflow: visible;
+	padding: 0 $wrap-sidemargin-default;
+}
+*/
+
 .wrap {
-	//width: $wrap-width-default + (2 * $wrap-sidemargin-default);
-	width: $wrap-width-default;
+	width: $wrap-width-default + (2 * $wrap-sidemargin-default);
+	//width: $wrap-width-default;
 	height: 100%;
+	
 	margin: 0 auto;
-	padding: 0;
-	//padding: 0 $wrap-sidemargin-default;
+	//padding: 0;
 }
 
 /** --- custom scrollbar --- */
-/*
 $scrollbar-width: 6px;
 $scrollbar-padding: 8px;
 ::-webkit-scrollbar {
@@ -84,7 +95,7 @@ $scrollbar-padding: 8px;
 	background-clip: padding-box;
 	-webkit-border-radius: 32px;
 	
-	background-color: rgba(0, 0, 0, 0.175);
+	background-color: rgba(0, 0, 0, 0.1);
 }
 ::-webkit-scrollbar-thumb {
 	min-height: 16px;
@@ -104,7 +115,7 @@ $scrollbar-padding: 8px;
 ::-webkit-scrollbar-corner {
 	background-color: transparent;
 }
-*/
+
 
 /** --- default element styles --- */
 h1, h2, h3, h4, h5, h6 {
@@ -163,6 +174,8 @@ table {
 .nav {
 	height: 4rem;
 	
+	padding: 0 1rem;
+	
 	font-family: 'Roboto', sans-serif;
 	letter-spacing: 0;
 	
@@ -172,7 +185,6 @@ table {
 		flex-flow: row nowrap;
 		align-items: center;
 		
-		padding: 0 1rem;
 		box-sizing: border-box;
 	}
 	
@@ -234,6 +246,8 @@ code.highlighter-rouge {
 	
 	font-family: 'Inconsolata', monospace;
 	font-size: font-rems(0.95);
+	font-weight: normal;
+	font-style: normal;
 	
 	background: #f4f4f5;
 	border: 1px solid #d9e2e8;
@@ -247,6 +261,8 @@ figure.highlight, div.highlighter-rouge {
 	
 	font-size: font-rems(0.95);
 	line-height: 1.15rem;
+	font-weight: normal;
+	font-style: normal;
 	
 	background: #f4f4f5;
 	border: 1px solid #d9e2e8;

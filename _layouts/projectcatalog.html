@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>{{ page.title | smartify }}</title>
+	
+	{% include _common-font-includes.html %}
+	<link href="/css/normalize.css" rel="stylesheet">
+	<link href="/css/projectcatalog.css" rel="stylesheet">
+</head>
+
+<body>
+	{% include _common-nav.html %}
+	
+	<main class="maincontent">
+		<section class="headersection">
+			<div class="wrap">
+				
+			</div>
+		</section>
+		
+		<section class="projectlistsection">
+			<div class="wrap">
+				{% for i in (1..10) %}
+					{% for post in site.projectpages %}
+					<article class="projectlistentry">
+					<a href="{{ post.url }}">
+						<!--<img src="https://via.placeholder.com/150x100"></img>-->
+						<img src="/assets/project_nightsky_preview.png"></img>
+						<div>
+							<h1>{{ post.title | smartify }}</h1>
+							<p>{{ post.title }} is an adventure type RPG, built ontop ancient rules of the forgotten art of fighting.</p>
+						</div>
+					</a>
+					</article>
+					{% endfor %}
+				{% endfor %}
+			</div>
+		</section>
+		
+		<div class="footer-pusher"></div>
+	</main>
+	
+	{% include _common-footer.html %}
+</body>
+</html>

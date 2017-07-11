@@ -14,14 +14,17 @@
 	{% include _common-nav.html %}
 	
 	<main>
-		<div class="wrap">
-			<!--
+		<div class="wrap site-padding">
 			<section class="welcometext">
-				{{ content | smartify }}
+				<div>
+					<h1><a href="https://bitangent.net/">
+						<span class="welcometext-url__protocol">https:</span><span class="welcometext-url__delimiter">//</span><span class="welcometext-url__domain">bitangent.net</span><span class="welcometext-url__delimiter">/</span>
+					</a></h1>
+					<p class="welcometext__tagline">Like baking just completely different.</p>
+				</div>
+				<!--{{ content | smartify }}-->
 			</section>
 			
-			<hr>
-			-->
 			<section class="postlist">
 				{% for post in site.posts %}
 				<article class="postlistentry">

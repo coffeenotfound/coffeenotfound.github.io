@@ -2,17 +2,15 @@
 ---
 
 @import '_common';
-@import '_common-nav-dark';
 
-/*
-// Nav colored
+//$post-accent-color: #5277b7;
 .nav {
 	//background: darken($post-accent-color, 6.0);
 	color: rgba($color-background-default, 0.9);
 	
 	.nav__item {
 		color: inherit;
-		transition: color 0.1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+		transition: color 0.1s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 		
 		&:hover {
 			color: rgba($color-background-default,1.0);
@@ -22,13 +20,12 @@
 		}
 	}
 }
-*/
 
 .postheader {
 	height: 24rem;
 	
 	//background: $post-accent-color;
-	//color: $color-background-default;
+	color: $color-background-default;
 	
 	.wrap {
 		display: flex;
@@ -41,35 +38,28 @@
 	}
 	
 	h1.postheader__title {
-		margin: 0.8rem 0;
-		padding: 0 5rem;
+		margin: 0.8rem 3rem;
 		
 		line-height: 1.2;
-		font-size: font-rems(2.75);
-		//font-size: font-rems(2.5);
+		font-size: font-rems(2.5);
 		text-align: center;
-		//color: rgba($color-background-default,0.9);
+		color: rgba($color-background-default,0.9);
 	}
 	span.postheader__details {
-		color: $color-font-lighter;
-		//color: rgba($color-background-default,0.75);
+		color: rgba($color-background-default,0.75);
 		
-		/*
 		a {
 			text-decoration: none;
 			color: inherit;
-			transition: color 0.1s cubic-bezier(0.190, 1.000, 0.220, 1.000);
+			transition: color 0.1s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 			
 			&:hover {
-				color: rgba($color-font-default,0.9);
-				//color: rgba($color-background-default,0.9);
+				color: rgba($color-background-default,0.9);
 			}
 			&:active {
-				color: rgba($color-font-default,0.8);
-				//color: rgba($color-background-default,0.8);
+				color: rgba($color-background-default,0.8);
 			}
 		}
-		*/
 		span {
 			margin: 0 0.5rem;
 		}
