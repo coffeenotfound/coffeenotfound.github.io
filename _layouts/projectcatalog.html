@@ -13,33 +13,26 @@
 <body>
 	{% include _common-nav.html %}
 	
+	{% include _common-welcometext.html %}
+	
 	<main class="maincontent">
-		<section class="headersection">
-			<div class="wrap">
-				
-			</div>
-		</section>
-		
-		<section class="projectlistsection">
-			<div class="wrap">
-				{% for i in (1..10) %}
-					{% for post in site.projectpages %}
-					<article class="projectlistentry">
-					<a href="{{ post.url }}">
-						<!--<img src="https://via.placeholder.com/150x100"></img>-->
-						<img src="/assets/project_nightsky_preview.png"></img>
-						<div>
-							<h1>{{ post.title | smartify }}</h1>
-							<p>{{ post.title }} is an adventure type RPG, built ontop ancient rules of the forgotten art of fighting.</p>
-						</div>
-					</a>
-					</article>
-					{% endfor %}
+		<div class="wrap">
+			<section class="projectlistsection">
+				{% for project in site.projectpages %}
+				<article class="projectlistentry">
+				<a href="{{ project.url }}">
+					<img src="{{ project.preview-image-source }}"></img>
+					<main>
+						<h1>{{ project.title | smartify }}</h1>
+						<p>{{ project.short-description | smartify }}</p>
+					</main>
+				</a>
+				</article>
 				{% endfor %}
-			</div>
-		</section>
-		
-		<div class="footer-pusher"></div>
+			</section>
+			
+			<div class="footer-pusher"></div>
+		</div>
 	</main>
 	
 	{% include _common-footer.html %}

@@ -2,6 +2,7 @@
 ---
 
 @import '_common';
+@import '_common-nav-dark';
 
 nav {
 	color: $color-font-darker;
@@ -29,9 +30,10 @@ div.messagecontainer {
 	align-items: center;
 	justify-content: center;
 	
-	left: 50%;
+	min-width: 100%;
+	left: 0;
 	top: 45%;
-	transform: translate(-50%,-50%);
+	transform: translateY(-50%);
 	
 	.message {
 		display: inline-flex;
@@ -40,8 +42,39 @@ div.messagecontainer {
 		font-size: font-rems(1.5);
 		line-height: 1.0;
 		
-		.message__primaryrow {
-			align-self: stretch;
+		.message__row {
+			display: inline-block;
+			
+			white-space: nowrap;
+			letter-spacing: -0.035em;
+			
+			&--first {
+				text-align: left;
+				
+				color: $color-font-lighter;
+			}
+			&--second {
+				text-align: center;
+				margin: 0.5rem 0;
+				
+				font-size: font-rems(4);
+				font-family: 'Pacifico', fantasy;
+				letter-spacing: 0;
+			}
+			&--third {
+				text-align: right;
+				a {
+					color: $color-font-lighter;
+					text-decoration: underline;
+					text-decoration-color: lighten($color-font-lighter, 20);
+				}
+			}
+		}
+		
+		/*
+		.message__row {
+			display: table-cell;
+			//align-self: stretch;
 			
 			margin: 0.5rem 0;
 			
@@ -50,13 +83,15 @@ div.messagecontainer {
 			letter-spacing: 0;
 		}
 		.message__secondaryrow {
-			align-self: flex-start;
+			display: table-cell;
+			//align-self: flex-start;
 			
 			color: $color-font-lighter;
 			letter-spacing: -0.035em;
 		}
 		a.message__backlink {
-			align-self: flex-end;
+			display: table-cell;
+			//align-self: flex-end;
 			
 			color: $color-font-lighter;
 			letter-spacing: -0.035em;
@@ -64,5 +99,6 @@ div.messagecontainer {
 			text-decoration: underline;
 			text-decoration-color: lighten($color-font-lighter, 20);
 		}
+		*/
 	}
 }

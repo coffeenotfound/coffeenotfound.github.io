@@ -1,5 +1,7 @@
 ---
 title: "Markdown Sample"
+author: "www.unexpected-vortices.com"
+author-url: "http://www.unexpected-vortices.com/sw/rippledoc/quick-markdown-example.html"
 ---
 An h1 header
 ============

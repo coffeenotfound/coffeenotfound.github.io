@@ -34,10 +34,12 @@
 	
 	<header class="postheader">
 		<div class="wrap site-padding">
-			<h1 class="postheader__title">{{ page.title | smartify }}</h1>
-			<span class="postheader__details">
-				<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%A, %e. %B %Y" }}</time><span>·</span><a href="/about/">Jan Katzer</a>
-			</span>
+			<div class="posttitle">
+				<h1 class="posttitle__title">{{ page.title | smartify }}</h1>
+				<span class="posttitle__details">
+					<time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%A, %e. %B %Y" }}</time><span>·</span><a href="{{ page.author-url }}">{{ page.author | smartify}}</a>
+				</span>
+			<div>
 		</div>
 	</header>
 	

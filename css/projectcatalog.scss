@@ -2,8 +2,9 @@
 ---
 
 @import '_common';
-
 @import '_common-nav-dark';
+
+@import '_common-welcometext';
 
 section.headersection {
 	//height: 30rem;
@@ -11,18 +12,19 @@ section.headersection {
 }
 
 section.projectlistsection {
-	margin: 2rem 0;
+	margin: 0;
+	margin-bottom: 8rem;
 }
 
 article.projectlistentry {
 	margin: 0;
-	margin-bottom: 3rem;
+	margin-bottom: 4rem;
 	
 	&:last-child {
 		margin-bottom: 0;
 	}
 	
-	> a {
+	& > a {
 		display: table;
 		
 		color: inherit;
@@ -37,8 +39,9 @@ article.projectlistentry {
 		vertical-align: top;
 		
 		border-radius: 1px;
+		box-shadow: 0px 1px 6px -1px rgba(0,0,0,0.2);
 	}
-	div {
+	main {
 		display: table-cell;
 		
 		height: 100%;

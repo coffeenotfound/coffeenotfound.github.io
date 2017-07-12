@@ -17,6 +17,8 @@ defaults:
     values:
       layout: "post"
       permalink: "/blog/:slug/"
+      author: "Jan Katzer"
+      author-url: "/about/"
   -
     scope:
       path: ""

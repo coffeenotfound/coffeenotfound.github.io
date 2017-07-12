@@ -4,15 +4,13 @@
 	
 	.nav__item {
 		color: inherit;
-		//color: rgba(255,255,255,0.9);
-		transition: color 0.1s cubic-bezier(0.190, 1.000, 0.220, 1.000); /* easeOutExpo */
 		
+		transition: color 0.05s cubic-bezier(0.165, 0.840, 0.440, 1.000); /* easeOutQuart */
 		&:hover {
 			color: lighten($color-font-darker, 16.0);
-			//color: rgba(255,255,255,1.0);
 		}
 		&:active {
-			//color: rgba(255,255,255,0.85)
+			
 		}
 	}
 }

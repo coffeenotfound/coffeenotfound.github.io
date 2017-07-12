@@ -31,17 +31,20 @@
 	//color: $color-background-default;
 	
 	.wrap {
-		display: flex;
-		
-		flex-flow: column nowrap;
-		align-items: center;
-		justify-content: center;
+		display: table;
 		
 		overflow: auto;
 	}
 	
-	h1.postheader__title {
+	.posttitle {
+		display: table-cell;
+		vertical-align: middle;
+		text-align: center;
+	}
+	
+	h1.posttitle__title {
 		margin: 0.8rem 0;
+		margin-bottom: 0.5rem;
 		padding: 0 5rem;
 		
 		line-height: 1.2;
@@ -50,7 +53,8 @@
 		text-align: center;
 		//color: rgba($color-background-default,0.9);
 	}
-	span.postheader__details {
+	span.posttitle__details {
+		text-align: initial;
 		color: $color-font-lighter;
 		//color: rgba($color-background-default,0.75);
 		
@@ -78,7 +82,7 @@
 
 .postcontent {
 	.wrap {
-		padding-bottom: 6rem;
+		padding-bottom: 8rem;
 		overflow: auto;
 		
 		> :first-child {
