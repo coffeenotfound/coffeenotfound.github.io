@@ -5,19 +5,13 @@ html {
   min-height: 720px;
   line-height: 1.5;
   font-size: 1rem;
-  overflow: auto;
-  /*
-  // anti scrollbar layout nudge trick (https://aykevl.nl/2014/09/fix-jumping-scrollbar)
-  @media screen and (min-width: $wrap-width-default + (2 * $wrap-sidemargin-default)) {
-  	min-width: 100vw;
-  	//overflow-x: hidden;
-  }
-  */ }
+  overflow: auto; }
 
 body {
   position: relative;
   /* needed for height 100% to work properly */
-  min-width: 100%;
+  min-width: 760px;
+  width: 100%;
   min-height: 100%;
   margin: 0;
   overflow: visible;
@@ -40,9 +34,8 @@ main > wrap {
 }
 */
 .wrap {
-  width: 760px;
+  width: 720px;
   height: 100%;
-  padding: 0 20px;
   margin: 0 auto;
   box-sizing: border-box; }
 
@@ -78,7 +71,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   font-family: 'Work Sans', sans-serif;
-  letter-spacing: -0.4px;
   color: #515a61; }
 
 p, figure {
@@ -112,15 +104,22 @@ table {
 /** common navbar */
 .nav {
   height: 4rem;
-  width: 100%;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0; }
   .nav .wrap {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    padding: 0 1.75rem;
-    box-sizing: border-box; }
+    display: table; }
+  .nav .nav__item-container {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap; }
+    .nav .nav__item-container:first-child {
+      width: 99%; }
+    .nav .nav__item-container > * {
+      vertical-align: initial; }
+    .nav .nav__item-container:first-of-type .nav__item {
+      margin-left: 1rem; }
+    .nav .nav__item-container:last-of-type .nav__item {
+      margin-right: 0.5rem; }
   .nav .nav__item {
     margin: 0 0.1rem;
     padding: 0.3rem 0.5rem;
@@ -128,15 +127,15 @@ table {
     font-weight: 500;
     text-decoration: none; }
   .nav .nav__item--home {
-    margin: 0 0.6rem;
-    padding: 0;
     display: inline-block;
     position: relative;
-    content: "";
-    margin-right: auto;
-    width: 2rem;
-    height: 2rem;
+    margin: 0 0.6rem;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
     font-size: 0;
+    user-select: none;
     background: currentColor;
     border-radius: 50%; }
 
@@ -150,21 +149,7 @@ table {
   bottom: 0;
   left: 0;
   right: 0;
-  font-size: 1.05rem;
-  /*
-  .footer__branding-container {
-  	display: flex;
-  	width: 100%;
-  	
-  	flex-flow: row nowrap;
-  	align-items: center;
-  	justify-content: space-around;
-  	
-  	div {
-  		display: inline;
-  	}
-  }
-  */ }
+  font-size: 1.05rem; }
   .footer .footer__column-container {
     display: flex;
     flex-flow: row nowrap;
@@ -179,14 +164,22 @@ table {
     color: #adb2b8; }
   .footer .footer__column--branding a {
     color: #656d77;
-    font-weight: bold; }
+    font-weight: bold;
+    transition: color 0.05s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* easeOutQuart */ }
+    .footer .footer__column--branding a:hover {
+      color: #8e969f; }
   .footer .footer__column--links h2 {
     margin: 0;
     margin-bottom: 0.1rem;
     color: #656d77;
     font-size: 1.05rem; }
   .footer .footer__item a {
-    color: #adb2b8; }
+    color: #adb2b8;
+    transition: color 0.05s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* easeOutQuart */ }
+    .footer .footer__item a:hover {
+      color: #818992; }
 
 /** Inline code highlighter */
 code.highlighter-rouge {
@@ -215,6 +208,15 @@ figure.highlight, div.highlighter-rouge {
     padding: 1rem;
     font-family: 'Inconsolata', monospace; }
 
+.nav {
+  color: #515a61; }
+  .nav .nav__item {
+    color: inherit;
+    transition: color 0.05s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* easeOutQuart */ }
+    .nav .nav__item:hover {
+      color: #77838d; }
+
 nav {
   color: #515a61; }
   nav .nav__item {
@@ -230,27 +232,60 @@ div.messagecontainer {
   flex-flow: column nowrap;
   align-items: center;
   justify-content: center;
-  left: 50%;
+  min-width: 100%;
+  left: 0;
   top: 45%;
-  transform: translate(-50%, -50%); }
+  transform: translateY(-50%); }
   div.messagecontainer .message {
     display: inline-flex;
     flex-flow: column nowrap;
     font-size: 1.575rem;
-    line-height: 1.0; }
-    div.messagecontainer .message .message__primaryrow {
-      align-self: stretch;
-      margin: 0.5rem 0;
-      font-size: 4.2rem;
-      font-family: 'Pacifico', fantasy;
-      letter-spacing: 0; }
-    div.messagecontainer .message .message__secondaryrow {
-      align-self: flex-start;
-      color: #adb2b8;
+    line-height: 1.0;
+    /*
+    .message__row {
+    	display: table-cell;
+    	//align-self: stretch;
+    	
+    	margin: 0.5rem 0;
+    	
+    	font-size: font-rems(4);
+    	font-family: 'Pacifico', fantasy;
+    	letter-spacing: 0;
+    }
+    .message__secondaryrow {
+    	display: table-cell;
+    	//align-self: flex-start;
+    	
+    	color: $color-font-lighter;
+    	letter-spacing: -0.035em;
+    }
+    a.message__backlink {
+    	display: table-cell;
+    	//align-self: flex-end;
+    	
+    	color: $color-font-lighter;
+    	letter-spacing: -0.035em;
+    	
+    	text-decoration: underline;
+    	text-decoration-color: lighten($color-font-lighter, 20);
+    }
+    */ }
+    div.messagecontainer .message .message__row {
+      display: inline-block;
+      white-space: nowrap;
       letter-spacing: -0.035em; }
-    div.messagecontainer .message a.message__backlink {
-      align-self: flex-end;
-      color: #adb2b8;
-      letter-spacing: -0.035em;
-      text-decoration: underline;
-      text-decoration-color: #e4e5e7; }
+      div.messagecontainer .message .message__row--first {
+        text-align: left;
+        color: #adb2b8; }
+      div.messagecontainer .message .message__row--second {
+        text-align: center;
+        margin: 0.5rem 0;
+        font-size: 4.2rem;
+        font-family: 'Pacifico', fantasy;
+        letter-spacing: 0; }
+      div.messagecontainer .message .message__row--third {
+        text-align: right; }
+        div.messagecontainer .message .message__row--third a {
+          color: #adb2b8;
+          text-decoration: underline;
+          text-decoration-color: #e4e5e7; }

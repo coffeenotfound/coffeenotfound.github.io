@@ -18,32 +18,28 @@
 <body>
 	<nav class="nav">
 	<div class="wrap">
-		<a class="nav__item  nav__item--home" href="/blog/">Home</a>
-		<a class="nav__item" href="/blog/">Blog</a>
-		<a class="nav__item" href="/projects/">Projects</a>
-		<a class="nav__item" href="/about/">About</a>
+		<div class="nav__item-container"><a class="nav__item  nav__item--home" href="/blog/">Home</a></div>
+		<div class="nav__item-container"><a class="nav__item" href="/blog/">Blog</a></div>
+		<div class="nav__item-container"><a class="nav__item" href="/projects/">Projects</a></div>
+		<div class="nav__item-container"><a class="nav__item" href="/about/">About</a></div>
 	</div>
 </nav>
 
 	
+	<header class="welcometext">
+	<div class="wrap">
+		<div class="welcometext__container">
+			<h1><a href="https://bitangent.net/">
+				<span class="welcometext-url__protocol">https:</span><span class="welcometext-url__delimiter">//</span><span class="welcometext-url__domain">bitangent.net</span><span class="welcometext-url__delimiter">/</span>
+			</a></h1>
+			<h2 class="welcometext__tagline">Like baking just completely different.</h2>
+			<!-- "Picking Jazz and baking cakes." -->
+		</div>
+	</div>
+</header>
+	
 	<main>
 		<div class="wrap site-padding">
-			<section class="welcometext">
-				<div>
-					<h1><a href="https://bitangent.net/">
-						<span class="welcometext-url__protocol">https:</span><span class="welcometext-url__delimiter">//</span><span class="welcometext-url__domain">bitangent.net</span><span class="welcometext-url__delimiter">/</span>
-					</a></h1>
-					<p class="welcometext__tagline">Like baking just completely different.</p>
-				</div>
-				<!--<h2 id="hello-there">Hello, there!</h2>
-
-<p>This is my site. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod
-tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et
-justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor
-sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor
-invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.</p>-->
-			</section>
-			
 			<section class="postlist">
 				
 				<article class="postlistentry">
@@ -168,19 +164,9 @@ First impressions can deceive though, because it’s actually quite easy!</p>
 	
 	<footer class="footer">
 	<div class="wrap">
-		<!--
-		<div class="footer__branding-container">
-			<div>
-				<span>Built by <a href="/about">Jan Katzer.</a></span>
-			</div>
-			<div>
-				<span>Powered by <a href="https://pages.github.com">GitHub Pages.</a></span>
-			</div>
-		</div>
-		-->
 		<div class="footer__column-container">
 			<div class="footer__column  footer__column--branding">
-				<div><span>Built by <a href="/about">Jan Katzer</a></span></div>
+				<div><span>Built by <a href="/about/">Jan Katzer</a></span></div>
 				<div><span>Powered by <a href="https://pages.github.com">GitHub Pages</a></span></div>
 			</div>
 			<div class="footer__column  footer__column--links">

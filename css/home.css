@@ -5,19 +5,13 @@ html {
   min-height: 720px;
   line-height: 1.5;
   font-size: 1rem;
-  overflow: auto;
-  /*
-  // anti scrollbar layout nudge trick (https://aykevl.nl/2014/09/fix-jumping-scrollbar)
-  @media screen and (min-width: $wrap-width-default + (2 * $wrap-sidemargin-default)) {
-  	min-width: 100vw;
-  	//overflow-x: hidden;
-  }
-  */ }
+  overflow: auto; }
 
 body {
   position: relative;
   /* needed for height 100% to work properly */
-  min-width: 100%;
+  min-width: 760px;
+  width: 100%;
   min-height: 100%;
   margin: 0;
   overflow: visible;
@@ -40,9 +34,8 @@ main > wrap {
 }
 */
 .wrap {
-  width: 760px;
+  width: 720px;
   height: 100%;
-  padding: 0 20px;
   margin: 0 auto;
   box-sizing: border-box; }
 
@@ -78,7 +71,6 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 2.5rem;
   margin-bottom: 1rem;
   font-family: 'Work Sans', sans-serif;
-  letter-spacing: -0.4px;
   color: #515a61; }
 
 p, figure {
@@ -112,15 +104,22 @@ table {
 /** common navbar */
 .nav {
   height: 4rem;
-  width: 100%;
   font-family: 'Roboto', sans-serif;
   letter-spacing: 0; }
   .nav .wrap {
-    display: flex;
-    flex-flow: row nowrap;
-    align-items: center;
-    padding: 0 1.75rem;
-    box-sizing: border-box; }
+    display: table; }
+  .nav .nav__item-container {
+    display: table-cell;
+    vertical-align: middle;
+    white-space: nowrap; }
+    .nav .nav__item-container:first-child {
+      width: 99%; }
+    .nav .nav__item-container > * {
+      vertical-align: initial; }
+    .nav .nav__item-container:first-of-type .nav__item {
+      margin-left: 1rem; }
+    .nav .nav__item-container:last-of-type .nav__item {
+      margin-right: 0.5rem; }
   .nav .nav__item {
     margin: 0 0.1rem;
     padding: 0.3rem 0.5rem;
@@ -128,15 +127,15 @@ table {
     font-weight: 500;
     text-decoration: none; }
   .nav .nav__item--home {
-    margin: 0 0.6rem;
-    padding: 0;
     display: inline-block;
     position: relative;
-    content: "";
-    margin-right: auto;
-    width: 2rem;
-    height: 2rem;
+    margin: 0 0.6rem;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    vertical-align: middle;
     font-size: 0;
+    user-select: none;
     background: currentColor;
     border-radius: 50%; }
 
@@ -150,21 +149,7 @@ table {
   bottom: 0;
   left: 0;
   right: 0;
-  font-size: 1.05rem;
-  /*
-  .footer__branding-container {
-  	display: flex;
-  	width: 100%;
-  	
-  	flex-flow: row nowrap;
-  	align-items: center;
-  	justify-content: space-around;
-  	
-  	div {
-  		display: inline;
-  	}
-  }
-  */ }
+  font-size: 1.05rem; }
   .footer .footer__column-container {
     display: flex;
     flex-flow: row nowrap;
@@ -179,14 +164,22 @@ table {
     color: #adb2b8; }
   .footer .footer__column--branding a {
     color: #656d77;
-    font-weight: bold; }
+    font-weight: bold;
+    transition: color 0.05s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* easeOutQuart */ }
+    .footer .footer__column--branding a:hover {
+      color: #8e969f; }
   .footer .footer__column--links h2 {
     margin: 0;
     margin-bottom: 0.1rem;
     color: #656d77;
     font-size: 1.05rem; }
   .footer .footer__item a {
-    color: #adb2b8; }
+    color: #adb2b8;
+    transition: color 0.05s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* easeOutQuart */ }
+    .footer .footer__item a:hover {
+      color: #818992; }
 
 /** Inline code highlighter */
 code.highlighter-rouge {
@@ -219,18 +212,25 @@ figure.highlight, div.highlighter-rouge {
   color: #515a61; }
   .nav .nav__item {
     color: inherit;
-    transition: color 0.1s cubic-bezier(0.19, 1, 0.22, 1);
-    /* easeOutExpo */ }
+    transition: color 0.05s cubic-bezier(0.165, 0.84, 0.44, 1);
+    /* easeOutQuart */ }
     .nav .nav__item:hover {
       color: #77838d; }
 
 .welcometext {
+  height: 26rem;
   margin: 0;
-  margin-top: 8rem;
-  margin-bottom: 10rem;
-  overflow: auto; }
+  line-height: 1.1;
+  overflow: visible; }
+  .welcometext .wrap {
+    display: table; }
+  .welcometext div.welcometext__container {
+    display: table-cell;
+    vertical-align: middle;
+    padding-bottom: 1rem; }
   .welcometext h1 {
     margin: 0;
+    margin-bottom: 0.5rem;
     font-size: 3.15rem;
     color: #adb2b8; }
     .welcometext h1 a {
@@ -241,10 +241,12 @@ figure.highlight, div.highlighter-rouge {
       color: #515a61; }
     .welcometext h1 span.welcometext-url__delimiter {
       color: inherit; }
-  .welcometext p.welcometext__tagline {
+  .welcometext h2.welcometext__tagline {
     margin: 0;
     color: #adb2b8;
-    font-size: 1.155rem; }
+    font-size: 1.155rem;
+    font-weight: inherit;
+    letter-spacing: inherit; }
 
 hr {
   margin: 2rem;
@@ -254,7 +256,7 @@ hr {
   border-top: 1px solid #adb2b8; }
 
 .postlist {
-  margin-bottom: 6rem; }
+  margin-bottom: 8rem; }
 
 article.postlistentry {
   margin-bottom: 4rem; }
@@ -277,5 +279,8 @@ article.postlistentry {
       border-radius: 50%; }
   article.postlistentry main :first-child {
     margin-top: 0; }
+  article.postlistentry main p {
+    margin-top: 0; }
   article.postlistentry main h1, article.postlistentry main h2, article.postlistentry main h3, article.postlistentry main h4, article.postlistentry main h5, article.postlistentry main h6 {
-    font-size: 1.26rem; }
+    font-size: 1.155rem;
+    margin: 0; }

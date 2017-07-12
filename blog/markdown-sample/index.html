@@ -37,20 +37,22 @@
 <body>
 	<nav class="nav">
 	<div class="wrap">
-		<a class="nav__item  nav__item--home" href="/blog/">Home</a>
-		<a class="nav__item" href="/blog/">Blog</a>
-		<a class="nav__item" href="/projects/">Projects</a>
-		<a class="nav__item" href="/about/">About</a>
+		<div class="nav__item-container"><a class="nav__item  nav__item--home" href="/blog/">Home</a></div>
+		<div class="nav__item-container"><a class="nav__item" href="/blog/">Blog</a></div>
+		<div class="nav__item-container"><a class="nav__item" href="/projects/">Projects</a></div>
+		<div class="nav__item-container"><a class="nav__item" href="/about/">About</a></div>
 	</div>
 </nav>
 
 	
 	<header class="postheader">
 		<div class="wrap site-padding">
-			<h1 class="postheader__title">Markdown Sample</h1>
-			<span class="postheader__details">
-				<time datetime="2017-05-26T00:00:00+02:00">Friday, 26. May 2017</time><span>·</span><a href="/about/">Jan Katzer</a>
-			</span>
+			<div class="posttitle">
+				<h1 class="posttitle__title">Markdown Sample</h1>
+				<span class="posttitle__details">
+					<time datetime="2017-05-26T00:00:00+02:00">Friday, 26. May 2017</time><span>·</span><a href="http://www.unexpected-vortices.com/sw/rippledoc/quick-markdown-example.html">www.unexpected-vortices.com</a>
+				</span>
+			<div>
 		</div>
 	</header>
 	
@@ -299,19 +301,9 @@ which you wish to be displayed literally, ex.: `foo`, *bar*, etc.</p>
 	
 	<footer class="footer">
 	<div class="wrap">
-		<!--
-		<div class="footer__branding-container">
-			<div>
-				<span>Built by <a href="/about">Jan Katzer.</a></span>
-			</div>
-			<div>
-				<span>Powered by <a href="https://pages.github.com">GitHub Pages.</a></span>
-			</div>
-		</div>
-		-->
 		<div class="footer__column-container">
 			<div class="footer__column  footer__column--branding">
-				<div><span>Built by <a href="/about">Jan Katzer</a></span></div>
+				<div><span>Built by <a href="/about/">Jan Katzer</a></span></div>
 				<div><span>Powered by <a href="https://pages.github.com">GitHub Pages</a></span></div>
 			</div>
 			<div class="footer__column  footer__column--links">
