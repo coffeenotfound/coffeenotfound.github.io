@@ -160,7 +160,7 @@ table {
   .footer .footer__column {
     height: 100%; }
   .footer .footer__column--branding div {
-    margin-bottom: 0.2rem;
+    margin-bottom: 0.1rem;
     color: #adb2b8; }
   .footer .footer__column--branding a {
     color: #656d77;
@@ -269,7 +269,8 @@ article.projectlistentry {
     width: auto;
     vertical-align: top;
     border-radius: 1px;
-    box-shadow: 0px 1px 6px -1px rgba(0, 0, 0, 0.2); }
+    box-shadow: 0px 1px 6px -1px rgba(0, 0, 0, 0.2);
+    image-rendering: pixelated; }
   article.projectlistentry main {
     display: table-cell;
     height: 100%;
