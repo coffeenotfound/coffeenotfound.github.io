@@ -1,5 +1,1077 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-07-14T16:46:43+02:00</updated><id>/</id><title type="html">My Awesome Blog</title><subtitle>My personal blog/random stuff website. Blog posts optional.
-</subtitle><entry><title type="html">Building GitHub Pages with Jekyll Plugins</title><link href="/blog/building-github-pages-with-jekyll-plugins/" rel="alternate" type="text/html" title="Building GitHub Pages with Jekyll Plugins" /><published>2017-07-09T00:00:00+02:00</published><updated>2017-07-09T00:00:00+02:00</updated><id>/blog/building-github-pages-with-jekyll-plugins</id><content type="html" xml:base="/blog/building-github-pages-with-jekyll-plugins/">&lt;p&gt;As &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; does not allow custom Jekyll
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.4.3">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2017-08-26T20:48:39+02:00</updated><id>/</id><title type="html">My Awesome Blog</title><subtitle>My personal blog/random stuff website. Blog posts optional.
+</subtitle><entry><title type="html">The Lang to End all Langs</title><link href="/blog/language/" rel="alternate" type="text/html" title="The Lang to End all Langs" /><published>2017-07-26T00:00:00+02:00</published><updated>2017-07-26T00:00:00+02:00</updated><id>/blog/language</id><content type="html" xml:base="/blog/language/">&lt;p&gt;The Lanugage&lt;/p&gt;
+
+&lt;h2 id=&quot;general-goals&quot;&gt;General Goals&lt;/h2&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Incremental building by default&lt;/li&gt;
+  &lt;li&gt;Hotcode Replace&lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Proper debugging with all advantages of Java&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;No preprocessor directives -&amp;gt; Instead better generic type system etc&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;First Class Methods (via reference), Types (without &lt;code class=&quot;highlighter-rouge&quot;&gt;Class&lt;/code&gt; object), etc&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Better Type Information -&amp;gt; Fused VTable and Type Info Struct&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;definition-glossar&quot;&gt;Definition Glossar&lt;/h2&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Term&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Expression&lt;/td&gt;
+      &lt;td&gt;Expressions are sequences that only contain identifiers, literals, operators and method calls and that can be evaluated to a value of any type, except &lt;code class=&quot;highlighter-rouge&quot;&gt;void&lt;/code&gt; in which case the expression is still valid but does not evaluate to any value.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Statement&lt;/td&gt;
+      &lt;td&gt;Statements are fragments of code that can not be evaluated to any value and form a complete unit of execution. Some specific expressions can also form statements on their own (e.g.: &lt;code class=&quot;highlighter-rouge&quot;&gt;a++&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;foo()&lt;/code&gt;). Examples: &lt;code class=&quot;highlighter-rouge&quot;&gt;int a = 0&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;foo()&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;return 5&lt;/code&gt;.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type&lt;/td&gt;
+      &lt;td&gt;Supercategory of all Types: Classes, Primitive Data Types and Compound Data Types, Enums, &lt;strong&gt;[NOTE: expand this]&lt;/strong&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Type Specifier&lt;/td&gt;
+      &lt;td&gt;A Type Specifier declares the exact type a variable can store for example. Examples: &lt;code class=&quot;highlighter-rouge&quot;&gt;int&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable Object&amp;amp;&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;table-of-contents&quot;&gt;Table of Contents&lt;/h2&gt;
+&lt;ol&gt;
+  &lt;li&gt;Fundamental Language Constructs
+ 1.1 Literals
+     1.1.1 Integer Literal
+     1.1.2 Floating Point Literal
+     1.1.3 Boolean Literal
+     1.1.4 Char Literal
+     1.1.5 String Literal
+ 1.2 Operators
+ 1.3 Pointers
+ 1.4 References
+ 1.5 Functions
+ 1.6 Variables
+     1.6.1 Assignment of Variables&lt;/li&gt;
+  &lt;li&gt;Types
+ 2.1 Type Specifiers
+ 2.2 Primitive Types
+ 2.3 Primitive Data Types
+     2.3.1 Primitive Type Conversions
+         2.3.1.1 Implicit Conversions
+ 2.4 Classes
+ 2.5 Enums
+ 2.6 References
+ 2.7 Pointers&lt;/li&gt;
+  &lt;li&gt;Visibility Modifier
+ 3.1 Visibility Modifier in Class Declarations
+ 3.2 Visibility Modifier in Class Member Declarations&lt;/li&gt;
+  &lt;li&gt;Mutability Modifier (Immutability)
+ 4.1 Mutability Modifier in Type Specifiers
+     4.1.1 automutable Mutability Modifier in Member Variable Declarations
+ 4.2 Mutability Modifier in Member Variable Declarations
+ 4.3 Mutability Modifier in Member Function Declarations&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&amp;lt;/ol&amp;gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;1-fundamental-language-constructs&quot;&gt;1. Fundamental Language Constructs&lt;/h2&gt;
+
+&lt;h3 id=&quot;11-literals&quot;&gt;1.1 Literals&lt;/h3&gt;
+&lt;p&gt;Literals are constant values directly declared in the source code.
+There are the following types of literals: Integer Literals, Floating Point Literals, Boolean Literals, Char Literals, String Literals.&lt;/p&gt;
+
+&lt;h4 id=&quot;111-integer-literal&quot;&gt;1.1.1 Integer Literal&lt;/h4&gt;
+&lt;p&gt;Integer literals can be declared in a number of ways.
+A Decimal Integer Literal can either be in the form of &lt;code class=&quot;highlighter-rouge&quot;&gt;DecimalIntegerLiteral = ['+' | '-'], ['0d'], Digit, {Digit}, ['i' | 'I' | 'l' | 'L'];&lt;/code&gt; or
+&lt;code class=&quot;highlighter-rouge&quot;&gt;DecimalIntegerLiteral = ['+' | '-'], Digit, {Digit}, ['e' | 'E'], ['+' | '-'], Digit, {Digit}, ['i' | 'I' | 'l' | 'L'];&lt;/code&gt;, the latter specifying a Scientific Notation Integer Literal, where
+the number after the ‘E’ is the exponent to the power of 10 the number infront of the E is multiplied by with the result then being truncated to a whole number.&lt;/p&gt;
+
+&lt;h4 id=&quot;112-floating-point-literal&quot;&gt;1.1.2 Floating Point Literal&lt;/h4&gt;
+
+&lt;h4 id=&quot;113-boolean-literal&quot;&gt;1.1.3 Boolean Literal&lt;/h4&gt;
+
+&lt;h4 id=&quot;114-char-literal&quot;&gt;1.1.4 Char Literal&lt;/h4&gt;
+
+&lt;h4 id=&quot;115-string-literal&quot;&gt;1.1.5 String Literal&lt;/h4&gt;
+
+&lt;h3 id=&quot;12-operators&quot;&gt;1.2 Operators&lt;/h3&gt;
+&lt;p&gt;Following is a list of all operators:&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Operator&lt;/th&gt;
+      &lt;th&gt;Name&lt;/th&gt;
+      &lt;th&gt;Category&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Precedence&lt;/th&gt;
+      &lt;th&gt;Associativity&lt;/th&gt;
+      &lt;th&gt;Example&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;()&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Method call&lt;/td&gt;
+      &lt;td&gt;Special&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x[y]&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[]&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Array subscript&lt;/td&gt;
+      &lt;td&gt;Special&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x(y)&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;()&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Parentheses&lt;/td&gt;
+      &lt;td&gt;Special&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(x)&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;.&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Member selection&lt;/td&gt;
+      &lt;td&gt;Special&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;15&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x.y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;++&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unary post-increment&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x++&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unary post-decrement&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;14&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x--&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;++&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unary pre-increment&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;++x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unary pre-decrement&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;--x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unary identity&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unary inverse&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unary logical negation&lt;/td&gt;
+      &lt;td&gt;Logical&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;~&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Unary bitwise negation&lt;/td&gt;
+      &lt;td&gt;Bitwise&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;~x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(type)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Dynamic type cast&lt;/td&gt;
+      &lt;td&gt;Special&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(type)x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;type&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Static type cast&lt;/td&gt;
+      &lt;td&gt;Special&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;13&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;type&amp;gt;x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Multiplication&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x * y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Division&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x / y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;%&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Modulus&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;12&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x % y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Addition&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x + y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Subtraction&lt;/td&gt;
+      &lt;td&gt;Arithmetic&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;11&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x - x&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Left shift&lt;/td&gt;
+      &lt;td&gt;Bitwise&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x &amp;lt;&amp;lt; y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Right shift&lt;/td&gt;
+      &lt;td&gt;Bitwise&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;10&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x &amp;gt;&amp;gt; y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Less than&lt;/td&gt;
+      &lt;td&gt;Relational&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x &amp;lt; y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Greater than&lt;/td&gt;
+      &lt;td&gt;Relational&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x &amp;gt; y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;lt;=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Less than or equal&lt;/td&gt;
+      &lt;td&gt;Relational&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x &amp;lt;= y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;gt;=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Greater than or equal&lt;/td&gt;
+      &lt;td&gt;Relational&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;9&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x &amp;gt;= y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;==&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Equal to&lt;/td&gt;
+      &lt;td&gt;Relational&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x == y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;!=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Not equal to&lt;/td&gt;
+      &lt;td&gt;Relational&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x != y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Bitwise AND&lt;/td&gt;
+      &lt;td&gt;Bitwise&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;7&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x &amp;amp; y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;^&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Bitwise XOR&lt;/td&gt;
+      &lt;td&gt;Bitwise&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;6&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x ^ y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Bitwise OR&lt;/td&gt;
+      &lt;td&gt;Bitwise&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;5&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x | y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&amp;amp;&amp;amp;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Logical AND&lt;/td&gt;
+      &lt;td&gt;Logical&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;4&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x &amp;amp;&amp;amp; y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;||&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Logical OR&lt;/td&gt;
+      &lt;td&gt;Logical&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;3&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x || y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;? :&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Ternary conditional&lt;/td&gt;
+      &lt;td&gt;Special&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;2&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x ? y : z&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;,&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Sequence delimiter&lt;/td&gt;
+      &lt;td&gt;Special&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td&gt;Left to Right&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x, y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Assignment&lt;/td&gt;
+      &lt;td&gt;Assignment&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x = y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;+=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Addition assignment&lt;/td&gt;
+      &lt;td&gt;Arithmetic Assignment&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x += y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Subtraction assignment&lt;/td&gt;
+      &lt;td&gt;Arithmetic Assignment&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x -= y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Multiplication assignment&lt;/td&gt;
+      &lt;td&gt;Arithmetic Assignment&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x *= y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;/=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Division assignment&lt;/td&gt;
+      &lt;td&gt;Arithmetic Assignment&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;1&lt;/td&gt;
+      &lt;td&gt;Right to Left&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;x /= y&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;11-pointers&quot;&gt;1.1 Pointers&lt;/h3&gt;
+
+&lt;h3 id=&quot;12-references&quot;&gt;1.2 References&lt;/h3&gt;
+
+&lt;h3 id=&quot;13-functions&quot;&gt;1.3 Functions&lt;/h3&gt;
+
+&lt;h3 id=&quot;14-variables&quot;&gt;1.4 Variables&lt;/h3&gt;
+
+&lt;h4 id=&quot;141-assignment-of-variables&quot;&gt;1.4.1 Assignment of Variables&lt;/h4&gt;
+&lt;p&gt;[DRAFT: a variable can only be assigned if both immutability modifer and constness modifier do not restrict the operation]&lt;/p&gt;
+
+&lt;h2 id=&quot;12312-memory-allocation&quot;&gt;12312 Memory Allocation&lt;/h2&gt;
+&lt;p&gt;List&lt;String&gt; list = new ConcreteList&lt;String&gt;();
+delete (ConcreteList)list(true);&lt;/String&gt;&lt;/String&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;2-types&quot;&gt;2. Types&lt;/h2&gt;
+&lt;p&gt;[DRAFT: types are Primitive Types, classes, enums, void, references, pointers]&lt;/p&gt;
+
+&lt;h3 id=&quot;21-type-specifiers&quot;&gt;2.1 Type Specifiers&lt;/h3&gt;
+
+&lt;h3 id=&quot;22-primitive-types&quot;&gt;2.2 Primitive Types&lt;/h3&gt;
+
+&lt;h3 id=&quot;23-primitive-data-types&quot;&gt;2.3 Primitive Data Types&lt;/h3&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Name&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Size&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Type&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Implicit Alias&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Byte&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Unsigned Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UInt8&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Short&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Signed Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Int16&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Char&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Unsigned Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UInt16&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Int&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;32&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Signed Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Int32&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Long&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;64&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Signed Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Int64&lt;/code&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Float&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;32&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Floating Point&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Double&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;64&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Floating Point&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Int8&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Signed Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Int16&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Signed Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Int32&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;32&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Signed Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Int64&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;64&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Signed Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UInt8&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;8&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Unsigned Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UInt16&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;16&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Unsigned Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UInt32&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;32&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Unsigned Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;UInt64&lt;/code&gt;&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;64&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Unsigned Integer&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;-&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h4 id=&quot;231-primitive-type-conversions&quot;&gt;2.3.1 Primitive Type Conversions&lt;/h4&gt;
+&lt;p&gt;[DRAFT: boolean data type can be converted to an interger data type (false = 0; true = 1;) and vice-versa]&lt;/p&gt;
+
+&lt;h5 id=&quot;2311-implicit-conversions&quot;&gt;2.3.1.1 Implicit Conversions&lt;/h5&gt;
+
+&lt;h3 id=&quot;24-classes&quot;&gt;2.4 Classes&lt;/h3&gt;
+
+&lt;h3 id=&quot;25-enums&quot;&gt;2.5 Enums&lt;/h3&gt;
+
+&lt;h3 id=&quot;26-references&quot;&gt;2.6 References&lt;/h3&gt;
+&lt;p&gt;[DRAFT: References cannot be used in any operation]&lt;/p&gt;
+
+&lt;h3 id=&quot;27-pointers&quot;&gt;2.7 Pointers&lt;/h3&gt;
+&lt;p&gt;[DRAFT: all arithmetic and relational operations can be used with pointers.
+Pointers cannot be cast (explicitely nor implicitely) to any other data type]&lt;/p&gt;
+
+&lt;h2 id=&quot;3-visibility-modifier&quot;&gt;3. Visibility Modifier&lt;/h2&gt;
+&lt;p&gt;Visibility Modifiers are used to restrict the visibility of certain entities.
+Generally there are the following Visibility Modifiers: &lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;protected&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;private&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Visibility Modifiers can only be used in Class Declarations and Class Member Declarations.&lt;/p&gt;
+
+&lt;p&gt;If an entity is determined to be Not Visible, it may not be accessed or even referenced in any way.
+The general visibility rules described by the following table.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Visibility Modifier&lt;/th&gt;
+      &lt;th&gt;Containing Type&lt;/th&gt;
+      &lt;th&gt;Same or Sub-Package&lt;/th&gt;
+      &lt;th&gt;World&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Visible&lt;/td&gt;
+      &lt;td&gt;Visible&lt;/td&gt;
+      &lt;td&gt;Visible&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;protected&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Visible&lt;/td&gt;
+      &lt;td&gt;Visible&lt;/td&gt;
+      &lt;td&gt;Not Visible&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;private&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Visible&lt;/td&gt;
+      &lt;td&gt;Not Visible&lt;/td&gt;
+      &lt;td&gt;Not Visible&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&quot;31-visibility-modifier-in-class-declarations&quot;&gt;3.1 Visibility Modifier in Class Declarations&lt;/h3&gt;
+&lt;p&gt;The Visibility Modifier of a Class Declaration declares the visibility of the whole Class.
+The Visibility Modifier of a Class must be &lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt;. If no Visibility Modifier is explicitely defined,
+&lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt; is automatically implied.&lt;/p&gt;
+
+&lt;p&gt;In a Class Declaration, the Visibility Modifier is the first token followed by the Class Identifier.&lt;/p&gt;
+
+&lt;h3 id=&quot;32-visibility-modifier-in-class-member-declarations&quot;&gt;3.2 Visibility Modifier in Class Member Declarations&lt;/h3&gt;
+&lt;p&gt;In Class Member Declarations, the Visibility Modifier defines the visibility of the Member.
+The general visibility rules apply.&lt;/p&gt;
+
+&lt;p&gt;If no Visibility Modifier is explicitely defined, &lt;code class=&quot;highlighter-rouge&quot;&gt;public&lt;/code&gt; is automatically implied.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/* Example of Visibility Modifier in Class Member Declarations */
+
+class Object {
+	int i; // implicitely public
+	public int j; // public
+	private int k; // private
+}
+
+i = 2; // allowed
+j = 3; // allowed
+k = 4; // not allowed
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;4-mutability-modifier-immutability&quot;&gt;4. Mutability Modifier (Immutability)&lt;/h2&gt;
+&lt;p&gt;Mutability Modifiers are used to restrict access to certain Members for certain target objects.
+There are two Mutability Modifiers: &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;mutable&lt;/code&gt;.
+Mutability modifiers can be used in a few places: As part of type specifiers, member variable declarations and member function
+declarations.&lt;/p&gt;
+
+&lt;p&gt;Examples:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/* Example of Mutability Modifiers */
+
+class Object {
+	private int foo;
+	public String&amp;amp; mutable bar;
+	public
+	
+	void setFoo(int foo) {
+		this.foo = foo;
+	}
+	
+	int getFoo() mutable {
+		this.foo = foo;
+	}
+}
+
+immutable Object&amp;amp; obj = new Object();
+obj.getFoo(); // allowed
+obj.setFoo(0); // not allowed
+obj.bar = &quot;hello world&quot;; // allowed
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;41-mutability-modifier-in-type-specifiers&quot;&gt;4.1 Mutability Modifier in Type Specifiers&lt;/h3&gt;
+&lt;p&gt;In Type Specifiers the Mutability Modifier indicates how Members (of both Classes and Compound Data Types) of the target object
+can be accessed. Member Variables can not be assigned and Member Functions can not be invoked when the Mutability Modifier of the Type Specifier
+of the target object is more restrictive than that of the target Member (the to-be-assigned field or the to-be-invoked function).
+For all Primitive Types (Data and Non-Data), the Mutability Modifier has no effect.&lt;/p&gt;
+
+&lt;p&gt;In Type Specifiers, &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable&lt;/code&gt; represents the most restrictive form of Mutability Modifier while &lt;code class=&quot;highlighter-rouge&quot;&gt;mutable&lt;/code&gt; represents the least restrictive form.&lt;/p&gt;
+
+&lt;p&gt;In a Type Specifier the Mutability Modifier preceeds the Type Name.
+When no Mutability Modifier is present in a Type Specifier, &lt;code class=&quot;highlighter-rouge&quot;&gt;mutable&lt;/code&gt; is automatically implied.&lt;/p&gt;
+
+&lt;h4 id=&quot;411-automutable-mutability-modifier-in-member-variable-declarations&quot;&gt;4.1.1 automutable Mutability Modifier in Member Variable Declarations&lt;/h4&gt;
+&lt;p&gt;In Member Variable Declarations, the Type Specifier [only the root specifier] of that Member may use the special Mutability Modifier &lt;code class=&quot;highlighter-rouge&quot;&gt;automutable&lt;/code&gt;
+instead of the usual ones. &lt;code class=&quot;highlighter-rouge&quot;&gt;automutable&lt;/code&gt; is not a real Mutability Modifier and thus cannot be part of any Type Specifier except as mentioned.
+When used in Type Specifiers of Member Variables, the accessed Member Variable will implicitly assume the same Mutability Modifier
+as that of the Type Specifier of the target object used to access the member.&lt;/p&gt;
+
+&lt;h3 id=&quot;42-mutability-modifier-in-member-variable-declarations&quot;&gt;4.2 Mutability Modifier in Member Variable Declarations&lt;/h3&gt;
+&lt;p&gt;As part of Member Variable Declarations the Mutability Modifier declares if the target Member can be assigned.
+Non-Static Member Variables can not be assigned when the Mutability Modifier of the Type Specifier of the target object
+is more restrictive as that of the target Member.&lt;/p&gt;
+
+&lt;p&gt;In Member Variable Declarations, &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable&lt;/code&gt; represents the most restrictive form of Mutability Modifier while &lt;code class=&quot;highlighter-rouge&quot;&gt;mutable&lt;/code&gt; represents the least restrictive form.&lt;/p&gt;
+
+&lt;p&gt;In a Member Variable Declaration the Mutability Modifier follows the Type Specifier of the Variable but preceeds the Member Identifier.
+When no Mutability Modifier is present in a Member Variable Declaration, &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable&lt;/code&gt; is automatically implied.&lt;/p&gt;
+
+&lt;p&gt;In Member Variable Declarations of Static Member Variables, the Mutability Modifier has no effect.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/* Example of Mutability Modifier in Member Variable Declarations */
+class Object {
+	Object&amp;amp; immutable foo;
+	immutable Object&amp;amp; immutable foo2;
+	int bar;
+	int mutable bar2;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;
+&lt;b&gt;In Practice:&lt;/b&gt;
+Mutable members can always be assigned, immutable members can only be assigned over a mutable object or reference.
+Automutable members assume the same mutability modifier of the reference used to access the member.
+&lt;/em&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;43-mutability-modifier-in-member-function-declarations&quot;&gt;4.3 Mutability Modifier in Member Function Declarations&lt;/h3&gt;
+&lt;p&gt;As part of Member Function Declarations the Mutability Modifier declares if the target Member can be invoked.
+Non-Static Member Functions can not be invoked on target objects whose Mutability Modifier of their Type Specifier
+is more restrictive than that of the target Member Function.&lt;/p&gt;
+
+&lt;p&gt;In Member Function Declarations, &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable; &lt;/code&gt; represents the most restrictive form of Mutability Modifier while &lt;code class=&quot;highlighter-rouge&quot;&gt;mutable&lt;/code&gt; represents the least restrictive form.&lt;/p&gt;
+
+&lt;p&gt;In a Member Function Declaration the Mutability Modifier follows the Member Identifier but preceeds the Function Body.
+When no Mutability Modifier is present in a Member Function Declaration, &lt;code class=&quot;highlighter-rouge&quot;&gt;immutable&lt;/code&gt; is automatically implied.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;/* Example of Mutability Modifier in Member Function Declarations */
+
+class Object {
+	private int foo;
+	
+	void setFoo(int foo) {
+		this.foo = foo;
+	}
+	
+	int getFoo() mutable {
+		this.foo = foo;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;&lt;em&gt;
+&lt;b&gt;In Practice:&lt;/b&gt;
+Mutable member functions can always be invoked, immutable member functions can only be invoked over a mutable object or reference.
+&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Object {
+	int immutable i; // 'i' can only be assigned over mutable references.
+	int mutable j; // 'j' can be assigned over both mutable and immutable references.
+	
+	/** 'foo' can only be invoked over mutable references. */
+	void foo() immutable {
+		
+	}
+	
+	/** 'bar' can be invoked over both mutable and immutable references. */
+	void bar() immutable {
+		
+	}
+	
+	/** 'obj' is immutable so it can only be assigned over mutable references and is of type `(immutable Object&amp;amp;)` (an immutable reference to an `Object`). */
+	immutable Object&amp;amp; immutable obj;
+	
+	/** 'foobar' is immutable by default (as it has no mutability specifier) and is of type `automutable Object&amp;amp;` */
+	automutable Object&amp;amp; foobar;
+}
+
+class Transform {
+	automutable Vector3f immutable position;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Variables can be declared with a constness modifier.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;NOTE&lt;/strong&gt;: On non-reference variables are final and immutable identical? I think so&lt;/p&gt;
+
+&lt;h2 id=&quot;mutability-casts-and-implicit-conversions&quot;&gt;Mutability Casts and Implicit Conversions&lt;/h2&gt;
+
+&lt;h2 id=&quot;types&quot;&gt;Types&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;TypeOfExpression = Expression, (&quot;typeof&quot; | &quot;!typeof&quot;), (TypeIdentifier | VariableIdentifier) (* either *)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;standard-library-types&quot;&gt;Standard Library Types&lt;/h2&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;class Singleton&amp;lt;First&amp;gt; extends Tuple&amp;lt;First&amp;gt; {
+	public First first;
+	
+	public int&amp;amp; operator [] (Int index) {
+		checkIndex(index);
+		return &amp;amp;first;
+	}
+}
+
+class Pair&amp;lt;First, Second&amp;gt; extends Tuple&amp;lt;First, Second&amp;gt; {
+	
+}
+
+class Tuple&amp;lt;E...&amp;gt; {
+	public E... elements;
+	
+	public int size() {
+		return E.length;
+	}
+	
+	public int&amp;amp; operator [] (Int index) {
+		checkIndex(index);
+		return &amp;amp;first;
+	}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;return-statement&quot;&gt;Return Statement&lt;/h3&gt;
+&lt;p&gt;[DRAFT: Every function with non &lt;code class=&quot;highlighter-rouge&quot;&gt;void&lt;/code&gt; return type must have atleast one return statement in every possible control flow path]&lt;/p&gt;
+
+&lt;h2 id=&quot;primitive-types&quot;&gt;Primitive Types&lt;/h2&gt;
+&lt;p&gt;Following is a table with all primitive types.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;void&lt;/code&gt; is also a type that can be used in declarations. (&lt;code class=&quot;highlighter-rouge&quot;&gt;void a;&lt;/code&gt; is not particularly useful though)
+&lt;code class=&quot;highlighter-rouge&quot;&gt;void&lt;/code&gt; is &lt;em&gt;not&lt;/em&gt; a &lt;em&gt;data&lt;/em&gt; type so trying to use it in any operation will throw an error.&lt;/p&gt;</content><author><name>Jan Katzer</name></author><summary type="html">The Lanugage General Goals Incremental building by default Hotcode Replace Proper debugging with all advantages of Java No preprocessor directives -&amp;gt; Instead better generic type system etc First Class Methods (via reference), Types (without Class object), etc Better Type Information -&amp;gt; Fused VTable and Type Info Struct Definition Glossar Term Description Expression Expressions are sequences that only contain identifiers, literals, operators and method calls and that can be evaluated to a value of any type, except void in which case the expression is still valid but does not evaluate to any value. Statement Statements are fragments of code that can not be evaluated to any value and form a complete unit of execution. Some specific expressions can also form statements on their own (e.g.: a++, foo()). Examples: int a = 0, foo(), return 5. Type Supercategory of all Types: Classes, Primitive Data Types and Compound Data Types, Enums, [NOTE: expand this] Type Specifier A Type Specifier declares the exact type a variable can store for example. Examples: int, immutable Object&amp;amp; Table of Contents Fundamental Language Constructs 1.1 Literals 1.1.1 Integer Literal 1.1.2 Floating Point Literal 1.1.3 Boolean Literal 1.1.4 Char Literal 1.1.5 String Literal 1.2 Operators 1.3 Pointers 1.4 References 1.5 Functions 1.6 Variables 1.6.1 Assignment of Variables Types 2.1 Type Specifiers 2.2 Primitive Types 2.3 Primitive Data Types 2.3.1 Primitive Type Conversions 2.3.1.1 Implicit Conversions 2.4 Classes 2.5 Enums 2.6 References 2.7 Pointers Visibility Modifier 3.1 Visibility Modifier in Class Declarations 3.2 Visibility Modifier in Class Member Declarations Mutability Modifier (Immutability) 4.1 Mutability Modifier in Type Specifiers 4.1.1 automutable Mutability Modifier in Member Variable Declarations 4.2 Mutability Modifier in Member Variable Declarations 4.3 Mutability Modifier in Member Function Declarations &amp;lt;/ol&amp;gt; 1. Fundamental Language Constructs 1.1 Literals Literals are constant values directly declared in the source code. There are the following types of literals: Integer Literals, Floating Point Literals, Boolean Literals, Char Literals, String Literals. 1.1.1 Integer Literal Integer literals can be declared in a number of ways. A Decimal Integer Literal can either be in the form of DecimalIntegerLiteral = ['+' | '-'], ['0d'], Digit, {Digit}, ['i' | 'I' | 'l' | 'L']; or DecimalIntegerLiteral = ['+' | '-'], Digit, {Digit}, ['e' | 'E'], ['+' | '-'], Digit, {Digit}, ['i' | 'I' | 'l' | 'L'];, the latter specifying a Scientific Notation Integer Literal, where the number after the ‘E’ is the exponent to the power of 10 the number infront of the E is multiplied by with the result then being truncated to a whole number. 1.1.2 Floating Point Literal 1.1.3 Boolean Literal 1.1.4 Char Literal 1.1.5 String Literal 1.2 Operators Following is a list of all operators: Operator Name Category Precedence Associativity Example () Method call Special 16 Left to Right x[y] [] Array subscript Special 16 Left to Right x(y) () Parentheses Special 15 Left to Right (x) . Member selection Special 15 Left to Right x.y ++ Unary post-increment Arithmetic 14 Right to Left x++ -- Unary post-decrement Arithmetic 14 Right to Left x-- ++ Unary pre-increment Arithmetic 13 Right to Left ++x -- Unary pre-decrement Arithmetic 13 Right to Left --x + Unary identity Arithmetic 13 Right to Left +x - Unary inverse Arithmetic 13 Right to Left -x ! Unary logical negation Logical 13 Right to Left !x ~ Unary bitwise negation Bitwise 13 Right to Left ~x (type) Dynamic type cast Special 13 Right to Left (type)x &amp;lt;type&amp;gt; Static type cast Special 13 Right to Left &amp;lt;type&amp;gt;x * Multiplication Arithmetic 12 Left to Right x * y / Division Arithmetic 12 Left to Right x / y % Modulus Arithmetic 12 Left to Right x % y + Addition Arithmetic 11 Left to Right x + y - Subtraction Arithmetic 11 Left to Right x - x &amp;lt;&amp;lt; Left shift Bitwise 10 Left to Right x &amp;lt;&amp;lt; y &amp;gt;&amp;gt; Right shift Bitwise 10 Left to Right x &amp;gt;&amp;gt; y &amp;lt; Less than Relational 9 Left to Right x &amp;lt; y &amp;gt; Greater than Relational 9 Left to Right x &amp;gt; y &amp;lt;= Less than or equal Relational 9 Left to Right x &amp;lt;= y &amp;gt;= Greater than or equal Relational 9 Left to Right x &amp;gt;= y == Equal to Relational 8 Left to Right x == y != Not equal to Relational 8 Left to Right x != y &amp;amp; Bitwise AND Bitwise 7 Left to Right x &amp;amp; y ^ Bitwise XOR Bitwise 6 Left to Right x ^ y | Bitwise OR Bitwise 5 Left to Right x | y &amp;amp;&amp;amp; Logical AND Logical 4 Left to Right x &amp;amp;&amp;amp; y || Logical OR Logical 3 Left to Right x || y ? : Ternary conditional Special 2 Right to Left x ? y : z , Sequence delimiter Special 1 Left to Right x, y = Assignment Assignment 1 Right to Left x = y += Addition assignment Arithmetic Assignment 1 Right to Left x += y -= Subtraction assignment Arithmetic Assignment 1 Right to Left x -= y *= Multiplication assignment Arithmetic Assignment 1 Right to Left x *= y /= Division assignment Arithmetic Assignment 1 Right to Left x /= y 1.1 Pointers 1.2 References 1.3 Functions 1.4 Variables 1.4.1 Assignment of Variables [DRAFT: a variable can only be assigned if both immutability modifer and constness modifier do not restrict the operation] 12312 Memory Allocation List list = new ConcreteList(); delete (ConcreteList)list(true); 2. Types [DRAFT: types are Primitive Types, classes, enums, void, references, pointers] 2.1 Type Specifiers 2.2 Primitive Types 2.3 Primitive Data Types Name Size Type Implicit Alias Byte 8 Unsigned Integer UInt8 Short 16 Signed Integer Int16 Char 16 Unsigned Integer UInt16 Int 32 Signed Integer Int32 Long 64 Signed Integer Int64 Float 32 Floating Point - Double 64 Floating Point - Int8 8 Signed Integer - Int16 16 Signed Integer - Int32 32 Signed Integer - Int64 64 Signed Integer - UInt8 8 Unsigned Integer - UInt16 16 Unsigned Integer - UInt32 32 Unsigned Integer - UInt64 64 Unsigned Integer - 2.3.1 Primitive Type Conversions [DRAFT: boolean data type can be converted to an interger data type (false = 0; true = 1;) and vice-versa] 2.3.1.1 Implicit Conversions 2.4 Classes 2.5 Enums 2.6 References [DRAFT: References cannot be used in any operation] 2.7 Pointers [DRAFT: all arithmetic and relational operations can be used with pointers. Pointers cannot be cast (explicitely nor implicitely) to any other data type] 3. Visibility Modifier Visibility Modifiers are used to restrict the visibility of certain entities. Generally there are the following Visibility Modifiers: public, protected and private. Visibility Modifiers can only be used in Class Declarations and Class Member Declarations. If an entity is determined to be Not Visible, it may not be accessed or even referenced in any way. The general visibility rules described by the following table. Visibility Modifier Containing Type Same or Sub-Package World public Visible Visible Visible protected Visible Visible Not Visible private Visible Not Visible Not Visible 3.1 Visibility Modifier in Class Declarations The Visibility Modifier of a Class Declaration declares the visibility of the whole Class. The Visibility Modifier of a Class must be public. If no Visibility Modifier is explicitely defined, public is automatically implied. In a Class Declaration, the Visibility Modifier is the first token followed by the Class Identifier. 3.2 Visibility Modifier in Class Member Declarations In Class Member Declarations, the Visibility Modifier defines the visibility of the Member. The general visibility rules apply. If no Visibility Modifier is explicitely defined, public is automatically implied. Example: /* Example of Visibility Modifier in Class Member Declarations */ class Object { int i; // implicitely public public int j; // public private int k; // private } i = 2; // allowed j = 3; // allowed k = 4; // not allowed 4. Mutability Modifier (Immutability) Mutability Modifiers are used to restrict access to certain Members for certain target objects. There are two Mutability Modifiers: immutable and mutable. Mutability modifiers can be used in a few places: As part of type specifiers, member variable declarations and member function declarations. Examples: /* Example of Mutability Modifiers */ class Object { private int foo; public String&amp;amp; mutable bar; public void setFoo(int foo) { this.foo = foo; } int getFoo() mutable { this.foo = foo; } } immutable Object&amp;amp; obj = new Object(); obj.getFoo(); // allowed obj.setFoo(0); // not allowed obj.bar = &quot;hello world&quot;; // allowed 4.1 Mutability Modifier in Type Specifiers In Type Specifiers the Mutability Modifier indicates how Members (of both Classes and Compound Data Types) of the target object can be accessed. Member Variables can not be assigned and Member Functions can not be invoked when the Mutability Modifier of the Type Specifier of the target object is more restrictive than that of the target Member (the to-be-assigned field or the to-be-invoked function). For all Primitive Types (Data and Non-Data), the Mutability Modifier has no effect. In Type Specifiers, immutable represents the most restrictive form of Mutability Modifier while mutable represents the least restrictive form. In a Type Specifier the Mutability Modifier preceeds the Type Name. When no Mutability Modifier is present in a Type Specifier, mutable is automatically implied. 4.1.1 automutable Mutability Modifier in Member Variable Declarations In Member Variable Declarations, the Type Specifier [only the root specifier] of that Member may use the special Mutability Modifier automutable instead of the usual ones. automutable is not a real Mutability Modifier and thus cannot be part of any Type Specifier except as mentioned. When used in Type Specifiers of Member Variables, the accessed Member Variable will implicitly assume the same Mutability Modifier as that of the Type Specifier of the target object used to access the member. 4.2 Mutability Modifier in Member Variable Declarations As part of Member Variable Declarations the Mutability Modifier declares if the target Member can be assigned. Non-Static Member Variables can not be assigned when the Mutability Modifier of the Type Specifier of the target object is more restrictive as that of the target Member. In Member Variable Declarations, immutable represents the most restrictive form of Mutability Modifier while mutable represents the least restrictive form. In a Member Variable Declaration the Mutability Modifier follows the Type Specifier of the Variable but preceeds the Member Identifier. When no Mutability Modifier is present in a Member Variable Declaration, immutable is automatically implied. In Member Variable Declarations of Static Member Variables, the Mutability Modifier has no effect. /* Example of Mutability Modifier in Member Variable Declarations */ class Object { Object&amp;amp; immutable foo; immutable Object&amp;amp; immutable foo2; int bar; int mutable bar2; } In Practice: Mutable members can always be assigned, immutable members can only be assigned over a mutable object or reference. Automutable members assume the same mutability modifier of the reference used to access the member. 4.3 Mutability Modifier in Member Function Declarations As part of Member Function Declarations the Mutability Modifier declares if the target Member can be invoked. Non-Static Member Functions can not be invoked on target objects whose Mutability Modifier of their Type Specifier is more restrictive than that of the target Member Function. In Member Function Declarations, immutable; represents the most restrictive form of Mutability Modifier while mutable represents the least restrictive form. In a Member Function Declaration the Mutability Modifier follows the Member Identifier but preceeds the Function Body. When no Mutability Modifier is present in a Member Function Declaration, immutable is automatically implied. /* Example of Mutability Modifier in Member Function Declarations */ class Object { private int foo; void setFoo(int foo) { this.foo = foo; } int getFoo() mutable { this.foo = foo; } } In Practice: Mutable member functions can always be invoked, immutable member functions can only be invoked over a mutable object or reference. Example: class Object { int immutable i; // 'i' can only be assigned over mutable references. int mutable j; // 'j' can be assigned over both mutable and immutable references. /** 'foo' can only be invoked over mutable references. */ void foo() immutable { } /** 'bar' can be invoked over both mutable and immutable references. */ void bar() immutable { } /** 'obj' is immutable so it can only be assigned over mutable references and is of type `(immutable Object&amp;amp;)` (an immutable reference to an `Object`). */ immutable Object&amp;amp; immutable obj; /** 'foobar' is immutable by default (as it has no mutability specifier) and is of type `automutable Object&amp;amp;` */ automutable Object&amp;amp; foobar; } class Transform { automutable Vector3f immutable position; } Variables can be declared with a constness modifier. NOTE: On non-reference variables are final and immutable identical? I think so Mutability Casts and Implicit Conversions Types TypeOfExpression = Expression, (&quot;typeof&quot; | &quot;!typeof&quot;), (TypeIdentifier | VariableIdentifier) (* either *) Standard Library Types class Singleton&amp;lt;First&amp;gt; extends Tuple&amp;lt;First&amp;gt; { public First first; public int&amp;amp; operator [] (Int index) { checkIndex(index); return &amp;amp;first; } } class Pair&amp;lt;First, Second&amp;gt; extends Tuple&amp;lt;First, Second&amp;gt; { } class Tuple&amp;lt;E...&amp;gt; { public E... elements; public int size() { return E.length; } public int&amp;amp; operator [] (Int index) { checkIndex(index); return &amp;amp;first; } } Return Statement [DRAFT: Every function with non void return type must have atleast one return statement in every possible control flow path] Primitive Types Following is a table with all primitive types. void is also a type that can be used in declarations. (void a; is not particularly useful though) void is not a data type so trying to use it in any operation will throw an error.</summary></entry><entry><title type="html">EBNF to Define EBNF that Defines EBNF</title><link href="/blog/ebnf-to-define-ebnf-that-defines-ebnf/" rel="alternate" type="text/html" title="EBNF to Define EBNF that Defines EBNF" /><published>2017-07-25T00:00:00+02:00</published><updated>2017-07-25T00:00:00+02:00</updated><id>/blog/ebnf-to-define-ebnf-that-defines-ebnf</id><content type="html" xml:base="/blog/ebnf-to-define-ebnf-that-defines-ebnf/">&lt;p&gt;A Meta-Language to define other languages is always a bad idea. Especially if you start
+defining the language using itself which defines itself which tends to define itself which
+just so happens to define itself.&lt;/p&gt;
+
+&lt;p&gt;Actually It’s pretty much necessary for any Meta-Language used to define Grammar to be able to define
+itself, otherwise it’s not a very useful language. That doesn’t make it less weird, though. 
+Also no guarentee for corectness, this was made at a &lt;em&gt;way&lt;/em&gt; too late time, &lt;em&gt;way&lt;/em&gt; too tired and with &lt;em&gt;way&lt;/em&gt; too
+much energy drink and coffee consumed.
+Now without further ado: EBNF to define itself: (Double colon, yeah)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;(* WIP *)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+&lt;p&gt;Well, that was fun. Bye now!&lt;/p&gt;</content><author><name>Jan Katzer</name></author><summary type="html">A Meta-Language to define other languages is always a bad idea. Especially if you start defining the language using itself which defines itself which tends to define itself which just so happens to define itself. Actually It’s pretty much necessary for any Meta-Language used to define Grammar to be able to define itself, otherwise it’s not a very useful language. That doesn’t make it less weird, though. Also no guarentee for corectness, this was made at a way too late time, way too tired and with way too much energy drink and coffee consumed. Now without further ado: EBNF to define itself: (Double colon, yeah) (* WIP *) Conclusion Well, that was fun. Bye now!</summary></entry><entry><title type="html">Defining a Language’s Grammer: EBNF</title><link href="/blog/defining-language-grammar-with-ebnf/" rel="alternate" type="text/html" title="Defining a Language's Grammer: EBNF" /><published>2017-07-21T00:00:00+02:00</published><updated>2017-07-21T00:00:00+02:00</updated><id>/blog/defining-language-grammar-with-ebnf</id><content type="html" xml:base="/blog/defining-language-grammar-with-ebnf/">&lt;p&gt;Creating a new programming language is hard. There are many things that have to be taken into account.
+Of of those things is it’s grammar: How the syntax look like and how they can be combined in a meaningful
+way that the parser and lexer understand.&lt;/p&gt;
+
+&lt;p&gt;Just for reference, I’ll be talking about the &lt;a href=&quot;#further-reading&quot;&gt;ISO/IEC 14977:1996&lt;/a&gt; version of EBNF instead of simply BNF or ABNF or
+any other type of BNF variant. (Though, with the exception of the original BNF, they are all sort of similar.)&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-grammar&quot;&gt;What is Grammar?&lt;/h2&gt;
+&lt;p&gt;Programming language’s grammar, like grammar of “human” languages, describes the way how fundamental
+building blocks (like nouns, verbs and prepositions) can be combined into more complex constructs
+(like clauses) and where punctuation can be used. If you’re now getting painful flashbacks to high school,
+a.) I don’t blame you and b.) you can relax. Grammar rules of a programming language are fortunately
+&lt;em&gt;much&lt;/em&gt; simpler than these of spoken languages. &lt;em&gt;Fun fact&lt;/em&gt;: I’ve read somewhere that the grammar of Java can be expressed in
+EBNF with only around 40 rules. &lt;em&gt;That’s not much&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;what-isnt-grammar&quot;&gt;What isn’t Grammar?&lt;/h2&gt;
+&lt;p&gt;[Grammar is only layout/style. Parsing and validation are not part of grammar]&lt;/p&gt;
+
+&lt;h2 id=&quot;what-is-ebnf&quot;&gt;What is EBNF?&lt;/h2&gt;
+&lt;p&gt;The “Extended Backus–Naur Form” (EBNF) is sort of a meta-language to formally express context-free grammar.
+Eh, ‘sounds more complicated than it really is. Instead of throwing complicated words and highly abstract
+concepts around that I don’t understand myself, I think it will become clear with a quick example.
+(Pictures tell a thousand words after all, don’t they?)&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;Digit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9';
+NumericalLiteral = ['+' | '-'], Digit, {Digit};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Phew, that wasn’t too hard now, was it? As you can see above, there are two EBNF rules specifying how a numerical
+literal is to be expressed. We can extend these rules a bit more.&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;NumericalLiteral = ['+' | '-'], Digit, {Digit}, [('e' | 'E'), ['+' | '-'], Digit, {Digit}];
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Now numerical literals can have an optional scientific notation suffix, complete with optional plus or minus sign and one or more digits.&lt;/p&gt;
+
+&lt;h2 id=&quot;quick-overview&quot;&gt;Quick Overview&lt;/h2&gt;
+&lt;p&gt;Before I’m going into more detail here is a quick overview of most of EBNF’s symbols.&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Symbol&lt;/th&gt;
+      &lt;th&gt;Example&lt;/th&gt;
+      &lt;th&gt;Meaning&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;=&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Defines a rule&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Terminates a rule definition&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;,&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A, B;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Concatenates two syntactic terms&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;|&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A | B;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;ORs two terms&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(...)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A, (B | C);&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Groups terms together (to express precedence)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;[...]&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = [A, B];&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Declares the contained term optional&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A, {A};&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Repeats the contained term zero or more times&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;&quot;...&quot;&lt;/code&gt; or &lt;code class=&quot;highlighter-rouge&quot;&gt;'...'&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = &quot;A&quot; | &quot;B&quot; | &quot;C&quot;;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Defines a terminal symbol&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;*&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = 2 * A;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Repeats the term n times&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;-&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = Letter - Digit;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Makes an exception (use with caution!)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;?...?&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = ?any utf-8 glyph?;&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Defines a special sequence&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(*...*)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;(*A Comment*)&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Defines a comment&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;definition-glossary&quot;&gt;Definition Glossary&lt;/h2&gt;
+&lt;p&gt;If you are as confused by some of the terms as me, take a peek into the following table.
+(If taken some liberty with re-defining some of the terms as the actual definitions from the spec can
+be a bit too “computer science”-y, if you catch my drift)&lt;/p&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Term&lt;/th&gt;
+      &lt;th&gt;Description&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;(Syntactic-) Term&lt;/td&gt;
+      &lt;td&gt;A factor or a factor followed by an exception. Thus basically any generic sequence&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;(Syntactic-) Factor&lt;/td&gt;
+      &lt;td&gt;A syntactic primary or a primary with an integer and a repetition symbol in front&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;(Syntactic-) Primary&lt;/td&gt;
+      &lt;td&gt;Basically any sequence you can see in the overview table&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Terminal String&lt;/td&gt;
+      &lt;td&gt;A string of characters that is an irreducable symbol of the defined language (like “for” in C)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Meta-Identifier&lt;/td&gt;
+      &lt;td&gt;A name of a non-terminal String (which basically means the name of a rule)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&quot;basic-features&quot;&gt;([Basic], “Features”)&lt;/h2&gt;
+
+&lt;p&gt;The basic symbols are pretty self-explanatory: &lt;code class=&quot;highlighter-rouge&quot;&gt;(...)&lt;/code&gt; to group terms together, &lt;code class=&quot;highlighter-rouge&quot;&gt;[...]&lt;/code&gt; to make them optional,
+&lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; to repeat them zero or more times and so on. Commas can be used to concatenate sequences together.
+Sometimes sequences can be a bit ambiguous. In these cases you can use &lt;code class=&quot;highlighter-rouge&quot;&gt;(...)&lt;/code&gt; just like in mathematics. Consider
+the following: &lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A | (B, B) | C;&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Keep in mind that “term” refers to pretty much anything:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;A&lt;/code&gt;, &lt;code class=&quot;highlighter-rouge&quot;&gt;[A, B]&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;A, (2 * [[&quot;+&quot;, &quot;bar&quot;], A, {A}])&lt;/code&gt; are all one term respectively, which in turn consist of more terms… You get
+the point. (“Term”, “Sequence”, etc. are all pretty much the same, anyways)&lt;/p&gt;
+
+&lt;p&gt;Often you’ll need to repeat something one or more times. Think of a numerical literal: Just a plus or minus sign without any digits
+doesn’t make any sense! Because we only have a “zero or more” repeat on hand, a very common sequence is &lt;code class=&quot;highlighter-rouge&quot;&gt;A, {A}&lt;/code&gt; which gives us
+what we want. In some literature you may also come across something like &lt;code class=&quot;highlighter-rouge&quot;&gt;Digit, {...}&lt;/code&gt;, which means “repeat the previous term”.
+Why is that useful and different from &lt;code class=&quot;highlighter-rouge&quot;&gt;Digit, {Digit}&lt;/code&gt;? Well, it allows you to repeat a term without requiring an extra rule!
+Consider the following: &lt;code class=&quot;highlighter-rouge&quot;&gt;Identifier = (UppercaseLetter | LowercaseLetter | Digit | &quot;_&quot;), {...};&lt;/code&gt; is much more readable than
+&lt;code class=&quot;highlighter-rouge&quot;&gt;Identifier = (UppercaseLetter | LowercaseLetter | Digit | &quot;_&quot;), {UppercaseLetter | LowercaseLetter | Digit | &quot;_&quot;};&lt;/code&gt; or even
+&lt;code class=&quot;highlighter-rouge&quot;&gt;IdentifierLetter = UppercaseLetter | LowercaseLetter | Digit | &quot;_&quot;; Identifier = IdentifierLetter, {IdentifierLetter};&lt;/code&gt;.
+Unfortunately the variant of EBNF we’re talking about doesn’t support &lt;code class=&quot;highlighter-rouge&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;...&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt; repetition terms. Bummer!&lt;/p&gt;
+
+&lt;h2 id=&quot;-comments-&quot;&gt;(* Comments *)&lt;/h2&gt;
+&lt;p&gt;Comments are important to well maintainable systems.
+Comments in EBNF are started with &lt;code class=&quot;highlighter-rouge&quot;&gt;(*&lt;/code&gt; and ended with &lt;code class=&quot;highlighter-rouge&quot;&gt;*)&lt;/code&gt;. They can be pretty much anywhere.
+Although they look like a proper symbol themselves, you don’t need to do stuff like &lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A | B, (* Some Comment*);&lt;/code&gt;.
+The correct version (or rather “better”, as the previous rule is still valid; It just contains an empty sequence at the end)
+would be &lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = A | B (* Some Comment *);&lt;/code&gt;. In a sense they act similar to &lt;code class=&quot;highlighter-rouge&quot;&gt;/* &quot;C-Style&quot; Comments */&lt;/code&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;terminal-symbols&quot;&gt;“Terminal Symbols”&lt;/h2&gt;
+&lt;p&gt;Terminal Symbols are a very important part of EBNF. They define any string of characters that is part of the defined
+language. This means that any character that appears in the language is a Terminal Symbol some way or another.
+Identifiers in Java can consist of letters, digits and underscores. Letters consist of “A”, “B”, “C”, “D”,… You get the point.
+In this case “A”, “B”, “C”, “D”, etc. are Terminal Symbols. Sometimes you also have longer Strings: A &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; loop must start with
+the word &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt;, thus &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; is a Terminal Symbol. For this reason Terminal Symbols are irreducible. You can’t just
+write &lt;code class=&quot;highlighter-rouge&quot;&gt;fo&lt;/code&gt; instead of &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; and hope it makes sense. Equally you cannot write only half an “A”. (Not that that’s possible anyways.)&lt;/p&gt;
+
+&lt;p&gt;Subsequently &lt;code class=&quot;highlighter-rouge&quot;&gt;for&lt;/code&gt; loop could be expressed in EBNF as follows:&lt;/p&gt;
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;ForLoopDeclaration = &quot;for&quot;, &quot;(&quot;, Statement, &quot;;&quot;, Statement, &quot;;&quot;, Statement, &quot;)&quot;, (Body | Statement);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Here you can clearly see the terminal symbols, wrapped in apostrophes.&lt;/p&gt;
+
+&lt;h2 id=&quot;something-special&quot;&gt;?Something Special?&lt;/h2&gt;
+&lt;p&gt;You want to define a really complex rule but it is &lt;em&gt;way&lt;/em&gt; too complex to be expressed with what EBNF gives you or
+would be insanely tedious (like “any UTF-8 glpyh”). If so, you might want to take a look at &lt;code class=&quot;highlighter-rouge&quot;&gt;?Special Sequences?&lt;/code&gt;.
+The concept is actually really simple. You simply define a term in plain english between two question marks.
+Sounds like cheating? Well, it kinda’ is! Actually, special sequences are defined as “The sequence of symbols
+represented by a special-sequence is outside the scope of this International Standard”. In practice that means
+“plain english” (although they are also meant to make EBNF extensible). So “any UTF-8 glpyh” can literally be
+expressed as &lt;code class=&quot;highlighter-rouge&quot;&gt;?any utf-8 glyph?&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Special sequences should only be used when really necessary, though. Because they can define things in plain
+english they are not really considered to be “formal” as their meaning is not guarenteed to be well
+defined and they need to be interpreted by a human. (All the computers I know aren’t exactly the best at
+understanding english.)&lt;/p&gt;
+
+&lt;h2 id=&quot;the---to-the-rule&quot;&gt;The - to the Rule&lt;/h2&gt;
+&lt;p&gt;Exceptions. Where do I start?—Their &lt;em&gt;weird&lt;/em&gt;… (but they’re also nice, so don’t you be mean to them).
+The general form of an exception is &lt;code class=&quot;highlighter-rouge&quot;&gt;A - B&lt;/code&gt;. This defines any sequence of symbols that is a.) represented by
+the first syntactic factor and b.) not represented by the second factor.&lt;/p&gt;
+
+&lt;p&gt;The weirdness comes into play when you try to define things as &lt;code class=&quot;highlighter-rouge&quot;&gt;xx = &quot;A&quot; - xx;&lt;/code&gt;. So &lt;code class=&quot;highlighter-rouge&quot;&gt;xx&lt;/code&gt; is any sequence
+of symbols that is equal to “A” and not equal to anything &lt;code class=&quot;highlighter-rouge&quot;&gt;xx&lt;/code&gt; is equal to. Yeah, that’s a bit of a problem.
+Because of this “complication”, exceptions are generally defined as having to be expressable as a syntactic factor
+without any meta-identifiers (so only as sequences of terminal strings). &lt;code class=&quot;highlighter-rouge&quot;&gt;xx = &quot;A&quot; - xx;&lt;/code&gt; cannot possible be expressed
+as such: &lt;code class=&quot;highlighter-rouge&quot;&gt;xx = &quot;A&quot; - (&quot;A&quot; - (&quot;A&quot; - (&quot;A&quot; - (...))));&lt;/code&gt; is not the sanest of rules. Therefore it isn’t actually a valid rule. &lt;em&gt;Phew&lt;/em&gt;.&lt;/p&gt;
+
+&lt;h2 id=&quot;more-than-half-empty-sequences&quot;&gt;(More than Half) Empty Sequences&lt;/h2&gt;
+&lt;p&gt;Empty Sequences are exactly that: empty. So… The Weather is nice, isn’t it?
+There really isn’t much to say, to be honest.&lt;/p&gt;
+
+&lt;p&gt;One of the (very limited and definitely useful) things that you can do with empty sequences is &lt;code class=&quot;highlighter-rouge&quot;&gt;Rule = ,,,;&lt;/code&gt; but thats about it.&lt;/p&gt;
+
+&lt;h2 id=&quot;conclusion&quot;&gt;Conclusion&lt;/h2&gt;
+
+&lt;p&gt;(Sorry for the syntactic jokes, by the way)&lt;/p&gt;
+
+&lt;h2 id=&quot;further-reading&quot;&gt;Further Reading&lt;/h2&gt;
+&lt;p&gt;Some good sources:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;The &lt;a href=&quot;&quot;&gt;Wikipedia&lt;/a&gt; article has pretty much all you need&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;&quot;&gt;ISO/IEC 14977:1996 Specification&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name>Jan Katzer</name></author><summary type="html">Creating a new programming language is hard. There are many things that have to be taken into account. Of of those things is it’s grammar: How the syntax look like and how they can be combined in a meaningful way that the parser and lexer understand. Just for reference, I’ll be talking about the ISO/IEC 14977:1996 version of EBNF instead of simply BNF or ABNF or any other type of BNF variant. (Though, with the exception of the original BNF, they are all sort of similar.) What is Grammar? Programming language’s grammar, like grammar of “human” languages, describes the way how fundamental building blocks (like nouns, verbs and prepositions) can be combined into more complex constructs (like clauses) and where punctuation can be used. If you’re now getting painful flashbacks to high school, a.) I don’t blame you and b.) you can relax. Grammar rules of a programming language are fortunately much simpler than these of spoken languages. Fun fact: I’ve read somewhere that the grammar of Java can be expressed in EBNF with only around 40 rules. That’s not much. What isn’t Grammar? [Grammar is only layout/style. Parsing and validation are not part of grammar] What is EBNF? The “Extended Backus–Naur Form” (EBNF) is sort of a meta-language to formally express context-free grammar. Eh, ‘sounds more complicated than it really is. Instead of throwing complicated words and highly abstract concepts around that I don’t understand myself, I think it will become clear with a quick example. (Pictures tell a thousand words after all, don’t they?) Digit = '0' | '1' | '2' | '3' | '4' | '5' | '6' | '7' | '8' | '9'; NumericalLiteral = ['+' | '-'], Digit, {Digit}; Phew, that wasn’t too hard now, was it? As you can see above, there are two EBNF rules specifying how a numerical literal is to be expressed. We can extend these rules a bit more. NumericalLiteral = ['+' | '-'], Digit, {Digit}, [('e' | 'E'), ['+' | '-'], Digit, {Digit}]; Now numerical literals can have an optional scientific notation suffix, complete with optional plus or minus sign and one or more digits. Quick Overview Before I’m going into more detail here is a quick overview of most of EBNF’s symbols. Symbol Example Meaning = Rule = A; Defines a rule ; Rule = A; Terminates a rule definition , Rule = A, B; Concatenates two syntactic terms | Rule = A | B; ORs two terms (...) Rule = A, (B | C); Groups terms together (to express precedence) [...] Rule = [A, B]; Declares the contained term optional {...} Rule = A, {A}; Repeats the contained term zero or more times &quot;...&quot; or '...' Rule = &quot;A&quot; | &quot;B&quot; | &quot;C&quot;; Defines a terminal symbol * Rule = 2 * A; Repeats the term n times - Rule = Letter - Digit; Makes an exception (use with caution!) ?...? Rule = ?any utf-8 glyph?; Defines a special sequence (*...*) (*A Comment*) Defines a comment Definition Glossary If you are as confused by some of the terms as me, take a peek into the following table. (If taken some liberty with re-defining some of the terms as the actual definitions from the spec can be a bit too “computer science”-y, if you catch my drift) Term Description (Syntactic-) Term A factor or a factor followed by an exception. Thus basically any generic sequence (Syntactic-) Factor A syntactic primary or a primary with an integer and a repetition symbol in front (Syntactic-) Primary Basically any sequence you can see in the overview table Terminal String A string of characters that is an irreducable symbol of the defined language (like “for” in C) Meta-Identifier A name of a non-terminal String (which basically means the name of a rule) ([Basic], “Features”) The basic symbols are pretty self-explanatory: (...) to group terms together, [...] to make them optional, {...} to repeat them zero or more times and so on. Commas can be used to concatenate sequences together. Sometimes sequences can be a bit ambiguous. In these cases you can use (...) just like in mathematics. Consider the following: Rule = A | (B, B) | C;. Keep in mind that “term” refers to pretty much anything: A, [A, B] and A, (2 * [[&quot;+&quot;, &quot;bar&quot;], A, {A}]) are all one term respectively, which in turn consist of more terms… You get the point. (“Term”, “Sequence”, etc. are all pretty much the same, anyways) Often you’ll need to repeat something one or more times. Think of a numerical literal: Just a plus or minus sign without any digits doesn’t make any sense! Because we only have a “zero or more” repeat on hand, a very common sequence is A, {A} which gives us what we want. In some literature you may also come across something like Digit, {...}, which means “repeat the previous term”. Why is that useful and different from Digit, {Digit}? Well, it allows you to repeat a term without requiring an extra rule! Consider the following: Identifier = (UppercaseLetter | LowercaseLetter | Digit | &quot;_&quot;), {...}; is much more readable than Identifier = (UppercaseLetter | LowercaseLetter | Digit | &quot;_&quot;), {UppercaseLetter | LowercaseLetter | Digit | &quot;_&quot;}; or even IdentifierLetter = UppercaseLetter | LowercaseLetter | Digit | &quot;_&quot;; Identifier = IdentifierLetter, {IdentifierLetter};. Unfortunately the variant of EBNF we’re talking about doesn’t support {...} repetition terms. Bummer! (* Comments *) Comments are important to well maintainable systems. Comments in EBNF are started with (* and ended with *). They can be pretty much anywhere. Although they look like a proper symbol themselves, you don’t need to do stuff like Rule = A | B, (* Some Comment*);. The correct version (or rather “better”, as the previous rule is still valid; It just contains an empty sequence at the end) would be Rule = A | B (* Some Comment *);. In a sense they act similar to /* &quot;C-Style&quot; Comments */. “Terminal Symbols” Terminal Symbols are a very important part of EBNF. They define any string of characters that is part of the defined language. This means that any character that appears in the language is a Terminal Symbol some way or another. Identifiers in Java can consist of letters, digits and underscores. Letters consist of “A”, “B”, “C”, “D”,… You get the point. In this case “A”, “B”, “C”, “D”, etc. are Terminal Symbols. Sometimes you also have longer Strings: A for loop must start with the word for, thus for is a Terminal Symbol. For this reason Terminal Symbols are irreducible. You can’t just write fo instead of for and hope it makes sense. Equally you cannot write only half an “A”. (Not that that’s possible anyways.) Subsequently for loop could be expressed in EBNF as follows: ForLoopDeclaration = &quot;for&quot;, &quot;(&quot;, Statement, &quot;;&quot;, Statement, &quot;;&quot;, Statement, &quot;)&quot;, (Body | Statement); Here you can clearly see the terminal symbols, wrapped in apostrophes. ?Something Special? You want to define a really complex rule but it is way too complex to be expressed with what EBNF gives you or would be insanely tedious (like “any UTF-8 glpyh”). If so, you might want to take a look at ?Special Sequences?. The concept is actually really simple. You simply define a term in plain english between two question marks. Sounds like cheating? Well, it kinda’ is! Actually, special sequences are defined as “The sequence of symbols represented by a special-sequence is outside the scope of this International Standard”. In practice that means “plain english” (although they are also meant to make EBNF extensible). So “any UTF-8 glpyh” can literally be expressed as ?any utf-8 glyph?. Special sequences should only be used when really necessary, though. Because they can define things in plain english they are not really considered to be “formal” as their meaning is not guarenteed to be well defined and they need to be interpreted by a human. (All the computers I know aren’t exactly the best at understanding english.) The - to the Rule Exceptions. Where do I start?—Their weird… (but they’re also nice, so don’t you be mean to them). The general form of an exception is A - B. This defines any sequence of symbols that is a.) represented by the first syntactic factor and b.) not represented by the second factor. The weirdness comes into play when you try to define things as xx = &quot;A&quot; - xx;. So xx is any sequence of symbols that is equal to “A” and not equal to anything xx is equal to. Yeah, that’s a bit of a problem. Because of this “complication”, exceptions are generally defined as having to be expressable as a syntactic factor without any meta-identifiers (so only as sequences of terminal strings). xx = &quot;A&quot; - xx; cannot possible be expressed as such: xx = &quot;A&quot; - (&quot;A&quot; - (&quot;A&quot; - (&quot;A&quot; - (...)))); is not the sanest of rules. Therefore it isn’t actually a valid rule. Phew. (More than Half) Empty Sequences Empty Sequences are exactly that: empty. So… The Weather is nice, isn’t it? There really isn’t much to say, to be honest. One of the (very limited and definitely useful) things that you can do with empty sequences is Rule = ,,,; but thats about it. Conclusion (Sorry for the syntactic jokes, by the way) Further Reading Some good sources: The Wikipedia article has pretty much all you need ISO/IEC 14977:1996 Specification</summary></entry><entry><title type="html">Building GitHub Pages with Jekyll Plugins</title><link href="/blog/building-github-pages-with-jekyll-plugins/" rel="alternate" type="text/html" title="Building GitHub Pages with Jekyll Plugins" /><published>2017-07-09T00:00:00+02:00</published><updated>2017-07-09T00:00:00+02:00</updated><id>/blog/building-github-pages-with-jekyll-plugins</id><content type="html" xml:base="/blog/building-github-pages-with-jekyll-plugins/">&lt;p&gt;As &lt;a href=&quot;https://pages.github.com/&quot;&gt;GitHub Pages&lt;/a&gt; does not allow custom Jekyll
 plugins for extending your website, how can you bypass this restriction?
 The answer is rather simple: Building it yourself!&lt;/p&gt;
 
