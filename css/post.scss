@@ -24,6 +24,11 @@
 }
 */
 
+/* Colored Header */
+.nav, .postheader {
+	background: $color-background-header;
+}
+
 .postheader {
 	height: 24rem;
 	
@@ -113,6 +118,26 @@
 		*/
 	}
 	
+	table {
+		margin: 2rem 0;
+		width: 100%;
+		
+		//border-collapse: collapse; // collapse screws up border-radius
+		border: 1px solid #d9e2e8;
+		border-radius: 2px;
+		border-spacing: 0;
+		
+		font-size: 0.9975rem;
+		
+		td, th {
+			border: none;
+			padding: 0.5rem 0.6rem;
+		}
+		/*thead>tr,*/ tbody>tr:nth-child(odd) {
+			background: #f9f9fa;
+		}
+	}
+	
 	figure {
 		margin: 2rem 0;
 		
@@ -121,12 +146,6 @@
 			height: auto;
 			margin: 0;
 		}
-		
-		/*
-		a > img {
-			cursor: hand;
-		}
-		*/
 		
 		figcaption {
 			position: relative;
@@ -149,5 +168,10 @@
 			}
 			*/
 		}
+	}
+	
+	// standardize top margin of the first element below a heading
+	h1+*, h2+*, h3+*, h4+*, h5+*, h6+* {
+		margin-top: 1rem;
 	}
 }

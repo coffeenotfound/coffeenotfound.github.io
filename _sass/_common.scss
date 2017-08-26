@@ -25,6 +25,8 @@ $color-font-default: #656d77;
 $color-font-darker: #515a61;
 $color-font-lighter: #adb2b8;
 
+$color-background-header: hsla(180, 0%, 98%, 1);
+
 html {
 	margin: 0;
 	width: 100%;
@@ -109,7 +111,10 @@ $scrollbar-padding: 8px;
 	background-clip: padding-box;
 	-webkit-border-radius: 32px;
 	
-	background-color: rgba(0, 0, 0, 0.175);
+	background-color: rgba(0, 0, 0, 0.25);
+	&:hover {
+		background-color: rgba(0, 0, 0, 0.325);
+	}
 }
 ::-webkit-scrollbar-button {
 	width: 0;
@@ -318,6 +323,8 @@ code.highlighter-rouge {
 	font-weight: normal;
 	font-style: normal;
 	
+	tab-size: 4;
+	
 	background: #f4f4f5;
 	border: 1px solid #d9e2e8;
 	border-radius: 2px;
@@ -326,7 +333,7 @@ code.highlighter-rouge {
 /** Block code highlighter */
 figure.highlight, div.highlighter-rouge {
 	position: relative;
-	margin: 1rem 0;
+	margin: 2rem 0;
 	
 	font-size: font-rems(0.95);
 	line-height: 1.15rem;
@@ -341,6 +348,11 @@ figure.highlight, div.highlighter-rouge {
 		margin: 0;
 		padding: 1rem;
 		
-		font-family: 'Inconsolata', monospace;
+		overflow: auto;
+		
+		font-family: 'Inconsolata', 'Consolas', monospace;
+		tab-size: 4;
 	}
 }
+
+

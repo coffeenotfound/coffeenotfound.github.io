@@ -5,6 +5,8 @@
 	line-height: 1.1;
 	overflow: visible;
 	
+	text-align: center;
+	
 	.wrap {
 		display: table;
 	}
@@ -27,6 +29,11 @@
 			color: inherit;
 		}
 		
+		span.welcometext__minimalistname {
+			color: $color-font-darker;
+		}
+		
+		/*
 		span.welcometext-url__protocol {
 			color: #3fa961;
 			//color: #0B8043;
@@ -37,6 +44,7 @@
 		span.welcometext-url__delimiter {
 			color: inherit;
 		}
+		*/
 	}
 	
 	h2.welcometext__tagline {

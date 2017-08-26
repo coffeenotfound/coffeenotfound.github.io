@@ -22,18 +22,21 @@
 				<article class="postlistentry">
 					<header>
 						<a class="postlistentry__title" href="{{ post.url }}"><h2>{{ post.title }}</h2></a>
-						<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%A, %e. %B %Y" }}</time>
 						<!--<div class="postlistentry__colorswatch"></div>-->
 					</header>
 					
-					<main>
+					<section class="postlistentry__main">
 						{% if post.content contains site.excerpt_separator %}
 							{{ post.excerpt | smartify }}
 						{% else %}
 							{% assign temp_splitexcerpt = post.content | split:'</p>' %}
 							{{ temp_splitexcerpt[0] | smartify | append:'</p>' }}
 						{% endif %}
-					</main>
+					</section>
+					
+					<section class="postlistentry__belowheader">
+						<time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%A, %e. %B %Y" }}</time>
+					</section>
 				</article>
 				{% endfor %}
 			</section>

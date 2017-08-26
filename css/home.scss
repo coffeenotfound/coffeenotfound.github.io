@@ -6,6 +6,11 @@
 
 @import '_common-welcometext';
 
+/* Colored Header */
+.nav, .welcometext {
+	background: $color-background-header;
+}
+
 hr {
 	margin: 2rem;
 	margin-top: 2rem;
@@ -16,12 +21,12 @@ hr {
 }
 
 .postlist {
-	//margin-top: 4rem;
+	margin-top: 1rem;
 	margin-bottom: 8rem;
 }
 
 article.postlistentry {
-	margin-bottom: 4rem;
+	margin-bottom: 3rem;
 	
 	header {
 		position: relative;
@@ -30,11 +35,10 @@ article.postlistentry {
 		a.postlistentry__title {
 			h2 {
 				margin: 0;
+				
+				font-size: font-rems(1.5rem);
 				line-height: 1.2;
 			}
-		}
-		time {
-			color: #adb2b8;
 		}
 		
 		div.postlistentry__colorswatch {
@@ -51,16 +55,24 @@ article.postlistentry {
 		}
 	}
 	
-	main {
+	section.postlistentry__main {
+		margin-bottom: 0.5rem;
+		
 		:first-child {
 			margin-top: 0;
 		}
 		p {
-			margin-top: 0;
+			margin: 0;
 		}
 		h1,h2,h3,h4,h5,h6 {
 			font-size: font-rems(1.1);
 			margin: 0;
+		}
+	}
+	
+	section.postlistentry__belowheader {
+		time {
+			color: #adb2b8;
 		}
 	}
 }
